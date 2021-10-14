@@ -1,7 +1,7 @@
 # Počítačové Sítě
 
 <b>Zdroje:</b>
- - http://samurai-cz.com
+ - http://samuraj-cz.com
  - http://toolkit.g6.cz
 
 ## Privátní sítě (IP)
