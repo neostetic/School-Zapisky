@@ -16,7 +16,7 @@
 ### Dynamický routing:
  - Dynamic routing
    - IGP (Interior Gateway Protocol)
-     - Dystance vektor
+     - Distance vektor
      - Link state 
    - EGP (Exterior Gateway Protocol)
      - Path vektor
