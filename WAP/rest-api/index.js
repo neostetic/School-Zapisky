@@ -13,14 +13,44 @@ app.get('/user', (req, res) => {
 });
 
 app.get('/user/:id', (req, res) => {
-    let { id } = req.params;
-    let { nickname } = req.body;
-
-    if (!nickname) return res.status(404).send({ msg: "Piš to správně kokote1"});
+    const { id } = req.params;
     res.status(200).send({
-        id,
-        nickname
+        msg: `GET /user/${name}`
     });
+});
+
+app.get('/article/:name', (req, res) => {
+    const { name } = req.params;
+    res.status(200).send({
+        msg: `GET /article/${name}`
+    })
+});
+
+app.post('/user', (req, res) => {
+    const { payload } = req.body;
+    if (!payload) return res.status(404).send({ msg: "Payload not found" });
+    res.status(200).send({
+        msg: "POST /user",
+        payload
+    })
+});
+
+app.put('/user', (req, res) => {
+    const { payload } = req.body;
+    if (!payload) return res.status(404).send({ msg: "Payload not found" });
+    res.status(200).send({
+        msg: "PUT /user",
+        payload
+    })
+});
+
+app.delete('/user', (req, res) => {
+    const { payload } = req.body;
+    if (!payload) return res.status(404).send({ msg: "Payload not found" });
+    res.status(200).send({
+        msg: "DELETE /user",
+        payload
+    })
 });
 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
