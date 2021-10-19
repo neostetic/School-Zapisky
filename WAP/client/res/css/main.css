@@ -13,6 +13,29 @@ html, body {
     background: #3e3e3e;
 }
 
+button {
+    transition: .2s ease;
+    border: 3px solid red;
+    background: transparent;
+    padding: 20px;
+    width: 200px;
+    margin: 10px;
+    cursor: pointer;
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 40px;
+}
+
+button:hover {
+    background: red;
+    color: white;
+}
+
+button:active {
+    border: 3px transparent;
+}
+
 #info {
     margin: 0;
     padding: 20px;
