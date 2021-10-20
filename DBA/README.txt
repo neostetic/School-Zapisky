@@ -171,3 +171,6 @@ MySql - WEBOVÉ ROZHRÁNÍ
  - https://vydb1.spsmb.cz/phpmyadmin
  - DML (Data Modification Language)
    - příkazy pro práci s daty
+
+
+Go back : https://github.com/neostetic/School-Zapisky
