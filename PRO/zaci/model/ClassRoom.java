@@ -2,14 +2,14 @@ package cz.polacek.zaci.model;
 
 import java.util.Arrays;
 
-public class Student {
+public class ClassRoom {
 
     private String name;
-    private int[] grades;
+    private Student[] students;
 
-    public Student(String name, int[] grades) {
+    public ClassRoom(String name, Student[] students) {
         this.name = name;
-        this.grades = grades;
+        this.students = students;
     }
 
     public String getName() {
@@ -20,19 +20,19 @@ public class Student {
         this.name = name;
     }
 
-    public int[] getGrades() {
-        return grades;
+    public Student[] getStudents() {
+        return students;
     }
 
-    public void setGrades(int[] grades) {
-        this.grades = grades;
+    public void setStudents(Student[] students) {
+        this.students = students;
     }
 
     @Override
     public String toString() {
-        return "Student{" +
+        return "ClassRoom{" +
                 "name='" + name + '\'' +
-                ", grades=" + Arrays.toString(grades) +
+                ", students=" + Arrays.toString(students) +
                 '}';
     }
 }
