@@ -28,3 +28,5 @@ app.get('/user/:id', (req, res) => {
 
 app.listen(PORT, () => console.log(`Server is running on port: ${PORT}`));
 ```
+
+<p align="right"><a href="https://github.com/neostetic/School-Zapisky">Go Back</p>
