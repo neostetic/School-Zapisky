@@ -58,3 +58,5 @@
 | Nevypnout         | no shutdown                                |
 | Exit sub-mód      | end / exit                                 |
 | Uložit            | write / copy running-config startup-config |
+
+<p align="right"><a href="https://github.com/neostetic/School-Zapisky">Go Back</p>
