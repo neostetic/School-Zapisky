@@ -16,3 +16,4 @@
 | 1101    | 13        | D            |
 | 1110    | 14        | E            |
 | 1111    | 15        | F            |
+<p align="right"><a href="https://github.com/neostetic/School-Zapisky">Go Back</p>
