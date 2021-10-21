@@ -5,3 +5,11 @@
 - <a href="https://github.com/neostetic/School-Zapisky/blob/main/PRO/README.md">💾 Programování (PRO)</a>
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/SIT">🔌 Počítačové Sítě (SIT)</a>
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/WAP">🌐 Webové Aplikace (WAP)</a>
+
+#### Učitelé na Github
+- <a href="https://github.com/honziktillu">Jan Till</a>
+- <a href="https://github.com/LukasMazl">Lukáš Mázl</a>
+
+<p align="right">
+  <a href="https://github.com/neostetic">Go Home</a>
+</p>
