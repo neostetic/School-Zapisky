@@ -30,6 +30,8 @@ Příkazy:
  - nano [FILENAME] (vytvoří soubor [FILENAME])
  - emacs [FILENAME] (vytvoří soubor [FILENAME])
  - vim [FILENAME] (vytvoří soubor [FILENAME])
+ - update-alternatives --config editor (změna hl. editoru)
+ - editor (otevře editor)
 
 Zkratky:
  - Ctrl + L (clear)
