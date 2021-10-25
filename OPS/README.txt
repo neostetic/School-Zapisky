@@ -27,6 +27,9 @@ Příkazy:
  - top (správce úloh/procesů)
  - ps aux |grep [PRC] (hledá spuštěné procesi s názvem [PRC])
  - kill [PID] (vypne proces s id [PID])
+ - # nano [FILENAME] (vytvoří soubor [FILENAME])
+ - # emacs [FILENAME] (vytvoří soubor [FILENAME])
+ - # vim [FILENAME] (vytvoří soubor [FILENAME])
 
 Zkratky:
  - Ctrl + L (clear)
