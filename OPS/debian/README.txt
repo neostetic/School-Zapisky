@@ -73,4 +73,4 @@ Znaky v LS:
 Manual:
  - https://archiv.linuxsoft.cz/article.php?id_article=1083 
  
-Go back : https://github.com/neostetic/School-Zapisky
+Go back : https://github.com/neostetic/School-Zapisky/tree/main/OPS
