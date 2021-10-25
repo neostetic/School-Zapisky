@@ -32,6 +32,8 @@ Příkazy:
  - vim [FILENAME] (vytvoří soubor [FILENAME])
  - update-alternatives --config editor (změna hl. editoru)
  - editor (otevře editor)
+ - chmod [CMDS] [FILENAME] (změní oprávnění)
+ - ./[FILE] (otevři [FILE])
 
 Zkratky:
  - Ctrl + L (clear)
