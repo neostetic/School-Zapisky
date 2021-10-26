@@ -9,6 +9,7 @@
 #### Učitelé na Github
 - <a href="https://github.com/honziktillu">Jan Till</a>
 - <a href="https://github.com/LukasMazl">Lukáš Mázl</a>
+- <a href="https://github.com/KRBNJSF">Kareb</a>
 
 #### SPSMB Group
 - <a href="https://github.com/SPSMB">Group</a>
