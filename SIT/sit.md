@@ -59,4 +59,4 @@
 | Exit sub-mód      | end / exit                                 |
 | Uložit            | write / copy running-config startup-config |
 
-<p align="right"><a href="https://github.com/neostetic/School-Zapisky">Go Back</p>
+<p align="right"><a href="https://github.com/neostetic/School-Zapisky/tree/main/SIT">Go Back</p>
