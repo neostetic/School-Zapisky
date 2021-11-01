@@ -1,14 +1,16 @@
-Výchozí: 84.123.60.0/22
-IP Sítì, IP Hostù (první a poslední)
+VÃ½chozÃ­: 84.123.60.0/22
+IP SÃ­tÄ›, IP HostÅ¯ (prvnÃ­ a poslednÃ­)
 
-A -  86 hostù
-B - 135 hostù
-C - 420 hostù
-D -  56 hostù
-E -  12 hostù
+A -  86 hostÅ¯
+B - 135 hostÅ¯
+C - 420 hostÅ¯
+D -  56 hostÅ¯
+E -  12 hostÅ¯
 
 1. C - 84.123.60.0   /23 - 84.123.60.1   - 84.123.61.254
 2. B - 84.123.62.0   /24 - 84.123.62.1   - 84.123.62.254
 3. A - 84.123.63.0   /25 - 84.123.63.1   - 84.123.63.126
 4. D - 84.123.63.128 /26 - 84.123.63.129 - 84.123.63.190 
 5. E - 84.123.63.192 /28 - 84.123.63.193 - 84.123.63.206
+
+Go back : https://github.com/neostetic/School-Zapisky/tree/main/SIT
