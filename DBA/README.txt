@@ -1,8 +1,6 @@
 - https://dev.mysql.com/doc/refman/8.0/en/char.html
 
 
-06.09.2021
-
 Databázové systémy
 ------------------
 
@@ -76,7 +74,7 @@ SŘBD (DBMS)
 13.09.2021
 
   -------------------------------------------------------------------
-  |                       PŘÁKAZY NA DATABÁZE                       |
+  |                      PŘÁKAZY NA DATABÁZE                        |
   -------------------------------------------------------------------
   |   SET sql_mode = 'ANSI_QUOTES';                                 |
   |   create database "student_jmeno.prijmeni_dbname";              |
@@ -101,7 +99,15 @@ SŘBD (DBMS)
   |   SELECT * FROM vyrobky INNER JOIN sklady on sklady.cislo=vyrobky.sklad ORDER BY cena ASC;
   |   SELECT * FROM zamestnanci ORDER BY pocet_deti DESC LIMIT 6;   |
   |   SELECT cislo AS 'Objednaci kod', nazev AS 'Komodita' FROM vyrobky;
+  |   SELECT * FROM vyrobky WHERE cena > 50;                        |
   |   SELECT ... OFFSET [num]                                       | 
+  |   SELECT * FROM obraty WHERE year(datum) <= 2018;               |
+  |   SELECT DISTINCT sklad FROM vyrobky WHERE z_dovozu = 1;        |
+  |   SELECT cislo,nazev,cena FROM vyrobky WHERE cena BETWEEN 20 AND 50;
+  |   SELECT prijmeni, jmeno, pocet_deti FROM zamestnanci WHERE pocet_deti IN (1,3);
+  |   SELECT * FROM obraty WHERE datum in ('2018-02-18', '2018-02-22');
+  |   SELECT * FROM vyrobky WHERE nazev LIKE 'Pivo%';               |
+  |   SELECT nazev FROM vyrobky WHERE nazev RLIKE '^[TR].*';        |
   -------------------------------------------------------------------
 
   - mysql -h vydb1.spsmb.cz -p -u jan.polacek student_jan.polacek_borek < X:\stemberk\verejne_zaci\tabulky_UTF8_MySQL.sql
@@ -172,5 +178,11 @@ MySql - WEBOVÉ ROZHRÁNÍ
  - DML (Data Modification Language)
    - příkazy pro práci s daty
 
-
+ - ... LIKE '%' - jakýkoliv řetězec
+            '_' - jakýkoliv znak
+ - .. RLIKE '*' - 0 a více opakování
+            '+' - 1 a více
+            '?' - 0 nebo 1 výskyt
+          [a-z] - množina znaků
+	  
 Go back : https://github.com/neostetic/School-Zapisky
