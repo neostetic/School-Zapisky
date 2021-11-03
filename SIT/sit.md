@@ -6,20 +6,28 @@
 
 ## Privátní sítě (IP)
 
-### Privátní sítě:
+Co je to CIDR?
+ - Zkrácená maska/prefix
+
+### Privátní sítě (v místní síti):
  - 192.168.0.0/16
  - 10.0.0.0/8
  - 172.16.0.0/12
  - VLSM (Variable Length Subnet Masking)
-   - x.x.x.x/xx 
-
+   - x.x.x.x/xx (variabilní maska)
+   - TTL - smrtelnost packetu
+   - 
 ### Dynamický routing:
- - Dynamic routing
+ - Dynamic routing (upravuje se při změnách)
    - IGP (Interior Gateway Protocol)
      - Distance vektor
      - Link state 
    - EGP (Exterior Gateway Protocol)
      - Path vektor
+ - Statický a Defaultní
+
+### Routování
+ - určování cest routům pro posílání dat
 
 ### RIP (Routing Information Protocol):
  - RIP verze 1
