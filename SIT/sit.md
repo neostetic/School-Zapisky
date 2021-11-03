@@ -6,36 +6,35 @@
 
 ## Privátní sítě (IP)
 
-Co je to CIDR?
- - Zkrácená maska/prefix
-
 ### Privátní sítě (v místní síti):
  - 192.168.0.0/16
  - 10.0.0.0/8
  - 172.16.0.0/12
  - VLSM (Variable Length Subnet Masking)
-   - x.x.x.x/xx (variabilní maska)
-   - TTL - smrtelnost packetu
-   - 
-### Dynamický routing:
- - Dynamic routing (upravuje se při změnách)
-   - IGP (Interior Gateway Protocol)
-     - Distance vektor
-     - Link state 
-   - EGP (Exterior Gateway Protocol)
-     - Path vektor
- - Statický a Defaultní
-
-### Routování
+   - x.x.x.x/<b>xx</b> (variabilní maska)
+   
+### Routing:
+ - AS - autonomní systémy
+   - skupina IP sítí a routrů pod jedné nebo více jednotek
+ - CIDR - zkrácení maska/prefix
  - určování cest routům pro posílání dat
+   - Statický a Defaultní
+   - Dynamic routing (upravuje se při změnách)
+     - IGP (Interior Gateway Protocol)
+       - Distance vektor
+       - Link state 
+     - EGP (Exterior Gateway Protocol)
+       - Path vektor
 
 ### RIP (Routing Information Protocol):
+ - TTL - smrtelnost packetu
  - RIP verze 1
    - aktualizace směrování nezahrnují informace o masce sítě, podpora IPv4, chybí podpora pro CIDR
  - RIP verze 2
    - podpora CIDR a IPv4, omezení 15 skoků (hop count), 224.0.0.9 (multicast)
  - RIPng
    - podpora IPv6, chybí aktualizovaných autentizací a připojování k libovolných směrovačům
+
 
 ## Masky sítí (IP) 
 
