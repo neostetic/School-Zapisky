@@ -14,10 +14,10 @@
    - x.x.x.x/<b>xx</b> (variabilní maska)
    
 ### Routing:
+ - = určování cest routům pro posílání dat
  - AS - autonomní systémy
    - skupina IP sítí a routrů pod jedné nebo více jednotek
  - CIDR - zkrácení maska/prefix
- - určování cest routům pro posílání dat
    - Statický a Defaultní
    - Dynamic routing (upravuje se při změnách)
      - IGP (Interior Gateway Protocol)
