@@ -14,6 +14,38 @@ public class Woman {
         this.eyeColor = eyeColor;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIg() {
+        return ig;
+    }
+
+    public void setIg(String ig) {
+        this.ig = ig;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public String getEyeColor() {
+        return eyeColor;
+    }
+
+    public void setEyeColor(String eyeColor) {
+        this.eyeColor = eyeColor;
+    }
+
     public Woman() {}
 
     void cook() {
