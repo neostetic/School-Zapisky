@@ -26,10 +26,10 @@ public class Woman {
 
     void seznamitSeZenou() {
         System.out.println(
-                "Ahoj já jsem " + this.name + ", a můj Instagram, pod společností Facebook Incorporated\n" +
-                "(později Meta Incorporated) je " + this.ig + ". Ale jestli nechceš otravovat můj " + this.age + "\n" +
-                "ti letý účet, tak tě naučím anglicky barvu mých očí. To je: " + this.eyeColor + ", zbytek si\n" +
-                "vyřeš sám. Úchyle!11!1!!11"
+                "Ahoj, já jsem " + this.name + ", a můj Instagram, pod společností Facebook Incorporated\n" +
+                "(později Meta Incorporated) je " + this.ig + ". Ale jestli nechceš otravovat můj " + this.age + "ti\n" +
+                "letý účet, tak tě naučím anglicky barvu mých očí. To je: " + this.eyeColor + ", zbytek si vyřeš\n" +
+                "sám. Úchyle!11!1!!11"
         );
     }
 
