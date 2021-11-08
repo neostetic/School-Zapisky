@@ -36,6 +36,28 @@
    - podpora IPv6, chybí aktualizovaných autentizací a připojování k libovolných směrovačům
 
 
+
+### OSPF (Open Shortest Path First) protokol:
+ - Dynamic routing - IPG
+   - linkstate (database)
+ - používá Dijkstrův algoritmus - hledá nejkratší cestu
+ - podpora VLSM
+ - manuální sumarizace 
+   - = více sítí se chová jako jedna podsíť
+ - pohyb dat, pomocí multicast 
+   - 224.0.0.6 - všechny DR
+   - 224.0.0.5 - všechny routery
+   - 224.0.0.2 - všechny routery na stejném subnetu
+ 
+ ### OSPF routes
+  - O     - síť ve stejné oblasti (type 1 - 4)
+  - O AI  - inter-area, z ABR
+  - O* IA - default inter-area
+  - O N1  - NSSA external type 1
+  - O* N2 - default NSSA external type 2
+  - O E1  - external type 1, z ASBR
+  - O* E2 - default external type 2
+
 ## Masky sítí (IP) 
 
 | Maska                 | Celkem IP | Použitelné IP | S Gateway |
