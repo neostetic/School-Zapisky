@@ -18,12 +18,13 @@ public class Ai {
             aiRound++;
             winRate = aiSuccess/aiRound*100;
             aiBid = aiInventory/10;
+            if (aiBid == 0) {aiBid = 1;}
             System.out.println("\nINSTANCE " + aiRound);
             System.out.println("- AI's balance: " + aiInventory);
             System.out.println("- AI's bid: " + aiBid);
             System.out.println("- AI's win rate: " + winRate + "%");
             bid();
-        } while (aiInventory > 10);
+        } while (aiInventory > 0);
         System.out.println("\nAI lost all your money!");
     }
 
