@@ -12,6 +12,7 @@ public class Main {
     public static int[] green = {0};
     public static int bidValue;
     public static int bidColor;
+    public static int bidRandom;
 
     public static int random() {
         return new Random().nextInt(37);
@@ -34,36 +35,41 @@ public class Main {
 
     public static void roulette() {
         // System.out.println(Thread.currentThread().getStackTrace().length);
-        System.out.println("- Your balance: "+inventory);
-        System.out.print("Your bid: "); bidValue = sc.nextInt();
-        System.out.print("Color bid: "); bidColor = sc.nextInt();
-        bid();
+        do {
+            System.out.println("- Your balance: "+inventory);
+            System.out.print("Your bid: "); bidValue = sc.nextInt();
+            System.out.print("Color bid: "); bidColor = sc.nextInt();
+            bid();
+        } while (inventory > 0);
+        System.out.println("You've lost all your money!");
     }
 
     public static void bid() {
+        bidRandom = random();
+        System.out.print("\nRolled: " + bidRandom);
         if (bidColor == 0) {
             for (int j : green) {
-                if (random() == j) {
-                    win();
-                    break;
+                if (bidRandom == j) {
+                    winGreen();
+                    return;
                 }
             }
             lose();
         }
         if (bidColor == 1) {
             for (int j : black) {
-                if (random() == j) {
+                if (bidRandom == j) {
                     win();
-                    break;
+                    return;
                 }
             }
             lose();
         }
         if (bidColor == 2) {
             for (int j : red) {
-                if (random() == j) {
+                if (bidRandom == j) {
                     win();
-                    break;
+                    return;
                 }
             }
             lose();
@@ -73,14 +79,17 @@ public class Main {
 
     public static void lose() {
         inventory -= bidValue;
-        System.out.println("\nYou lose!\n");
-        roulette();
+        System.out.println(" - You lost!\n");
     }
 
     public static void win() {
         inventory += bidValue;
-        System.out.println("\nYou won!\n");
-        roulette();
+        System.out.println(" - You won!\n");
+    }
+
+    public static void winGreen() {
+        inventory += bidValue*12;
+        System.out.println(" - You won!\n");
     }
 
 }
