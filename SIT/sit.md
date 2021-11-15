@@ -49,6 +49,7 @@
    - 224.0.0.6 - všechny DR
    - 224.0.0.5 - všechny routery
    - 224.0.0.2 - všechny routery na stejném subnetu
+ - max 30 procesů
  
  ### OSPF routes
   - O     - síť ve stejné oblasti (type 1 - 4)
