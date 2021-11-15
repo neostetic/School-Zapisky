@@ -60,6 +60,17 @@
   - O E1  - external type 1, z ASBR
   - O* E2 - default external type 2
 
+### OSPF tables
+  - <b>routovací (</b>routing<b>)</b> - nejlepší routy do destinací
+  - <b>topologie (</b>topology<b>)</b> - routovací záznamy do všech destinací
+  - <b>sousedů (</b>adjacency<b>)</b> - informace o sousedním routru
+  - <b>link-state database</b>
+
+### Typy oblastí OSPF
+  - <b>standart area</b> - přijímá link updaty a sumární routy
+  - <b>backbone area</b> - propojení všech ostatních oblastí
+  - <b>stub area</b> - nepřijímá routy z AS, pro směrování AS se používá *Default*
+
 ## Masky sítí (IP) 
 
 | Maska                 | Celkem IP | Použitelné IP | S Gateway |
