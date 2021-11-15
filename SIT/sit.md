@@ -41,6 +41,7 @@
  - Dynamic routing - IPG
    - linkstate (database)
  - používá Dijkstrův algoritmus - hledá nejkratší cestu
+ - nemá omezení Hopů (skoků)
  - podpora VLSM
  - manuální sumarizace 
    - = více sítí se chová jako jedna podsíť
