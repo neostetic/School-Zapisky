@@ -1,6 +1,8 @@
 - https://dev.mysql.com/doc/refman/8.0/en/char.html
 
 
+06.09.2021
+
 Databázové systémy
 ------------------
 
@@ -108,6 +110,13 @@ SŘBD (DBMS)
   |   SELECT * FROM obraty WHERE datum in ('2018-02-18', '2018-02-22');
   |   SELECT * FROM vyrobky WHERE nazev LIKE 'Pivo%';               |
   |   SELECT nazev FROM vyrobky WHERE nazev RLIKE '^[TR].*';        |
+  |   SELECT DATE_ADD('2017-06-15', INTERVAL 10 DAY);               |
+  |   SELECT id, faktura, cislo_vyrobku, CASE WHEN castka > 10000 THEN castka-castka/10 ELSE castka END AS 'cena se slevou' from polozky;
+  |   SELECT nazev, cena, CASE WHEN z_dovozu THEN 'Zahranicni' ELSE 'Domaci' END AS 'puvod_vyrobku' FROM vyrobky;
+  |   SELECT CAST('200105' AS FLOAT);                               |
+  |   SELECT pocet_deti, IFNULL(pocet_deti, 0) FROM zamestnanci;    |
+  |   SELECT nazev, cena, IF(cena < 50, 0.1, 0.2)*cena AS clo FROM vyrobky;
+  |   SELECT * FROM faktury WHERE YEAR(vystaveno) = 2018;           |
   -------------------------------------------------------------------
 
   - mysql -h vydb1.spsmb.cz -p -u jan.polacek student_jan.polacek_borek < X:\stemberk\verejne_zaci\tabulky_UTF8_MySQL.sql
@@ -184,5 +193,12 @@ MySql - WEBOVÉ ROZHRÁNÍ
             '+' - 1 a více
             '?' - 0 nebo 1 výskyt
           [a-z] - množina znaků
-	  
-Go back : https://github.com/neostetic/School-Zapisky
+
+ - ROUND(x, [kolik_desetinych_mist])
+ - DATE_ADD('2017-11-09', INTERVAL 10 DAY)
+ - DATEIFF(CURDATE(), splatnost)
+
+
+ - %Y - rok
+ - %y - rok bez stoleti
+ - ...
