@@ -88,20 +88,21 @@
 
 ## Nastavení routerů:
 
-| Název příkazu      | Příkaz                                        |
-|--------------------|-----------------------------------------------|
-| Uživatelský mód    | CLI table                                     |
-| Privilegovaný mód  | enable                                        |
-| Globální mód       | configure terminal                            |
-| Rozhrání kabelu    | interface [cable]                             |
-| IP adresa          | ip address [ip] [mask]                        |
-| Nastavení RIPu     | router rip                                    |
-| Verze RIPu         | version [1/2/ng]                              |
-| Nastavení OSPF     | router ospf [id proces] / router ospf ?       |
-| Network pro RIP    | network [global-ip]                           |
-| Network pro OSPF   | network [global-ip] [mask-invert] area [area] |
-| Nevypnout          | no shutdown                                   |
-| Exit sub-mód       | end / exit                                    |
-| Uložit             | write / copy running-config startup-config    |
+| Název příkazu       | Příkaz                                        |
+|---------------------|-----------------------------------------------|
+| Uživatelský mód     | CLI table                                     |
+| Privilegovaný mód   | enable                                        |
+| Globální mód        | configure terminal                            |
+| Rozhrání kabelu     | interface [cable]                             |
+| IP adresa           | ip address [ip] [mask]                        |
+| Nastavení RIPu      | router rip                                    |
+| Verze RIPu          | version [1/2/ng]                              |
+| Nastavení OSPF      | router ospf [id proces] / router ospf ?       |
+| Network pro RIP     | network [global-ip]                           |
+| Network pro OSPF    | network [global-ip] [mask-invert] area [area] |
+| Nevypnout           | no shutdown                                   |
+| Exit sub-mód        | end / exit                                    |
+| Uložit              | write / copy running-config startup-config    |
+| Změna názvu routeru | hostname [name]                               |
 
 <p align="right"><a href="https://github.com/neostetic/School-Zapisky/tree/main/SIT">Go Back</p>
