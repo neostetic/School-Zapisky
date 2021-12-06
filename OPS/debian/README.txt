@@ -1,5 +1,5 @@
 Login:
- - debian / root:Hicmm602/
+ - debian / root:***
  - martin:martin2
 
 Příkazy:
@@ -8,11 +8,13 @@ Příkazy:
  - apt-get install [WORD] (ex.: apt-get install man/tree ; 3.)
  - apt-get install man net-tools ssh (instaluje balíčky na sever)
  - apt-get install stress (instaluje balíček stress)
+ - apt-get install apache2
  - stress --help
  - stress -c [NUM_1] -t [NUM_2] (stresuje cpu na [NUM_1]x po dobu [NUM_2] vteřin)
  - clear (zkratka: Ctrl + L)
  - [PŘÍKAZ] --help (vypíše help pro příkaz, ex.: ping --help)
  - [PŘÍKAZ] |more ("|" přídává příkazu k příkaz, "more" rozdělí příkaz na obrazovce)
+ - [PŘÍKAZ] |grep [TEXT] (vyhledej [TEXT])
  - apropos [WORD] (helper)
  - jobs (zobrazení běžících úloh)
  - fg [NUM] (zapnutí [NUM]-tého programu)
@@ -20,6 +22,8 @@ Příkazy:
  - ls -al (zobrazení výpisu adresáře a skrytých složek)
  - cd [DIRECTORY] (cmd posun do složky)
  - su [USERNAME] (switch user)
+ - cat [FILE] (vypis souboru)
+ - cat /proc/filesystems
  - pwd (vypíše v jakém adresáři se nachází)
  - ifconfig (vypíše ip masku a broadcast)
  - netstat -lpnt (sluzby na protokolu TCP)
@@ -34,6 +38,7 @@ Příkazy:
  - editor (otevře editor)
  - chmod [CMDS] [FILENAME] (změní oprávnění)
  - ./[FILE] (otevři [FILE])
+ - dmesg (vypsání operací hardwaru a softwaru po startu systemu)
 
 Zkratky:
  - Ctrl + L (clear)
@@ -71,6 +76,25 @@ Znaky v LS:
  PID - proces id
   
 Manual:
- - https://archiv.linuxsoft.cz/article.php?id_article=1083 
+ - https://archiv.linuxsoft.cz/article.php?id_article=1083
+
+
+Formátování nového disku:
+ - Příkazy
+   - dmesg | grep sdb
+   - fdisk [adresář k disku] (fdisk /dev/sdb)
+     - Command (m for help): n
+     - Select (default p): [Enter_Key]
+     - Partition number (1-4, default 1): [Enter_Key]
+     - First sector (2048-204799, default 2048): [Enter_Key]
+     - Last sector...: [Enter_Key]
+     - Command (m for help): w
+   - fdisk -l
+   - mkfs.ext4 /dev/sdb1
+   - mount --rw /dev/sdb1 /mnt
+   - cd /mnt
+   - ls -la
+   - cat /etc/fstab
+
  
 Go back : https://github.com/neostetic/School-Zapisky/tree/main/OPS
