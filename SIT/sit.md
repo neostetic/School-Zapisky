@@ -105,4 +105,12 @@
 | Uložit              | write / copy running-config startup-config    |
 | Změna názvu routeru | hostname [name]                               |
 
+## Nastavení redistribuce
+| Název příkazu       | Příkaz                                        |
+|---------------------|-----------------------------------------------|
+| Redistribuce ospf 1 | router rip                                    |
+| Redistribuce ospf 2 | redistribute ospf 1 metric 1                  |
+| Redistribuce rip 1  | router ospf [id proces]                       |
+| Redistribuce rip 2  | redistribute rip metric 20 subnets            |
+
 <p align="right"><a href="https://github.com/neostetic/School-Zapisky/tree/main/SIT">Go Back</p>
