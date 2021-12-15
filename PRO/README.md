@@ -10,6 +10,7 @@
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/PRO/woman">Objekt (Žena)</a>*
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/PRO/school">Enum (School)</a>
 - <a href="https://github.com/neostetic/JavaMillionar">Milionář</a>
+- <a href="https://github.com/neostetic/School-Zapisky/tree/main/PRO/tictactoe2">Tictactoe ALE LEPŠÍ</a>
 <p align="right">
   <a href="https://github.com/LukasMazl/SPSMB-PRO-2021">../LukasMazl/SPSMB-PRO-2021</a><br>
   <a href="https://github.com/neostetic/School-Zapisky">Go Back</a>
