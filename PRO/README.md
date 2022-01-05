@@ -12,8 +12,8 @@
 - <a href="https://github.com/neostetic/JavaMillionar">Milionář</a>
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/PRO/tictactoe2">Tictactoe ALE LEPŠÍ</a>
   - <a href="https://github.com/neostetic/tictactoe-better">Completed</a>
-- <a href="https://github.com/neostetic/School-IDEA">📝 School REPOSITORY</a>
 <p align="right">
   <a href="https://github.com/LukasMazl/SPSMB-PRO-2021">../LukasMazl/SPSMB-PRO-2021</a><br>
+  <a href="https://github.com/neostetic/School-IDEA">../School REPOSITORY</a><br>
   <a href="https://github.com/neostetic/School-Zapisky">Go Back</a>
 </p>
