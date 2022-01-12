@@ -15,5 +15,6 @@
 <p align="right">
   <a href="https://github.com/LukasMazl/SPSMB-PRO-2021">../LukasMazl/SPSMB-PRO-2021</a><br>
   <a href="https://github.com/neostetic/School-IDEA">../School REPOSITORY</a><br>
+  <a href="https://github.com/neostetic/School-Maven">../School Maven</a><br>
   <a href="https://github.com/neostetic/School-Zapisky">Go Back</a>
 </p>
