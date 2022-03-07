@@ -9,6 +9,8 @@ Příkazy:
  - apt-get install man net-tools ssh (instaluje balíčky na sever)
  - apt-get install stress (instaluje balíček stress)
  - apt-get install apache2
+ - apt-get install screen (proces za obrazovkou)
+ - apt-get install htop (správce úloh)
  - stress --help
  - stress -c [NUM_1] -t [NUM_2] (stresuje cpu na [NUM_1]x po dobu [NUM_2] vteřin)
  - clear (zkratka: Ctrl + L)
@@ -29,7 +31,7 @@ Příkazy:
  - netstat -lpnt (sluzby na protokolu TCP)
  - ip address show
  - top (správce úloh/procesů)
- - ps aux |grep [PRC] (hledá spuštěné procesi s názvem [PRC])
+ - ps -aux |grep [PRC] (hledá spuštěné procesi s názvem [PRC])
  - kill [PID] (vypne proces s id [PID])
  - nano [FILENAME] (vytvoří soubor [FILENAME])
  - emacs [FILENAME] (vytvoří soubor [FILENAME])
@@ -37,8 +39,15 @@ Příkazy:
  - update-alternatives --config editor (změna hl. editoru)
  - editor (otevře editor)
  - chmod [CMDS] [FILENAME] (změní oprávnění)
- - ./[FILE] (otevři [FILE])
+ - ./[FILE] (otevři a odkazuj na [FILE])
  - dmesg (vypsání operací hardwaru a softwaru po startu systemu)
+ - pstree - rodičovský strom procesů
+ - systemctl stop [PROCESS] (vypni process [PROCESS] ; př: "systemctl stop apache2")
+ - systemctl start [PROCESS] (zapni process [PROCESS] ; př: "systemctl start apache2")
+ - htop (správce úloh)
+ - nice -n [NUM] [PROCESS] (nastavení ohlduplnosti na [NUM] (-20 až 20) procesu [PROCESS])
+ - renice -n [NUM] [PROCESS]
+ - ps -aux | 
 
 Zkratky:
  - Ctrl + L (clear)
@@ -96,5 +105,40 @@ Formátování nového disku:
    - ls -la
    - cat /etc/fstab
 
+Uložené file:
+ - red
+ - blue
+ - green
+ - default
+
+Screen Ovládání
+ - [Ctrl] + [a] ; [d] - odejít
+ - v konzoli : screen -ls
+   	       screen -r [proces id]
  
+Ve složce "etc" se nachází veškerá konfigurace
+
+Posílání mailů:
+ - apt-get install msmtp
+ - vim /etc/msmtprc
+
+ - ve vim
+    defaults
+    port 587
+    tls on
+    tls_starttls on
+
+    account gmail
+    host smtp.gmail.com
+    from [name@email]
+    auth on
+    user [name]
+    password [password]
+ - Escape, :w, Ctrl+Z - echo -e "Subject: Vlož sem subjekt!" | msmtp [name@email]
+ - vim ~/.profile
+    ...
+    time=$(date)
+    echo -e "Subject: New Login $time" | msmtp [name@email]
+
+
 Go back : https://github.com/neostetic/School-Zapisky/tree/main/OPS
