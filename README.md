@@ -9,6 +9,7 @@
 #### Učitelé na Github
 - <a href="https://github.com/honziktillu">Jan Till</a>
 - <a href="https://github.com/LukasMazl">Lukáš Mázl</a>
+- <a href="https://github.com/gitofson">Pavel Šternberk</a>
 - <a href="https://github.com/KRBNJSF">🤡</a>
 
 #### SPSMB Group
