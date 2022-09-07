@@ -32,3 +32,5 @@ IP Site:      192.168.64.0
 IP Broadcast: 192.168.95.220
 Subnety:      2^3 = 8
 Hosty:        2^13-2 = 8190
+
+Go back : https://github.com/neostetic/School-Zapisky/tree/main/SIT
