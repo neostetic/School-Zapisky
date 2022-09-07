@@ -112,7 +112,6 @@ Uložené file:
  - default
 
 Screen Ovládání
- - [Ctrl] + [a] ; [d] - odejít
  - v konzoli : screen -ls
    	       screen -r [proces id]
  
@@ -139,6 +138,22 @@ Posílání mailů:
     ...
     time=$(date)
     echo -e "Subject: New Login $time" | msmtp [name@email]
+
+Archivovační Nástroj
+ - tar -c   create
+       -f   výstupní soubor
+       -z   gzip
+       -v   výstup do terminálu
+       -x   rozbalení
+ příklad : tar -cf /hh.h/backup.tar /root
+
+
+Změna času (ntpdate)
+ ntp.org
+
+Crontab
+ - crontab -e
+
 
 
 Go back : https://github.com/neostetic/School-Zapisky/tree/main/OPS
