@@ -6,6 +6,9 @@
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/SIT">🔌 Počítačové Sítě (SIT)</a>
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/WAP">🌐 Webové Aplikace (WAP)</a>
 
+#### Maturitní okruhy
+- [Rok 2022/23](https://github.com/KRBNJSF/Maturita-okruhy#maturitn%C3%AD-okruhy-pro-20222023)
+
 #### Učitelé na Github
 - <a href="https://github.com/honziktillu">Jan Till</a>
 - <a href="https://github.com/LukasMazl">Lukáš Mázl</a>
