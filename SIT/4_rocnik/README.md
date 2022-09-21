@@ -1,4 +1,4 @@
-## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník - zápis</a>
+## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník</a>
 
 - <a href="./ZÁPIS.md">Zápis</a>
     - <a href="./soubory">Soubory</a>
