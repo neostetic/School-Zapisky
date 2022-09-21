@@ -1,6 +1,7 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT)</a>
 
 - <a href="./ZÁPIS.md">Zápis</a>
+- <a href="./soubory">Soubory</a>
 - <a href="./4_POCITANI_IP_BROADCAST.txt">Počítání IP adres a Broadcastu</a>
 - <details>
     <summary>Pocitani IP adres</summary>
