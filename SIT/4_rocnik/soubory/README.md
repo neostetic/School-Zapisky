@@ -1,6 +1,6 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT) - soubory</a>
 
- 1) [Opakování](./)
+ 1) [Opakování](./1%20-%20Opakování%20-%20IP%20adresy.docx)
      - [Konfigurace sítě a Routování](./1a%20-%20Konfigurace%20sítě%20a%20Routování.docx)
  2) [DHCP](./2%20-%20DHCP.docx)
  3) [DNS](./3%20-%20DNS.docx)
