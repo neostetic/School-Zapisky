@@ -17,6 +17,8 @@ printf("%x", 0x26 << 1); // 0x4c
 </p>
 <br>
 
+<h4 align="center">Makro</h4>
+
 ```
 #define SQR(a) a*a
 ...
