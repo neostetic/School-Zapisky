@@ -6,6 +6,9 @@ printf("%x", 6 & 4); // binární AND
 printf("%x", 6 || 4); // logický OR
 printf("%x", 6 | 4); // binární OR
 ```
+
+<h4 align="center">Posun bitů</h4>
+
 ```
 printf("%x", 0x26 >> 1); // 0x13
 printf("%x", 0x26 >> 3); // 0x4
