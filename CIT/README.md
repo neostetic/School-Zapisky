@@ -1,15 +1,48 @@
 <h3 align="center">Práce v programovacím jazyce C</h3>
 
 ```
-printf("%x", 6 & 4); // 4
+printf("%x", 6 8& 4); // logický AND
+printf("%x", 6 & 4); // binární AND
+printf("%x", 6 || 4); // logický OR
+printf("%x", 6 | 4); // binární OR
+```
+```
 printf("%x", 0x26 >> 1); // 0x13
 printf("%x", 0x26 >> 3); // 0x4
 printf("%x", 0x26 << 1); // 0x4c
 ```
 
 <p align="center">
-  Takže z <code>(26)^4 = (100110)^2</code> se stane <code>(13)^4 = (010011)^2</code>, protože se bity dvojkové soustavy posunou do prava o 1 místo a tím se vytvoří nový hexadecimální zápis.
+  Takže z <code>(26)^4 = (100110)^2</code> se stane <code>(13)^4 = (010011)^2</code>, protože se bity dvojkové soustavy posunou do prava o 1 místo a tím se vytvoří nový hexadecimální zápis a naopak.
 </p>
+<br>
+
+```
+#define SQR(a) a*a
+...
+int result = SQR(3+3);
+printf(%d, result); // 3+3*3+3 = 15 
+```
+
+<p align="center">
+  Definice bere pouze zápis a neupravuje příklad na regulární výsledek. Je potřeba ošetřit zbývající problémy.
+</p>
+
+```
+#define SQR(a) ((a)*(a))
+...
+int result = SQR(3+3);
+printf(%d, result); // (3+3)*(3+3) = 36
+```
+
+```
+#define SQR(a) ((a)*(a))
+...
+int i = 3;
+int result = SQR(i++);
+printf(%d, result); // 3*4 = 12
+```
+
 
 <details>
 <summary><b>Základní převody jednotek</b></summary>
