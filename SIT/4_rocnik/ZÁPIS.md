@@ -127,6 +127,7 @@ root@debian:/etc/bind# cat named.conf.options // zakladni vlastnosti DNS serveru
 root@debian:/etc/bind# cat zones.rfc1918 // privátní adresy
 ```
 
+- V `named.conf.options` si nastavíme naše vlastní DNS
 ```
 root@debian:/etc/bind# nano named.conf.options
 ---nano---
@@ -152,6 +153,8 @@ options {
 };
 ```
 
+- A v `named.conf.local` nastavíme DNS lokálně
+
 ```
 root@debian:/etc/bind# nano named.conf.local
 ---nano---
@@ -165,6 +168,8 @@ zone "0.0.10.in-addr.arpa" {
         file "/etc/bind/zones/db.10.0.0";
 };
 ```
+
+- Nyní si vytvoříme zóny které jsme dávali do `named.conf.local` a nakonfigurujeme
 
 ```
 root@debian:/etc/bind# mkdir zones
