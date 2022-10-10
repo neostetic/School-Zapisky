@@ -186,4 +186,24 @@ root@debian:/etc/bind/zones# nano db.franta.local
 
 ```
 root@debian:/etc/bind/zones# named-checkconf // kotrola chyb (krom logickejch)
+root@debian:/etc/bind/zones# named-checkzone franta.local db.franta.local
+root@debian:/etc/bind/zones# named-checkzone 0.0.10.in-addr.arpa db.10.0.0
+root@debian:/etc/bind/zones# systemctl restart bind9
+root@debian:/etc/bind/zones# systemctl status bind9
 ```
+
+```
+root@debian:/etc/bind/zones# nano /etc/dhcp/dhcpd.conf
+----nano----
+ option domain-name-servers 10.0.0.1;
+------------
+root@debian:/etc/bind/zones# systemctl restart isc-dhcp-server.services
+```
+
+#### Kontrola u klienta
+```
+root@debian:~# cat /etc/resolv.conf
+root@debian:~# nslookup 10.0.0.1
+```
+
+- Pokud `nameserver` se rovná našemu DNS, tak správně a přes `nslookup` musí obsahovat naše sítě
