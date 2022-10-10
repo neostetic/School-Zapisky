@@ -149,7 +149,7 @@ options {
         listen-on { 127.0.0.1; 10.0.0.1; };
         allow-nxdomain { povoleno; };
         auth-nxdonaub no;
-}
+};
 ```
 
 ```
@@ -158,12 +158,12 @@ root@debian:/etc/bind# nano named.conf.local
 zone "franta.local" {
         type master;
         file "/etc/bind/zones/db.franta.local"
-}
+};
 
 zone "0.0.10.in-addr.arpa" {
         type master;
         file "/etc/bind/zones/db.10.0.0";
-}
+};
 ```
 
 ```
@@ -182,3 +182,8 @@ root@debian:/etc/bind/zones# nano db.franta.local
 root@debian:/etc/bind/zones# nano db.franta.local
 ```
 ![image](https://user-images.githubusercontent.com/83291717/194844345-05418977-0136-4737-8cbd-bfb277021601.png)
+
+
+```
+root@debian:/etc/bind/zones# named-checkconf // kotrola chyb (krom logickejch)
+```
