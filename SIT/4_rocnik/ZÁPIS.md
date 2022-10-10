@@ -114,13 +114,71 @@ root@debian:~# dig @b.ns.nic.cz www.seznam.cz
 root@debian:~# dig @amw.seznam.cz www.seznam.cz
 ```
 
-#### Konfigurace DNS Linuxu
+#### Konfigurace DNS Linuxu (bind)
 ```
 root@debian:~# apt install bind9 bind9-doc bind9utils
-root@debian:/ets/bind# cat db.255
-root@debian:/ets/bind# cat db.127
-root@debian:/ets/bind# cat named.conf // propojuje vsechny konfiguracni soubory
-root@debian:/ets/bind# cat named.conf.local // vlastni zony DNS
-root@debian:/ets/bind# cat named.conf.options // zakladni vlastnosti DNS serveru
-root@debian:/ets/bind# cat zones.rfc1918
+root@debian:/etc/ind# cat db.255
+root@debian:/etc/bind# cat db.127 // zpětná zóna Localhost
+root@debian:/etc/bind# cat db.local
+root@debian:/etc/bind# cat named.conf // propojuje vsechny konfiguracni soubory
+root@debian:/etc/bind# cat named.conf.default-zones
+root@debian:/etc/bind# cat named.conf.local // vlastni zony DNS
+root@debian:/etc/bind# cat named.conf.options // zakladni vlastnosti DNS serveru
+root@debian:/etc/bind# cat zones.rfc1918 // privátní adresy
 ```
+
+```
+root@debian:/etc/bind# nano named.conf.options
+---nano---
+acl "povoleno" {
+         127.0.0.0/8; // localhost
+         10.0.0.0/24; // nase sit
+};
+
+options {
+        directory "/var/cahce/bind";
+        
+        forwarders {
+                8.8.8.8; // google presmerovac
+                8.8.4.4; 
+        };
+        
+        dnssec-validation no;
+        
+        listen-on-v6 { none; };
+        listen-on { 127.0.0.1; 10.0.0.1; };
+        allow-nxdomain { povoleno; };
+        auth-nxdonaub no;
+}
+```
+
+```
+root@debian:/etc/bind# nano named.conf.local
+---nano---
+zone "franta.local" {
+        type master;
+        file "/etc/bind/zones/db.franta.local"
+}
+
+zone "0.0.10.in-addr.arpa" {
+        type master;
+        file "/etc/bind/zones/db.10.0.0";
+}
+```
+
+```
+root@debian:/etc/bind# mkdir zones
+root@debian:/etc/bind# cp db.emty zones/db.franta.local
+root@debian:/etc/bind# cp db.emty zones/db.10.0.0
+```
+
+```
+root@debian:/etc/bind/zones# nano db.franta.local
+```
+
+![image](https://user-images.githubusercontent.com/83291717/194843644-8186d2fa-cddb-4826-93aa-5f02952f89c0.png)
+
+```
+root@debian:/etc/bind/zones# nano db.franta.local
+```
+![image](https://user-images.githubusercontent.com/83291717/194844345-05418977-0136-4737-8cbd-bfb277021601.png)
