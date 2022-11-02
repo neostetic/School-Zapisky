@@ -266,6 +266,4 @@ PS C:\Users\Administrator>Get-NetAdapter
 ...
 PS C:\Users\Administrator>Get-NetAdapter | fl
 ...
-
-
 ```
