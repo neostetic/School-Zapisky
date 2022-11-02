@@ -212,3 +212,60 @@ root@debian:~# nslookup 10.0.0.1
 ```
 
 - Pokud `nameserver` se rovná našemu DNS, tak správně a přes `nslookup` musí obsahovat naše sítě
+
+### Windows Server
+- Služby DHCP, DNS, FileServer, MailServer
+- Podstata jako v linuxu, s oldišností - cena
+
+
+#### Stuktura Windows Serveru
+- jádro (kernal)
+  - monolitický, hybridní, mikrojádro 
+- HAL (Hardware Abstraction Layer)
+  - zprostředkovává komunikaji jádra s hardwarem 
+- GUI (Graphical User Interface)
+
+#### Edice Windows Server:
+- **essentials** - neobsahuje CAL, pouze na fyzickej server, limit 50 zařízení a ram (64 GB)
+- **standart** - obsahuje CAL, limit ram (4 TB), omezení virtuálů
+- **datacenter** - obsahuje CAL, limit ram (4 TB), neomezení virtuálů pouze fyzickém serverem, co server zvládne
+- **Hyper-V** - rozjezd pro virtuální serverů, pro **standart** a **datacenter**
+<details>
+ <summary>Tabulka Edicí</summary>
+ 
+| Windows Server 2022 Edition | Ideal for                                             | Licensing model                    | CAL requirements[1] | Suggested Retail Price (MSRP) |
+|-----------------------------|-------------------------------------------------------|------------------------------------|---------------------|----------------------------------|
+| Datacenter                  | Highly virtualized datacenters and cloud environments | Core-based                         | Windows Server CAL  | $6,155                           |
+| Standard                    | Physical or minimally virtualized environments        | Core-based                         | Windows Server CAL  | $1069                            |
+| Essentials                  | Small businesses with up to 25 users and 50 devices   | Specialty servers (server license) | No CAL required     | $501                             |
+ </details>
+ 
+ #### CAL (Client Access License)
+ - user CAL - 1 license pro uživatele
+ - device CAL - 1 license pro PC na kterém pracuje víc uživatelů
+
+#### Ovládání Windows Serveru
+- příkazový řádek
+  - CMD - klasický příkazový řádek (standradní příkazy + net, netsh apod.)
+  - PowerShell
+  - skripty - cscirpt, vbscript, powershell
+  - sconfig - interaktivní textové menu
+  - vzdálené přes RSAT (Remote Server Administration Toolkit)
+- GUI
+
+##### Nastavování Windows Serveru
+- přidání IP adressy
+```
+C:\Users\Administrator>netsh interface ip set address "Ethernet" static 10.0.0.2 255.255.255.252
+```
+- vyhledání příkazů
+```
+PS C:\Users\Administrator>Get-Command
+...
+PS C:\Users\Administrator>Get-NetAdapter
+...
+PS C:\Users\Administrator>Get-NetAdapter | fl
+...
+
+
+```
