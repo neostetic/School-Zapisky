@@ -251,9 +251,13 @@ root@debian:~# nslookup 10.0.0.1
   - skripty - cscirpt, vbscript, powershell
   - sconfig - interaktivní textové menu
   - vzdálené přes RSAT (Remote Server Administration Toolkit)
-- GUI
+- GUI (Grahical User Interface)
+  - Windows Server Manager (jako Explorer.exe)
+    - Role - základní funkcionalita srveru (DHCP server, DNS server, fileserver, webserver, mailserver) 
+    - Funkce - slouží jako podpora rolí a nástrojů pro vývoj apod. (toolboxy, .NET framework apod.) 
+    - Služby - procesy na pozadí zajičťují fce rolí + samostatné aplikace (DHC klient, ...)  
 
-##### Nastavování Windows Serveru
+##### Nastavování Windows Serveru (příkazový řádek)
 - přidání IP adressy
 ```
 C:\Users\Administrator>netsh interface ip set address "Ethernet" static 10.0.0.2 255.255.255.252
@@ -267,3 +271,9 @@ PS C:\Users\Administrator>Get-NetAdapter
 PS C:\Users\Administrator>Get-NetAdapter | fl
 ...
 ```
+
+##### Nastavování Windows Serveru (GUI)
+- Server Manager
+  - **Local Server** - Nastavování Lokálního serveru
+  - **All Servers** - Nastavování všech připojených serverů 
+  - **File and Storage Servicies** - Nastavování diskovejch svazků, souborů, ...
