@@ -8,5 +8,5 @@
 - **JRE** - Java Runtime Enviroment
 
 <p align="right">
-  <a href="https://github.com/neostetic/School-Zapisky/PRO">Go Back</a>
+  <a href="https://github.com/neostetic/School-Zapisky/tree/main/PRO">Go Back</a>
 </p>
