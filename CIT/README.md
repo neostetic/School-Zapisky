@@ -48,6 +48,13 @@ int result = SQR(i++);
 printf(%d, result); // 3*4 = 12
 ```
 
+<h3 align="center"> Šumová Imunita u hradla TTL</h3>
+<p align="center">
+  AND - rezistor - 1kohm<br>
+  nepoužité vstupy připojené do zemnení
+</p>
+
+
 
 <details>
 <summary><b>Základní převody jednotek</b></summary>
