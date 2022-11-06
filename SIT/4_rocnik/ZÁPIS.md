@@ -14,7 +14,7 @@
    - EGP
  ...
  
-### DHCP
+### DHCP (Dynamic Host Configuration Protocol)
 ![image](https://user-images.githubusercontent.com/83291717/191496239-92e173f9-977b-4066-981f-2a94904e76ff.png)<br>
 *proces přidělování adresy + OBNOVA*
 
