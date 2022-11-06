@@ -2,17 +2,16 @@
 - [🗒️ Soubory zápisu](./soubory)
 
 ### Routování
- - statické (ručné v Routovací Tabulce)
- - dynamické (pomocí Routovací Protokolů)
-
-#### Routovací protokoly
- - činnost
-   - DV
-   - LSA
- - použití
-   - IGP
-   - EGP
- ...
+ - **statické** (ručné v Routovací Tabulce)
+ - **dynamické** (pomocí Routovací Protokolů)
+   - **IGP** (Interior Gateway Protocol)
+     - Distance-Vector
+       - **RIP**, IGRP, EIGRP
+     - Link-State
+       - IS-IS, **OSPF** 
+   - **EGP** (Exterior Gateway Protocol)
+     - Path-Vector
+       - BGP  
  
 ### IPv4
 - Rozdělujeme do 5 kategorií (ABCDE (D - multicast, E - rezerva))
@@ -28,7 +27,7 @@
   - **Loopback** - 127.0.0.0 - 127.255.255.255
   - **Lokální spojení** - 169.254.0.0 - 169.255.255.255
 
-#### IPv6
+### IPv6
 - 128 bitů - 8 skupin po 16 bitech
 - `2001:db8:8:800:200c:471a` unicast
 - `ff01::101` multicast
@@ -37,7 +36,7 @@
 - síťový prefix + adresa pc
 - namá broadcast
 
-#### VirtualBox
+### VirtualBox
 - NAT (vlastní)
 - bridge (impostor)
 - síť s hostem (uzavrena)
