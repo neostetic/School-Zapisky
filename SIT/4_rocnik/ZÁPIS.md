@@ -14,6 +14,35 @@
    - EGP
  ...
  
+### IPv4
+- Rozdělujeme do 5 kategorií (ABCDE (D - multicast, E - rezerva))
+  - **Kategorie A** - 0-127
+  - **Kategorie B** - 128-191
+  - **Kategorie C** - 192-223
+  - **Kategorie D** - 224-239
+  - **Kategorie E** - 240-255
+- Privátní IP adresy
+  - 10.0.0.0 - 10.255.255.255
+  - 172.16.0.0 - 172.31.255.255
+  - 192.168.0.0 - 192.168.255.255
+  - **Loopback** - 127.0.0.0 - 127.255.255.255
+  - **Lokální spojení** - 169.254.0.0 - 169.255.255.255
+
+#### IPv6
+- 128 bitů - 8 skupin po 16 bitech
+- `2001:db8:8:800:200c:471a` unicast
+- `ff01::101` multicast
+- `::1` loopback (localhost)
+- `::` nespecifikovaná adresa
+- síťový prefix + adresa pc
+- namá broadcast
+
+#### VirtualBox
+- NAT (vlastní)
+- bridge (impostor)
+- síť s hostem (uzavrena)
+- vnitrni síť (oddělená)
+ 
 ### DHCP (Dynamic Host Configuration Protocol)
 ![image](https://user-images.githubusercontent.com/83291717/191496239-92e173f9-977b-4066-981f-2a94904e76ff.png)<br>
 *proces přidělování adresy + OBNOVA*
