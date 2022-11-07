@@ -301,7 +301,27 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
 ```
 
 ##### Nastavování Windows Serveru (GUI)
+<img src="https://user-images.githubusercontent.com/83291717/200291121-35aefc90-f407-4e6a-b8c8-6159f1639129.png">
+
 - Server Manager
-  - **Local Server** - Nastavování Lokálního serveru
-  - **All Servers** - Nastavování všech připojených serverů 
-  - **File and Storage Servicies** - Nastavování diskovejch svazků, souborů, ...
+  - <details><summary><b>Local Server</b> - Nastavování Lokálního serveru</summary><br><img src="https://user-images.githubusercontent.com/83291717/200294973-5913e83c-9013-41cd-bdf1-84ab4c5c94a4.png"></details>
+  - <details><summary><b>All Servers</b> - Nastavování všech připojených serverů </summary><br><img src="https://user-images.githubusercontent.com/83291717/200297822-a836c421-fc32-4311-9c2a-58d198f1deba.png"></details>
+  - <details><summary><b>File and Storage Servicies</b> - Nastavování diskovejch svazků, souborů, ...</summary><br><img src="https://user-images.githubusercontent.com/83291717/200298137-2192a971-ac43-4391-9789-08109fc30b73.png"></details>
+
+##### Nastavování Windows IP Adresy
+![image](https://user-images.githubusercontent.com/83291717/200293608-aa4fa9c4-36eb-4021-8707-b418622855cb.png)
+
+##### Nastavování DHCP ve Windows
+- Manage > Add Roles and Features Wizard > Server Roles (zapnout *DHCP Server*) > Install
+- <img src="https://user-images.githubusercontent.com/83291717/200296278-954af966-0291-4ccd-a625-553fc5727982.png" width="200px"/>
+- Skip ...
+- Tools > DHCP > IPv4 (Right Click) > New Scope
+- <img src="https://user-images.githubusercontent.com/83291717/200296883-d6648de4-48a9-447d-add4-eb3629ce2a5d.png" width="200px"> <img src="https://user-images.githubusercontent.com/83291717/200297227-7debc5b7-7964-438a-bd87-27b82f96f0b0.png" width="200px">
+- **Nastavení rezervace**
+  - *Automaticky* - Tools > DHCP > IPv4 > Scope > Address Leases > Client (Right Click) > Add to Reservation
+  - *Ručně* - Tools > DHCP > IPv4 > Scope > Reservation (Right Click) > Add New Reservation (on linux - ifdown eth0 & ifup eth0)
+- **Filtry**
+  - Tools > DHCP > Filters
+    - Deny (Right Click) > Enable
+      - bez použití je potřeba zadat MAC adresy všech klientů
+      - Address Leases > Client (Right Click) > Add to Filter > Deny  
