@@ -311,7 +311,7 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
 ##### Nastavování Windows IP Adresy
 ![image](https://user-images.githubusercontent.com/83291717/200293608-aa4fa9c4-36eb-4021-8707-b418622855cb.png)
 
-##### Nastavování DHCP ve Windows
+##### Nastavování DHCP ve Windows Serveru
 - Manage > Add Roles and Features Wizard > Server Roles (zapnout *DHCP Server*) > Install
 - <img src="https://user-images.githubusercontent.com/83291717/200296278-954af966-0291-4ccd-a625-553fc5727982.png" width="200px"/>
 - Skip ...
@@ -320,8 +320,16 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
 - **Nastavení rezervace**
   - *Automaticky* - Tools > DHCP > IPv4 > Scope > Address Leases > Client (Right Click) > Add to Reservation
   - *Ručně* - Tools > DHCP > IPv4 > Scope > Reservation (Right Click) > Add New Reservation (on linux - ifdown eth0 & ifup eth0)
-- **Filtry**
+- **Filtry** - filtrování uživatelů, Access a Deny
   - Tools > DHCP > Filters
     - Deny (Right Click) > Enable
-      - bez použití je potřeba zadat MAC adresy všech klientů
+      - použití ACCESS je potřeba zadat MAC adresy všech klientů
       - Address Leases > Client (Right Click) > Add to Filter > Deny  
+- **Policies** - pravidla pro uskupení klientů a dalších nastavení
+- **Scope Options** 
+- **Server Options**
+- **Adress Pool** - rozsahy IP adres
+- **Server Bindings** - na kterých síťových rozhrání se bude server orientovat
+- **Backup & Restore** - zálohy
+- **Properties** - vlasnosti
+  - dá se zjistit kde jsou uloženy DHCP soubory => Log soubory
