@@ -2,32 +2,73 @@
 - [🗒️ Soubory zápisu](./soubory)
 
 ### Routování
- - **statické** (ručné v Routovací Tabulce)
- - **dynamické** (pomocí Routovací Protokolů)
-   - **IGP** (Interior Gateway Protocol)
-     - Distance-Vector
-       - **RIP**, IGRP, EIGRP
-     - Link-State
-       - IS-IS, **OSPF** 
-   - **EGP** (Exterior Gateway Protocol)
-     - Path-Vector
-       - BGP  
- 
-#### IPv4
-- Rozdělujeme do 5 kategorií (ABCDE (D - multicast, E - rezerva))
+- **statické** (ručné v Routovací Tabulce)
+- **dynamické (DHCP)** (pomocí Routovací Protokolů)
+  - **IGP** (Interior Gateway Protocol)
+    - Distance-Vector
+      - **RIP**, IGRP, EIGRP
+    - Link-State
+      - IS-IS, **OSPF** 
+  - **EGP** (Exterior Gateway Protocol)
+    - Path-Vector
+      - BGP
+- pro malé sítě stačí routování statické
+- pro komunikaci s okolními sítěmi
+  - gateway (adresa nejbližšího serveru)
+  - dns server (překládá IP na doménová jména)
+
+#### Nastavení adres v Linuxu
+- diagnostika v linuxu
+  - `ifconfig` 
+  - `ip addr` 
+  - `router (netstat -rn)` 
+- nastavení síťových rozhrání v Debianu = `/etc/network/interfaces`
+- **struktura dynamická**
+```  
+auto lo                   // localhost, auto znaci zapnout rozhrani pri startu systemu
+iface lo inet loopback
+
+allow-hottplug            // zapne pripojeni rozhrani pri zapojeni kabelu
+iface eth0 inet dhcp
+```
+- **struktura statická**
+```
+auto lo
+iface lo inet loopback
+
+allow-hottplug
+iface eth0 inet static
+      address 10.0.0.1
+      netmask 255.255.255.0
+gateway 10.0.0.200
+```
+- **virtuální rozhrání**
+```
+up ip addr add ip:*adresa/maska* dev $IFACE label $IFACE:cislo 
+down ip addr del ip:*adresa/maska* dev $IFACE label $IFACE:cislo 
+```
+- **DNS server** se zapisuje do `/etc/resolv.conf` : `nameserver 10.0.0.200`
+  - jsou uvedeny pořadně podle důležitosti
+  - direktiv **domain** a **search** - uvedení lokální a vyhledných domén
+- bez DNS zjistíme názvy počítačů v `/etc/host`
+  - obsahuje *ipadresu počítače* a *jmenný název* 
+
+#### IPv4 (IPversion4)
+- např.: `192.168.42.69/19`
+- rozdělujeme do 5 kategorií (ABCDE (D - multicast, E - rezerva))
   - **Kategorie A** - 0-127
   - **Kategorie B** - 128-191
   - **Kategorie C** - 192-223
   - **Kategorie D** - 224-239
   - **Kategorie E** - 240-255
-- Privátní IP adresy
+- privátní IP adresy
   - 10.0.0.0 - 10.255.255.255
   - 172.16.0.0 - 172.31.255.255
   - 192.168.0.0 - 192.168.255.255
   - **Loopback** - 127.0.0.0 - 127.255.255.255
   - **Lokální spojení** - 169.254.0.0 - 169.255.255.255
 
-#### IPv6
+#### IPv6 (IPversion6)
 - 128 bitů - 8 skupin po 16 bitech
 - `2001:db8:8:800:200c:471a` unicast
 - `ff01::101` multicast
