@@ -84,16 +84,19 @@ down ip addr del ip:*adresa/maska* dev $IFACE label $IFACE:cislo
 - vnitrni síť (oddělená)
  
 ### DHCP (Dynamic Host Configuration Protocol)
+- rozšíření původního BOOTP protokolu
+- protokol = čtyřfázový IP přidělovací proces
+
 ![image](https://user-images.githubusercontent.com/83291717/191496239-92e173f9-977b-4066-981f-2a94904e76ff.png)<br>
 *proces přidělování adresy + OBNOVA*
 
-OBNOVA - Zopakuje se DHCPREQUEST, DHCPACK
-
- - **DHCPACK** - příjmutí requestu klientem - zápůjční doba adresy, konfigurační parametry
- - **DHCPNAK** - zamítnutí requestu DHCP serverem - pokud klient požaduje adresu z jiného subnetu (Vypršela zápůjční doba), proces jede od začátku
- - **DHCPDECLINE** - zamítnutí requ klientem - ip adresy, již v síti existuje
- - **DHCPRELEASE** - uvolnění ip adresy klientem
- - **DHCPINFORM** - klient pošle response serveru, že již adresu má a zároveń pošle request informačních údajů
+- **DHCPACK** - příjmutí requestu klientem - zápůjční doba adresy, konfigurační parametry
+- **DHCPNAK** - zamítnutí requestu DHCP serverem - pokud klient požaduje adresu z jiného subnetu (Vypršela zápůjční doba), proces jede od začátku
+- **DHCPDECLINE** - zamítnutí requ klientem - ip adresy, již v síti existuje
+- **DHCPRELEASE** - uvolnění ip adresy klientem
+- **DHCPINFORM** - klient pošle response serveru, že již adresu má a zároveń pošle request informačních údajů
+- server ukládá informace o "zapůjčených" adres
+- **OBNOVA** - zopakuje se *DHCPREQUEST*, *DHCPACK*
 
 ### DNS (Domain Name System)
 ![image](https://user-images.githubusercontent.com/83291717/194287396-79981a19-1309-4293-9ffe-21ecae382b90.png)<br>
