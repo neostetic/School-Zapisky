@@ -139,8 +139,8 @@ down ip addr del ip:*adresa/maska* dev $IFACE label $IFACE:cislo
  - zpětné (reverse) zóny 
    - mapují IP adresy na jmenné názvy
    - typy záznamů (SOA, NS, PTR)
- - IPv4 - má největší doménu in-addr.arpa.
- - IPv6 - má největší doménu ip6.arpa.
+ - IPv4 - má největší doménu `in-addr.arpa`
+ - IPv6 - má největší doménu `ip6.arpa`
 
 #### DNS záznamy
  - **A** - mapuje název a IP adresu `www    IN    A    10.0.0.1`
