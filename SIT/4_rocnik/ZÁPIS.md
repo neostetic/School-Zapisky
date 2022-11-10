@@ -358,14 +358,14 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
 
 ##### Stáhnutí DHCP ve Windows Serveru
 - Manage > Add Roles and Features Wizard > Server Roles (zapnout *DHCP Server*) > Install
-- <img src="https://user-images.githubusercontent.com/83291717/200296278-954af966-0291-4ccd-a625-553fc5727982.png" width="200px"/>
+- <img src="https://user-images.githubusercontent.com/83291717/200296278-954af966-0291-4ccd-a625-553fc5727982.png" width="400px"/>
 - Skip ...
 - Tools > DHCP
 
 ##### Nastavování DHCP ve Windows Serveru
 ![image](https://user-images.githubusercontent.com/83291717/201077380-550c4b98-0fae-45ac-a35d-439eba84ad65.png)
 - Tools > DHCP > IPv4 (Right Click) > New Scope
-- <img src="https://user-images.githubusercontent.com/83291717/200296883-d6648de4-48a9-447d-add4-eb3629ce2a5d.png" width="200px"> <img src="https://user-images.githubusercontent.com/83291717/200297227-7debc5b7-7964-438a-bd87-27b82f96f0b0.png" width="200px">
+- <img src="https://user-images.githubusercontent.com/83291717/200296883-d6648de4-48a9-447d-add4-eb3629ce2a5d.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/200297227-7debc5b7-7964-438a-bd87-27b82f96f0b0.png" width="400px">
 - **Reservations** - nastavení rezervace
   - *Automaticky* - Tools > DHCP > IPv4 > Scope > Address Leases > Client (Right Click) > Add to Reservation
   - *Ručně* - Tools > DHCP > IPv4 > Scope > Reservation (Right Click) > Add New Reservation (on linux - ifdown eth0 & ifup eth0)
@@ -418,3 +418,33 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
     - *General* - název
     - *DNS* - updaty mezi vlastními protokoly DNS
     - *Advanced* - nastavení protokolů (DHCP nebo BOOTP)
+
+##### Stáhnutí DNS server ve Windows Serveru
+- Manage > Add Roles and Features Wizard > Sever Roles > (zapnout *DNS Server*) > Install
+- Skip...
+- Tools > DNS
+
+##### Nastavování DNS server ve Windows Serveru
+- AD1 (Right Click) > Configure a DNS Server
+- **Průvodce vytvoření**
+- <img src="https://user-images.githubusercontent.com/83291717/201080506-c83dd97a-8def-4aaf-a967-526ea711be56.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080597-f38f8d8c-a848-43bf-aaf5-2fa00d30bb5e.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080651-c17eb353-8317-4172-ab27-a270e83545ba.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080734-d8334a8a-8152-4a71-b949-21b158e1e0e4.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080836-c63f2b56-084f-4eb1-9b1c-5f2d83ad4ad3.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080907-59e417f3-c1b7-4d38-bdd1-a1c8481c1410.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201081052-eb0acd3f-2fe9-4d49-b355-c6732eb67acc.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201081431-52abb981-a3b7-4f19-b2a7-73e80b3fb43f.png" width="400px">
+- Finish > OK
+- ![image](https://user-images.githubusercontent.com/83291717/201082412-554f988e-4296-4b86-a331-4b570745908f.png)
+- **Forward Lookup Zones** > SOA (Right Click)
+  - **Properties**
+    - *General* - Aging... - vybírá neplatné, staré záznamy 
+    - *Name Server*
+    - *Zone Trnasfers
+    - *WINS* - Samba
+  - **[nazev_databaze].local** > ad1 (Double Click)
+    - zaškrtnout `[ ] Update associated pointer (PTR) record` pro PTR na Reverse 
+    -  ![image](https://user-images.githubusercontent.com/83291717/201083436-707a5035-a87a-49a8-a0a6-f8f2abc46822.png)
+- **Reverse Lookup Zones**
+  -  ...
+- *otestaováhí přes klient linux*
+```
+root@debian:~# nslookup ad1
+...
+root@debian:~# nslookup 10.0.0.2
+...
+```
