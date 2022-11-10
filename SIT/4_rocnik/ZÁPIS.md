@@ -1,5 +1,6 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník - zápis</a>
 - [🗒️ Soubory zápisu](./soubory)
+- [🌐 LEARNIIT.tech](https://learniit.tech/)
 
 ### Routování
 - **statické** (ručné v Routovací Tabulce)
@@ -355,13 +356,17 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
 ##### Nastavování Windows IP Adresy
 ![image](https://user-images.githubusercontent.com/83291717/200293608-aa4fa9c4-36eb-4021-8707-b418622855cb.png)
 
-##### Nastavování DHCP ve Windows Serveru
+##### Stáhnutí DHCP ve Windows Serveru
 - Manage > Add Roles and Features Wizard > Server Roles (zapnout *DHCP Server*) > Install
 - <img src="https://user-images.githubusercontent.com/83291717/200296278-954af966-0291-4ccd-a625-553fc5727982.png" width="200px"/>
 - Skip ...
+- Tools > DHCP
+
+##### Nastavování DHCP ve Windows Serveru
+![image](https://user-images.githubusercontent.com/83291717/201077380-550c4b98-0fae-45ac-a35d-439eba84ad65.png)
 - Tools > DHCP > IPv4 (Right Click) > New Scope
 - <img src="https://user-images.githubusercontent.com/83291717/200296883-d6648de4-48a9-447d-add4-eb3629ce2a5d.png" width="200px"> <img src="https://user-images.githubusercontent.com/83291717/200297227-7debc5b7-7964-438a-bd87-27b82f96f0b0.png" width="200px">
-- **Nastavení rezervace**
+- **Reservations** - nastavení rezervace
   - *Automaticky* - Tools > DHCP > IPv4 > Scope > Address Leases > Client (Right Click) > Add to Reservation
   - *Ručně* - Tools > DHCP > IPv4 > Scope > Reservation (Right Click) > Add New Reservation (on linux - ifdown eth0 & ifup eth0)
 - **Filtry** - filtrování uživatelů, Access a Deny
@@ -370,10 +375,46 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
       - použití ACCESS je potřeba zadat MAC adresy všech klientů
       - Address Leases > Client (Right Click) > Add to Filter > Deny  
 - **Policies** - pravidla pro uskupení klientů a dalších nastavení
-- **Scope Options** 
+- **Scope Options**
+  - **Scope = rozsahová skupina IP adres klientů** 
 - **Server Options**
-- **Adress Pool** - rozsahy IP adres
+- **Adress Pool** - základní rozsahy IP adres
+  - můžeme dělat vyjímky 
 - **Server Bindings** - na kterých síťových rozhrání se bude server orientovat
 - **Backup & Restore** - zálohy
 - **Properties** - vlasnosti
   - dá se zjistit kde jsou uloženy DHCP soubory => Log soubory
+- **ad1.[nazev_databaze].local** (Right Click)
+  - **Add/Remove Bindings**
+  - **Backup... Restore..** - zálohování a obnova klientů
+  - **All Tasks**
+    - zastavení, spuštění, restartování
+  - **Delete** - vyhození z okna *DHCP* (neodstraní)
+  - **Properties** - vlastnisti
+    - nastavení **Databázové** a **Backupových** cest
+      - `C:\Windows\system32\dhcp` - obsahuje logy - odděluje se dny v týdnu
+- **IPv4** - protokol (Right Click)
+  - **Display Statistics** - self-explenatory
+  - **New Scope**
+  - **New Superscope**
+  - **New Multicast Scope** - pro multicast
+  - **Failover** - zajištění dostupnosti služeb
+    - *Configure* a *Replicate Scope*
+  - **Define User Classes** a **Define Vendor Classes** - definování značek zařízení
+  - **Reconcile All Scopes** - opravuje databáze
+  - **Set Predefined Options**
+  - **Properties**
+    - *General* - nastavování logování, aktualizace statistik
+    - *DNS* - nastavování DNS záznamů
+    - *Filters* - nastavování filtrování uživatelů, Access a Deny
+    - *Failover* - nastavení zálohování dostupnosti; obsahuje info o druhém serveru 
+    - *Advanced* - cesta DB, detekce kolizí, bindings, credeantials (jméno a heslo pro kominikaci DNS)
+- **Scope**
+  - **Display Statistics**
+  - **Advanced > *Split-Scope*** - rozděšlení DHCP scopu na více
+  - **Reconcile** - oprava DB
+  - **Deactivate** - odstaví aby ho uživatelé nomohly používat
+  - **Properties**
+    - *General* - název
+    - *DNS* - updaty mezi vlastními protokoly DNS
+    - *Advanced* - nastavení protokolů (DHCP nebo BOOTP)
