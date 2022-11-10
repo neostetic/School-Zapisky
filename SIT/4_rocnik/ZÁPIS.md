@@ -434,7 +434,7 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
   - **Properties**
     - *General* - Aging... - vybírá neplatné, staré záznamy 
     - *Name Server*
-    - *Zone Trnasfers
+    - *Zone Transfers*
     - *WINS* - Samba
   - **[nazev_databaze].local** > ad1 (Double Click)
     - zaškrtnout `[ ] Update associated pointer (PTR) record` pro PTR na Reverse 
