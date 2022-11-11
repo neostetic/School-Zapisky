@@ -1,4 +1,4 @@
-<h3 align="center">Práce v programovacím jazyce C</h3>
+### Práce v programovacím jazyce C
 
 ```
 printf("%x", 6 8& 4); // logický AND
@@ -7,32 +7,22 @@ printf("%x", 6 || 4); // logický OR
 printf("%x", 6 | 4); // binární OR
 ```
 
-<h4 align="center">Posun bitů</h4>
-
+#### Posun bitů
 ```
 printf("%x", 0x26 >> 1); // 0x13
 printf("%x", 0x26 >> 3); // 0x4
 printf("%x", 0x26 << 1); // 0x4c
 ```
+- takže z `(26)^4 = (100110)^2` se stane `(13)^4 = (010011)^2`, protože se bity dvojkové soustavy posunou do prava o 1 místo a tím se vytvoří nový hexadecimální zápis a naopak
 
-<p align="center">
-  Takže z <code>(26)^4 = (100110)^2</code> se stane <code>(13)^4 = (010011)^2</code>, protože se bity dvojkové soustavy posunou do prava o 1 místo a tím se vytvoří nový hexadecimální zápis a naopak.
-</p>
-<br>
-
-<h4 align="center">Makro</h4>
-
+#### Makro
 ```
 #define SQR(a) a*a
 ...
 int result = SQR(3+3);
 printf(%d, result); // 3+3*3+3 = 15 
 ```
-
-<p align="center">
-  Definice bere pouze zápis a neupravuje příklad na regulární výsledek. Je potřeba ošetřit zbývající problémy.
-</p>
-
+- definice bere pouze zápis a neupravuje příklad na regulární výsledek. Je potřeba ošetřit zbývající problémy
 ```
 #define SQR(a) ((a)*(a))
 ...
@@ -48,12 +38,16 @@ int result = SQR(i++);
 printf(%d, result); // 3*4 = 12
 ```
 
-<h3 align="center"> Šumová Imunita u hradla TTL</h3>
-<p align="center">
-  AND - rezistor - 1kohm<br>
-  nepoužité vstupy připojené do zemnení
-</p>
+#### Šumová Imunita u hradla TTL
+- AND - rezistor - 1kohm
+- nepoužité vstupy připojené do zemnení
 
+### ATmega16 - jednočip
+- **131 instrukcí**
+- 32 reqistrů délky 8 bitů
+- 4 8bitové vstupně/výstupní porty *(celkem 32)*
+- **RAM** - 1KB
+- **E2PROM** - 512B 
 
 
 <details>
