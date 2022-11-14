@@ -1,6 +1,6 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník - zápis</a>
 - [🗒️ Soubory zápisu](./soubory)
-- [🌐 LEARNIIT.tech](https://learniit.tech/)
+- [🌐 LEARNIIT.tech / SÍTĚ](https://learniit.tech/site)
 
 ### Routování
 - **statické** (ručné v Routovací Tabulce)
@@ -370,7 +370,7 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
   - *Automaticky* - Tools > DHCP > IPv4 > Scope > Address Leases > Client (Right Click) > Add to Reservation
   - *Ručně* - Tools > DHCP > IPv4 > Scope > Reservation (Right Click) > Add New Reservation (on linux - ifdown eth0 & ifup eth0)
 - **Filtry** - filtrování uživatelů, Access a Deny
-  - Tools > DHCP > Filters
+  - **Tools > DHCP > Filters**
     - Deny (Right Click) > Enable
       - použití ACCESS je potřeba zadat MAC adresy všech klientů
       - Address Leases > Client (Right Click) > Add to Filter > Deny  
@@ -422,7 +422,7 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
 ##### Stáhnutí DNS server ve Windows Serveru
 - Manage > Add Roles and Features Wizard > Sever Roles > (zapnout *DNS Server*) > Install
 - Skip...
-- Tools > DNS
+- **Tools > DNS**
 
 ##### Nastavování DNS server ve Windows Serveru
 - AD1 (Right Click) > Configure a DNS Server
@@ -439,8 +439,13 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
   - **[nazev_databaze].local** > ad1 (Double Click)
     - zaškrtnout `[ ] Update associated pointer (PTR) record` pro PTR na Reverse 
     -  ![image](https://user-images.githubusercontent.com/83291717/201083436-707a5035-a87a-49a8-a0a6-f8f2abc46822.png)
+    -  *New Host, Alias, Mail Exchange* - vytvoření nových DNS záznamů
+    -  *New Domain* - spravování doménové zóny
+    -  *Delete* - smazání zóny
+    -  *Properties* - základní příkazy, SOA záznamy, WINS, ...
 - **Reverse Lookup Zones**
   -  ...
+- **Conditional Forwarders** - podmíněné přesměrování
 - *otestaováhí přes klient linux*
 ```
 root@debian:~# nslookup ad1
