@@ -222,7 +222,7 @@ options {
         listen-on-v6 { none; };
         listen-on { 127.0.0.1; 10.0.0.1; };
         allow-recursion { povoleno; };
-        auth-nxdonaub no;
+        auth-nxdomain no;
 };
 ```
 
