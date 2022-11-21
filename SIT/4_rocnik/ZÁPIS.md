@@ -453,3 +453,29 @@ root@debian:~# nslookup ad1
 root@debian:~# nslookup 10.0.0.2
 ...
 ```
+
+##### AD (Active Directory)
+- **technologie od *miscrosoftu* pro spravování počítačové správě**
+  - uživatelů
+  - serverů
+  - pracovních stanic 
+  - sdílení složek
+  - autentizačních mechanizmů
+- *od verze Windows 2000*
+- založena na protokolu adresové služby **LDAP** *(Light-weight Directory Active Protocol)*
+- **vyžaduje DNS**
+- stromová struktura - *AD schema*
+- **struktura**
+  - **fyzická**
+    - **DC** *(domain controller)* - stará se o doménu
+    - **site** 
+  - **logická**
+    - *Forest (les)* - bezpečnostní hranice kde jsou sdíleny objekty v rámci AD
+![image](https://user-images.githubusercontent.com/83291717/203039612-ce97901c-cf7b-4779-b1c5-9b86790d3cca.png)
+- **Operation Master Roles**
+  - **shema master** - správa AD schématu
+  - **operations naming master** - přídává/odebírá domény z lesa
+  - **Relative Identifier (RID) master** - spravuje tzv. "RID bloky" (slouží pro generování SID) 
+  - **Primary Domain Controller (PDC) emulator** - podpora historických systémů
+  - **Infrastucture master** - řídí vztahy mezi objekty z různých domén
+    - *GC (Global Catalog)* - slouží pro řízení
