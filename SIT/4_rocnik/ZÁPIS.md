@@ -454,7 +454,7 @@ root@debian:~# nslookup 10.0.0.2
 ...
 ```
 
-##### AD (Active Directory)
+##### AD (Active Directory) - jakoby teorie
 - **technologie od *miscrosoftu* pro spravování počítačové správě**
   - uživatelů
   - serverů
@@ -479,3 +479,16 @@ root@debian:~# nslookup 10.0.0.2
   - **Primary Domain Controller (PDC) emulator** - podpora historických systémů
   - **Infrastucture master** - řídí vztahy mezi objekty z různých domén
     - *GC (Global Catalog)* - slouží pro řízení
+
+##### Nastavování a stáhnutí AD ve Windows Serveru
+- *Tools > DNS > Smazat zóny pokud potřeba*
+- **Manage > Add Roles and Features > Server Roles
+![image](https://user-images.githubusercontent.com/83291717/203043843-4f110a8c-6ba7-434c-886c-359a724ca1ca.png)
+- **Notifikace > Promote this server to a domain controller**
+- vyrobíme nový les s DHCP doménou
+![image](https://user-images.githubusercontent.com/83291717/203045022-91ad3bce-1239-4f14-9dac-f96a595bb0e4.png)
+- přidáme unikátní heslo `Admin123.`
+![image](https://user-images.githubusercontent.com/83291717/203046209-fcb70374-948e-4dcd-9718-de0b8181d1f4.png)
+- čekat na vytvoření NetBIOS domény *(vytvoří se sama)*
+- čekat na požadavky *(Prerequisites Check)*
+- *Install*
