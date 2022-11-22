@@ -19,7 +19,7 @@ iface eth1 inet static
 ```
 subnet 10.0.0.0 netmask 255.255.255.0 {         // pridame ip site a masku
   range 10.0.0.30 10.0.0.50;                    // nastavime rozsah
-  option domain-name-server 10.0.0.0;           // zmenime na nasi DNS, pokud nechceme, tak na google servery (8.8.8.8, 8.8.4.4)
+  option domain-name-server 10.0.0.1;           // zmenime na nasi DNS, pokud nechceme, tak na google servery (8.8.8.8, 8.8.4.4)
   option domain-name "franta.local";            // nastavime nazev NASI domeny
 #  option broadcast-address 10.5.5.31;          // NEPOTREBUJEME
   default-lease-time 600;
