@@ -14,7 +14,7 @@ iface eth1 inet static
 - rozhraní poté přes `ifdown` a `ifup` vypneme a zapneme
 - v **defaultní** konfiguraci `/etc/default/isc-dhcp-server` nastavíme název naši síťové karty do `INTERFACESv4="eth1"` a zbytek odkomentářujeme
 - poté se vrhneme na samotné DHCP v konfiguraci `/etc/dhcp/dhcp.conf`
-- řádky `authoritative;` a `log-facility local7;` odkomentářujeme
+- řádky `authoritative;` a `log-facility local7;` zakomentářujeme nebo odstraníme
 - najdeme si nejdejší *subnet template* a ten si upravíme
 ```
 subnet 10.0.0.0 netmask 255.255.255.0 {         // pridame ip site a masku
