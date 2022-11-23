@@ -492,3 +492,29 @@ root@debian:~# nslookup 10.0.0.2
 - čekat na vytvoření NetBIOS domény *(vytvoří se sama)*
 - čekat na požadavky *(Prerequisites Check)*
 - *Install*
+- čekat na restart
+- podíváme se do *DNS Forward Zones*
+  - pokud zóna vypadá správně, tak ji máme správně
+- ![image](https://user-images.githubusercontent.com/83291717/203537796-0419e047-b210-4291-bc0f-db281c49fd8e.png)
+- *Next > Commit*
+- **Tools** - nástroje pro správu AD
+  - **AD Administartive Center** - obdoba server manageru 
+  - **AD Domains and Trusts** - nástroj pro vztahy mezi doménami
+    - *Properties* - název, popisek, verze, ...
+    - *Trusted* - vztahy mezi doménami
+    - *Raise Domain Functional Level* - povýší verzy directory schématu
+  - **AD Module for Windows PowerShell** - PowerShell modul pro řízení v příkazovém řádku
+    - `Get-ADUser -filter * | sort name | select name` - zobrazí usery
+  - **AD Sites and Services** - pohled na fyzickou strukturu AD
+  - **ADSI Edit** - editor AD schématu
+  - ***AD Users and Computers*** - HLAVNÍ NÁSTROJ PRO SPRÁVU AD
+    - `franta.local` - nejvýše postavená = doména
+      - `Builtin` - výcohzí skupiny které se vytvoří po instalaci AD
+      - `Computers` - zde se objevují počítače přidané v doméně
+      - `Domain Controllers` - doménové řadiče :)
+      - `ForeignSecurityPrincipals` - objekty zabezpečené z jiných domén
+      - `Managed Service Accounts` - složka pro účty které slouží pro spuštění síťových služeb (SQL, ...)
+      - `Users` - výchozí složka pro uživatele + skupiny a uživatele generované po instalaci AD
+    - *Prvým > New > Organization > název*
+      - ![image](https://user-images.githubusercontent.com/83291717/203542043-9f2f39b8-54b7-40c5-b125-4d7148fb33ad.png)
+ 
