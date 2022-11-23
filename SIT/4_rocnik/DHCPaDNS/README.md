@@ -13,7 +13,7 @@ iface eth1 inet static
 ```
 - rozhraní poté přes `ifdown` a `ifup` vypneme a zapneme
 - v **defaultní** konfiguraci `/etc/default/isc-dhcp-server` nastavíme název naši síťové karty do `INTERFACESv4="eth1"` a zbytek zakomentářujeme nebo odstraníme
-- poté se vrhneme na samotné DHCP v konfiguraci `/etc/dhcp/dhcp.conf`
+- poté se vrhneme na samotné DHCP v konfiguraci `/etc/dhcp/dhcpd.conf`
 - řádky `authoritative;` a `log-facility local7;` odkomentářujeme
 - najdeme si nejdejší *subnet template* a ten si upravíme
 ```
@@ -88,7 +88,7 @@ cp /etc/bind/db.empty /etc/bind/zones/db.10.0.0
 - **domény musí obsahovat "." na konci**
 - `db.franta.local`
 ```
-@TTL    86400     SOA     ns1.franta.local.   root.franta.local   // upravit nazvy na nase (pr. ns1.franta.local)
+@TTL    86400     SOA     ns1.franta.local.   root.franta.local.  // upravit nazvy na nase (pr. ns1.franta.local)
                           2022101001          ; Serial            // casto dnesni datum + nejake cislo
                               604800          ; Refresh
                                86400          ; Retry
@@ -101,7 +101,7 @@ test    IN        CANAME  ns1                 // alias - neni potreba
 ```
 - `db.10.0.0`
 ```
-@TTL    86400     SOA     ns1.franta.local.   root.franta.local   // upravit nazvy na nase (pr. ns1.franta.local)
+@TTL    86400     SOA     ns1.franta.local.   root.franta.local.  // upravit nazvy na nase (pr. ns1.franta.local)
                           2022101001          ; Serial            // casto dnesni datum + nejake cislo
                               604800          ; Refresh
                                86400          ; Retry
@@ -109,7 +109,7 @@ test    IN        CANAME  ns1                 // alias - neni potreba
                                86400          ; Negative Cache TTL
 ;
 @       IN        NS      ns1.franta.local.   // !TOHLE ZAPAMATOVAT
-ns1     IN        PTR     ns1.franta.local.   // !TOHLE ZAPAMATOVAT - odkaz IP adresy
+1       IN        PTR     ns1.franta.local.   // !TOHLE ZAPAMATOVAT - odkaz IP adresy
 ```
 - pro kontrolu můžeme zkusit odpovědi `named-checkzone franta.local db.franta.local` a `named-checkzone 0.0.10.in-addr.arpa db.10.0.0`
 - poté přes `systemctl restart` a `systemctl status` restartujeme a oveříme si zda nám `bind9` běží správně
