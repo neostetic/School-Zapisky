@@ -551,19 +551,19 @@ root@debian:~# nslookup 10.0.0.2
 
 ###### Vztah důvěry
 - **vztah mezi vaší doménou a spravovací stanicí**
-  - 1. zapnout cizí Windows s **Vnitřní Sítí**
-  - 2. Průzkumník > Vlastnosti PC > Upřesnit vlastnosti systému > Název počítače
-  - 3. Změnit
+  1. zapnout cizí Windows s **Vnitřní Sítí**
+  2. Průzkumník > Vlastnosti PC > Upřesnit vlastnosti systému > Název počítače
+  3. Změnit
     - ![image](https://user-images.githubusercontent.com/83291717/203775069-83c4a863-9395-4ee0-aec1-326bd64e54da.png)
-  - 4. Nastavit člena
+  4. Nastavit člena
     - `Název počítače:` : libovolný název 
     - `[x] Domény:` : naše doména
     - `[ ] Pracovní skupiny:` 
     - ![image](https://user-images.githubusercontent.com/83291717/203775490-76d11057-d0b8-462c-bba4-82efd2be1a51.png)
-  - 5. Přihlášení za **Administrator** *(heslo: Admin123.)*
-  - 6. Restartování
-  - 7. Jiný uživatel > Přihlásíme se za uživatela na našem Windows serveru
-  - 8. **Vytořili jsme vztah důvěry
+  5. Přihlášení za **Administrator** *(heslo: Admin123.)*
+  6. Restartování
+  7. Jiný uživatel > Přihlásíme se za uživatela na našem Windows serveru
+  8. **Vytořili jsme vztah důvěry
 - na serveru v AD se projeví změna v **Computers**
 
 
