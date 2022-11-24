@@ -515,6 +515,26 @@ root@debian:~# nslookup 10.0.0.2
       - `ForeignSecurityPrincipals` - objekty zabezpečené z jiných domén
       - `Managed Service Accounts` - složka pro účty které slouží pro spuštění síťových služeb (SQL, ...)
       - `Users` - výchozí složka pro uživatele + skupiny a uživatele generované po instalaci AD
-    - *Prvým > New > Organization > název*
+    - *Pravým > New > Organization > název*
       - ![image](https://user-images.githubusercontent.com/83291717/203542043-9f2f39b8-54b7-40c5-b125-4d7148fb33ad.png)
- 
+      - *založení uživatelů* - *Pravým > New > User > vyplnit informace, heslo (Heslo123.)*
+        - `[x] Password never expires` - heslo slouží pouze 30 dní, zaškrtnout aby zůstalo
+        - *vlastnosti uživatelů*
+          - *Acount* - příhlašovací jméno, změna domény
+            - Logon Hours - nastavení přihlašovacích hodin
+            - Log On To - nastavení pro přihlášení na určité PC
+            - Unlock account - nastavení odemčení účtu po špatné správě účtu
+            - Account Options - detailní nastavení účtu
+              - Smart card - čip přihlašování PIN
+            - Account Expires - nastavování splatnosti účtu
+          - *Profile*
+            - Profile path - cesta uložení profilu
+            - Logon script - přihlašovací script... self-explanatory
+          - *Remote control* - nastavování vzdáleného přistupu
+          - *Remote Desktop Service Profile* - nastavení vzádelené plochy
+          - *COM+* - Component Object Model
+          - *Member Of* - nastavování bezpečnostních skupin uživatele
+          - *Dial-in* - nastavení přístupu přes VPN
+          - *Enviroment* - nastavení po spuštění
+            - Client devices - nastavení připojení HW a SW na vzdálené ploše 
+          - *Sessions* - kontrola přihlášení k serveru, nastavení limitu, ... 
