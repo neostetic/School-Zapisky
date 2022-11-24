@@ -57,6 +57,30 @@ done
 --------------------------------------------------  
 ```
 
+#### Case
+```
+---------------------- nano ----------------------  
+#! /bin/bash
+#
+if [ -z $1 ]; then
+  barva="nezadana"
+elif [ -n $1 ]
+then
+  barva=$1
+fi
+
+case $barva in
+  "zluta") echo "Vybrali jste barvu - $barva";;
+  "cervena") echo "Vybrali jste barvu - $barva";;
+  "modra") echo "Vybrali jste barvu - $barva";;
+  ...
+  *) echo "Barva $barva neni v seznamu";;
+esac
+--------------------------------------------------
+root@debian:~# chmod 755 vyber.sh
+root@debian:~# ./vyber.sh cervena
+```
+
 
 <p align="right">
   <a href="./..">Go Back</a>
