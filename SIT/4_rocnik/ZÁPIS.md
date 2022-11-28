@@ -550,7 +550,7 @@ root@debian:~# nslookup 10.0.0.2
       -  *Operation Masters* - 3 role - RID, PDC, Infrastructure
 
 ###### Vztah důvěry
-- **vztah mezi vaší doménou a spravovací stanicí**
+- **vztah mezi vaší doménou a spravovací stanicí** *(tutorial)*
   - **1)** zapnout cizí Windows s **Vnitřní Sítí**
   - **2)** Průzkumník > Vlastnosti PC > Upřesnit vlastnosti systému > Název počítače
   - **3)** Změnit
@@ -565,5 +565,25 @@ root@debian:~# nslookup 10.0.0.2
   - **7)** Jiný uživatel > Přihlásíme se za uživatela na našem Windows serveru
   - **8) Vytořili jsme vztah důvěry**
 - na serveru v AD se projeví změna v **Computers**
+  - **1)** Ovládací panely > Firewall v programu Windows Defender (ne pokročilý) > Povilit aplikaci nebo funkci ...
+    - ![image](https://user-images.githubusercontent.com/83291717/204261036-8397b759-de64-419a-8c16-c4dc69abab3d.png)
+  - **2)** Změnit nastavení
+    - ![image](https://user-images.githubusercontent.com/83291717/204261204-0038f57a-2f2e-431f-a006-1a4792847ebb.png)
+    - Kotrolujeme zda jsme v *Dom0n2*
+  - **3)** Povolit u Domény
+  	- `[x] Sdílení souborů a tiskáren`, `[x] Vzdálená plocha`, všechna `[x] Vzdálený správa ...`
+  - **4)** Na serveru *Computer* počítač přesuneme do *skola.pocitace*
+    - Na PC *(pravy)* **Manage**
+      - ![image](https://user-images.githubusercontent.com/83291717/204263126-900e3b4e-7948-425e-9438-8c2e34df87fc.png)
+      - *Services and Application* - správa služeb a aplikací :)
+      - *Local Users and Groups* - správa lokálních uživatelů PC
+      - *Shared Folders*
+        - *Shares* - sdílené složky
+        - *Sessions* - přihlášení uživatelé sdílení
+        - *Open Files* - otevřené soubory u sdíleného uživatele
+      - *Event Viewer* - zobrazí co se děje na pc - Log
+      - *Task Scheduler* - plánování úloh 
+  - Dostaneme se přes explorer na vzálený PC přes : `\\stanice\c$`
+
 
 
