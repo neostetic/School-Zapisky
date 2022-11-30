@@ -593,7 +593,7 @@ root@debian:~# nslookup 10.0.0.2
   - `STANICE` : More choices : `test`
 
 ###### Nastavování sdílených složek
-- **přidáme si nový pevný disk k serveru**
+- **přidáme si nový pevný disk k serveru** *(VirtualBox)*
 - **inicializace disku**
   - Tools > Computer Management > Disc Management > Ok
   - Pravým na disk > New simple volume > Změnit name na `Data`
@@ -619,9 +619,11 @@ root@debian:~# nslookup 10.0.0.2
   - *Linux* - `//pocitac/cesta`
 
 ###### Nastavování scriptů po spuštění
-- Cesta : `This PC > Local Disk (C:) > SYSVOL > sysvol > franta.local > scripts`
+- **Cesta** : *This PC > Local Disk (C:) > SYSVOL > sysvol > franta.local > scripts* `C:\Windows\SYSVOL\sysvol\franta.local\scripts`
   - zapneme si raději `[x] File name extensions`
 - scrpitik.bat
 ```
-new use z: \\ad1\verejne /y
+net use z: \\ad1\verejne /y
 ```
+- v **Active Directory Users and Computer** nastavíme uživateli
+  - `Logon script: skriptik.bat`
