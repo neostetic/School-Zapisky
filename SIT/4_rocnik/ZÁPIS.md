@@ -585,7 +585,7 @@ root@debian:~# nslookup 10.0.0.2
       - *Open Files* - otevřené soubory u sdíleného uživatele
     - *Event Viewer* - zobrazí co se děje na pc - Log
     - *Task Scheduler* - plánování úloh 
-- *Dostaneme se přes explorer na vzálený PC přes URL : `\\stanice\c$`*
+- ***Dostaneme se přes explorer na vzálený PC přes URL : `\\stanice\c$`****
 - **5)** Nastavení vzdáleného přístupu u klienta
   - Vzdálená plocha : `[x] Umožnit vzdálené připojení k tomuto počítači`
   - Přidat uživatele : `test` : Vyhledat : Ok
@@ -614,3 +614,14 @@ root@debian:~# nslookup 10.0.0.2
       - *Auditing* - při zapnutí loggování; větší práce pro PC
       - *Effective Access* - testovací "modelář"; ukazuje zda určitý uživatel má přístup
       - *Owner: `name` > Change* - změna vlastníka
+- **Otestování složek**
+  - *Windows* - `\\pocitac\cesta`
+  - *Linux* - `//pocitac/cesta`
+
+###### Nastavování scriptů po spuštění
+- Cesta : `This PC > Local Disk (C:) > SYSVOL > sysvol > franta.local > scripts`
+  - zapneme si raději `[x] File name extensions`
+- scrpitik.bat
+```
+new use z: \\ad1\verejne /y
+```
