@@ -108,6 +108,7 @@ root@debian:~# chmod 755 vyber.sh
 root@debian:~# ./vyber.sh cervena
 ```
 
+```
 ---------------------- nano ----------------------  
 #! /bin/bash
 #
@@ -127,6 +128,7 @@ done
 5 5 5 5 5
 ```
 
+```
 ---------------------- nano ----------------------  
 #! /bin/bash
 #
