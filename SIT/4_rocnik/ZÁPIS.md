@@ -682,3 +682,5 @@ Data (E:)
 - **3)** - Active Directory Users and Computers
   - uzivatele > `Testovaci ucet` > Properties > Profile
     - `Profile path` : `\\ad1\Profile$\%username%`  
+
+#### Politiky GPO ve Windows
