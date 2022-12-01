@@ -623,7 +623,29 @@ root@debian:~# nslookup 10.0.0.2
   - zapneme si raději `[x] File name extensions`
 - scrpitik.bat
 ```
-net use z: \\ad1\verejne /y
+net use z: \\ad1\verejne /y      // NASTAVI DISK PO ZAPNUTI SYSTEMU NA :z
 ```
 - v **Active Directory Users and Computer** nastavíme uživateli
   - `Logon script: skriptik.bat`
+
+###### Nastavování složek uživatelů
+```
+ - data
+   - Users
+   - verejne
+```
+- **1)** - `verejne` > Properties
+  - Sharing > Advanced Sharing... > `[x] Share this folder` > Persmissions
+    - ![image](https://user-images.githubusercontent.com/83291717/205034980-c6ebba4e-1e39-41af-968d-266b8936d4e2.png)
+  - Security > Advanced
+    - `[Disable inheritance]`
+    - Add
+    - Autheticated Users
+      - ![image](https://user-images.githubusercontent.com/83291717/205035530-db0c35ba-c9e0-46a6-a1e2-a2bc9025b228.png)
+- **2)** - Active Directory Users and Computers
+  - uzivatele > `Testovaci ucet` > Properties > Profile
+    - `[ ] Local path:`
+    - `[x] Connect: Y:` - `To: \\ad1\User$\test`
+    - ![image](https://user-images.githubusercontent.com/83291717/205036738-73725871-b8c7-4f58-9417-7a956e9d136b.png)
+
+  
