@@ -108,6 +108,54 @@ root@debian:~# chmod 755 vyber.sh
 root@debian:~# ./vyber.sh cervena
 ```
 
+---------------------- nano ----------------------  
+#! /bin/bash
+#
+for (( i = 1; i <= 5; i++ ))
+do
+      for (( j = 1; j <= 5; j++ ))
+      do
+      echo -n "$i "
+      done
+echo " "
+done
+--------------------------------------------------
+1 1 1 1 1
+2 2 2 2 2
+3 3 3 3 3
+4 4 4 4 4
+5 5 5 5 5
+```
+
+---------------------- nano ----------------------  
+#! /bin/bash
+#
+for (( i = 1; i <= 8; i++ ))
+do
+      for (( j = 1; j <= 8; j++ ))
+      do  
+            tot=`expr $i + $j`
+            tmp=`expr $tot % 2`
+            if [ $tmp -eq 0 ]; then
+                  echo -e -n "\033[47m "
+            else
+                  echo -e -n "\033[40m "
+            fi
+      done
+      echo -e -n " \033[40m "
+      echo " "
+done
+--------------------------------------------------
+▉  ▉  ▉  ▉  
+  ▉  ▉  ▉  ▉
+▉  ▉  ▉  ▉  
+  ▉  ▉  ▉  ▉
+▉  ▉  ▉  ▉  
+  ▉  ▉  ▉  ▉
+▉  ▉  ▉  ▉  
+  ▉  ▉  ▉  ▉
+```
+
 
 <p align="right">
   <a href="./..">Go Back</a>
