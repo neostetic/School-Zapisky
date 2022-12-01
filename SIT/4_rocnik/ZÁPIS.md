@@ -356,13 +356,13 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
 ##### Nastavování Windows IP Adresy
 ![image](https://user-images.githubusercontent.com/83291717/200293608-aa4fa9c4-36eb-4021-8707-b418622855cb.png)
 
-##### Stáhnutí DHCP ve Windows Serveru
+#### Stáhnutí DHCP ve Windows Serveru
 - Manage > Add Roles and Features Wizard > Server Roles (zapnout *DHCP Server*) > Install
 - <img src="https://user-images.githubusercontent.com/83291717/200296278-954af966-0291-4ccd-a625-553fc5727982.png" width="400px"/>
 - Skip ...
 - Tools > DHCP
 
-##### Nastavování DHCP ve Windows Serveru
+#### Nastavování DHCP ve Windows Serveru
 ![image](https://user-images.githubusercontent.com/83291717/201077380-550c4b98-0fae-45ac-a35d-439eba84ad65.png)
 - Tools > DHCP > IPv4 (Right Click) > New Scope
 - <img src="https://user-images.githubusercontent.com/83291717/200296883-d6648de4-48a9-447d-add4-eb3629ce2a5d.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/200297227-7debc5b7-7964-438a-bd87-27b82f96f0b0.png" width="400px">
@@ -419,12 +419,12 @@ PS C:\Users\Administrator>Get-NetAdapter | fl
     - *DNS* - updaty mezi vlastními protokoly DNS
     - *Advanced* - nastavení protokolů (DHCP nebo BOOTP)
 
-##### Stáhnutí DNS server ve Windows Serveru
+#### Stáhnutí DNS server ve Windows Serveru
 - Manage > Add Roles and Features Wizard > Sever Roles > (zapnout *DNS Server*) > Install
 - Skip...
 - **Tools > DNS**
 
-##### Nastavování DNS server ve Windows Serveru
+#### Nastavování DNS server ve Windows Serveru
 - AD1 (Right Click) > Configure a DNS Server
 - **Průvodce vytvoření**
 - <img src="https://user-images.githubusercontent.com/83291717/201080506-c83dd97a-8def-4aaf-a967-526ea711be56.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080597-f38f8d8c-a848-43bf-aaf5-2fa00d30bb5e.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080651-c17eb353-8317-4172-ab27-a270e83545ba.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080734-d8334a8a-8152-4a71-b949-21b158e1e0e4.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080836-c63f2b56-084f-4eb1-9b1c-5f2d83ad4ad3.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201080907-59e417f3-c1b7-4d38-bdd1-a1c8481c1410.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201081052-eb0acd3f-2fe9-4d49-b355-c6732eb67acc.png" width="400px"> <img src="https://user-images.githubusercontent.com/83291717/201081431-52abb981-a3b7-4f19-b2a7-73e80b3fb43f.png" width="400px">
@@ -454,7 +454,7 @@ root@debian:~# nslookup 10.0.0.2
 ...
 ```
 
-##### AD (Active Directory) - jakoby teorie
+#### AD (Active Directory) - jakoby teorie
 - **technologie od *miscrosoftu* pro spravování počítačové správě**
   - uživatelů
   - serverů
@@ -480,7 +480,7 @@ root@debian:~# nslookup 10.0.0.2
   - **Infrastucture master** - řídí vztahy mezi objekty z různých domén
     - *GC (Global Catalog)* - slouží pro řízení
 
-##### Nastavování a stáhnutí AD ve Windows Serveru
+#### Nastavování a stáhnutí AD ve Windows Serveru
 - *Tools > DNS > Smazat zóny pokud potřeba*
 - **Manage > Add Roles and Features > Server Roles
 ![image](https://user-images.githubusercontent.com/83291717/203043843-4f110a8c-6ba7-434c-886c-359a724ca1ca.png)
@@ -549,7 +549,7 @@ root@debian:~# nslookup 10.0.0.2
           - *Dial-in* - nastavení VPN na PC
       -  *Operation Masters* - 3 role - RID, PDC, Infrastructure
 
-###### Vztah důvěry
+##### Vztah důvěry
 - **vztah mezi vaší doménou a spravovací stanicí** *(tutorial)*
   - **1)** zapnout cizí Windows s **Vnitřní Sítí**
   - **2)** Průzkumník > Vlastnosti PC > Upřesnit vlastnosti systému > Název počítače
@@ -566,7 +566,7 @@ root@debian:~# nslookup 10.0.0.2
   - **8) Vytořili jsme vztah důvěry**
 - na serveru v AD se projeví změna v **Computers**
 
-###### Nastavení vzdáleného přístupu
+##### Nastavení vzdáleného přístupu
 - **1)** Ovládací panely > Firewall v programu Windows Defender (ne pokročilý) > Povilit aplikaci nebo funkci ...
   - ![image](https://user-images.githubusercontent.com/83291717/204261036-8397b759-de64-419a-8c16-c4dc69abab3d.png)
 - **2)** Změnit nastavení
@@ -592,7 +592,7 @@ root@debian:~# nslookup 10.0.0.2
 - **6)** Na serveru **Remote Desktop Connection**
   - `STANICE` : More choices : `test`
 
-###### Nastavování sdílených složek
+##### Nastavování sdílených složek
 - **přidáme si nový pevný disk k serveru** *(VirtualBox)*
 - **inicializace disku**
   - Tools > Computer Management > Disc Management > Ok
@@ -619,7 +619,7 @@ Data (E:)
   - *Windows* - `\\pocitac\cesta`
   - *Linux* - `//pocitac/cesta`
 
-###### Nastavování scriptů po spuštění
+##### Nastavování scriptů po spuštění
 - **Cesta** : *This PC > Local Disk (C:) > SYSVOL > sysvol > franta.local > scripts* `C:\Windows\SYSVOL\sysvol\franta.local\scripts`
   - zapneme si raději `[x] File name extensions`
 - scrpitik.bat
@@ -629,7 +629,7 @@ net use z: \\ad1\verejne /y      // NASTAVI DISK PO ZAPNUTI SYSTEMU NA :z
 - v **Active Directory Users and Computer** nastavíme uživateli
   - `Logon script: skriptik.bat`
 
-###### Nastavování složek uživatelů
+##### Nastavování složek uživatelů
 ```
 Data (E:)
  - data
@@ -651,7 +651,7 @@ Data (E:)
     - `[x] Connect` : `Y:` - `To` : `\\ad1\User$\test` - vytvoří složku v `User$`
     - ![image](https://user-images.githubusercontent.com/83291717/205036738-73725871-b8c7-4f58-9417-7a956e9d136b.png)
 
-###### Nastavování profilů
+##### Nastavování profilů
 - **místiní** *(lokální)*
   - vytvoří se po přihlášení v `/C/Users/...` - to je takový lokální profil 
 - **cestovní** *(roaming)*
