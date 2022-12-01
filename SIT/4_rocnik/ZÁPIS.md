@@ -286,7 +286,7 @@ root@debian:~# nslookup 10.0.0.1
 
 - Pokud `nameserver` se rovná našemu DNS, tak správně a přes `nslookup` musí obsahovat naše sítě
 
-### Konfigurace DHCP a DNS
+### [SF] Konfigurace DHCP a DNS
 - [Klikni pro zobrazení konfigurace](./../DHCPaDNS)
 
 ### Windows Server
