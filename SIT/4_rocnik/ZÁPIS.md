@@ -642,6 +642,7 @@ net use z: \\ad1\verejne /y      // NASTAVI DISK PO ZAPNUTI SYSTEMU NA :z
     - Add
     - Autheticated Users
       - ![image](https://user-images.githubusercontent.com/83291717/205035530-db0c35ba-c9e0-46a6-a1e2-a2bc9025b228.png)
+    - odstranit uživatele **Users**
 - **2)** - Active Directory Users and Computers
   - uzivatele > `Testovaci ucet` > Properties > Profile
     - `[ ] Local path:`
