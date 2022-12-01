@@ -599,8 +599,9 @@ root@debian:~# nslookup 10.0.0.2
   - Pravým na disk > New simple volume > Změnit name na `Data`
 - **1)** Na novém disku vytvoříme strom složek
 ```
- - data
-   - verejne
+Data (E:)
+ + data
+   + verejne
 ```
 - **2)** `verejne` > Properties
   - Sharing > Advanced Sharing > `[x] Share this folder` > Permissions
@@ -630,8 +631,9 @@ net use z: \\ad1\verejne /y      // NASTAVI DISK PO ZAPNUTI SYSTEMU NA :z
 
 ###### Nastavování složek uživatelů
 ```
+Data (E:)
  - data
-   - Users
+   + User$
    - verejne
 ```
 - **1)** - `verejne` > Properties
@@ -646,7 +648,37 @@ net use z: \\ad1\verejne /y      // NASTAVI DISK PO ZAPNUTI SYSTEMU NA :z
 - **2)** - Active Directory Users and Computers
   - uzivatele > `Testovaci ucet` > Properties > Profile
     - `[ ] Local path:`
-    - `[x] Connect: Y:` - `To: \\ad1\User$\test`
+    - `[x] Connect` : `Y:` - `To` : `\\ad1\User$\test` - vytvoří složku v `User$`
     - ![image](https://user-images.githubusercontent.com/83291717/205036738-73725871-b8c7-4f58-9417-7a956e9d136b.png)
 
-  
+###### Nastavování profilů
+- **místiní** *(lokální)*
+  - vytvoří se po přihlášení v `/C/Users/...` - to je takový lokální profil 
+- **cestovní** *(roaming)*
+  - profil který je uložený *NĚKDE* na serveru
+  - *nevýhody*
+    - jiné verze mezi sebou nejsou kompatibilní
+- **1)** 
+```
+Data (E:)
+ - data
+   + Profile$
+   - User$
+   - verejne
+```
+- **2)** Properties
+  - Sharing > Advanced Sharing... > `[x] Share this folder` > Persmissions
+    - `Administrators` - Full controll
+    - `Everyone` - Full controll
+    - `SYSTEM` - Full controll
+  - Security > Advanced
+    - `[Disable inheritance]`
+    - odstranění uživatelů `Users`
+    - Add
+      - Everyone
+      - `This folder only`
+      - `Show advanced options`
+        - ![image](https://user-images.githubusercontent.com/83291717/205043394-9ee22778-e7b2-4886-b853-bd6006e8384e.png)
+- **3)** - Active Directory Users and Computers
+  - uzivatele > `Testovaci ucet` > Properties > Profile
+    - `Profile path` : `\\ad1\Profile$\%username%`  
