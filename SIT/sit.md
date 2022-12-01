@@ -113,4 +113,6 @@
 | Redistribuce rip 1  | router ospf [id proces]                       |
 | Redistribuce rip 2  | redistribute rip metric 20 subnets            |
 
+[Pokračování](https://github.com/KRBNJSF/SIT)
+
 <p align="right"><a href="https://github.com/neostetic/School-Zapisky/tree/main/SIT">Go Back</p>
