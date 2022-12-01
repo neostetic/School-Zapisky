@@ -10,7 +10,7 @@
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/WAP">🌐 Webové Aplikace (WAP)</a>
 
 #### Maturitní okruhy
-- [Rok 2022/23](https://github.com/KRBNJSF/Maturita-okruhy#maturitn%C3%AD-okruhy-pro-20222023) (ask for invite <a href="https://github.com/KRBNJSF">@KRBNJSF</a>)
+- [Programování 2022/23](https://github.com/KRBNJSF/Maturita-okruhy#maturitn%C3%AD-okruhy-pro-20222023) (ask for invite <a href="https://github.com/KRBNJSF">@KRBNJSF</a>)
 - [Český jazyk - Literatura](https://github.com/neostetic/maturita) (ask for invite <a href="https://github.com/neostetic">@neostetic</a>)
 
 #### Učitelé na Github
