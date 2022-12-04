@@ -1,6 +1,6 @@
 ### School Zápisky
 
-###### Hledám někoho kdo by mi pomohl zapisovat, kontaktujte mě přes discord (neostetic@5391) !!!
+###### Hledám někoho kdo by mi pomohl zapisovat, v případě zájmu, kontaktujte mě přes discord (neostetic@5391) !!!
 
 #### Předměty
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/CIT">💯 Číslicová Technika (CIT)</a>
