@@ -1,5 +1,4 @@
 ## <a href="./..">🗣️ Český Jazyk a Literatura (CJL) - Literatura</a>
-
 ## 4. Ročník
 ### Česká literatura v letech 1945-1958
 - **Společensko-historické pozadí**
