@@ -24,9 +24,6 @@
 #### SPSMB Group
 - <a href="https://github.com/SPSMB">Group</a>
 
-#### Proč?
-- Prosím, pomoz mi. Jsem uvězněný ve sklepení starého pána který co říká a nutí mě dělat tyhle zápisky pro svého vnuka Karla, který to ve škole nezvládá a potřebuje pomoc.
-
 <p align="right">
   <a href="https://github.com/neostetic">Go Home</a>
 </p>
