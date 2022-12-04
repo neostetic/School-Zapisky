@@ -73,6 +73,53 @@
 ##### Romeo, Julie a tma (1958)
 - Baladická novela, pojednávací o příběhu lásky gymnasty Pavla a židovky Ester v době heydrichové.
 
+# Evropská literatura v letech 1945-1989
+- **Společensko-historické pozadí**
+  - **Porážkou Německa se vyčerpali společenské zájmy Spojenců v Evropě**.
+  - Vytvořilo se soupeření **USA proti SSSR**.
+  - **Někteří státy se stali velmocí SSSR**, Vytvořila se Varšavská smlouva, **NATO**.
+- **Literatura**
+  - Východní tvorba byla nucena se podřídit **socialistickému realismu**.
+  - Vycházeli především *realistické romány*.
+  - **ROZHNĚVANÍ MLADÍ MUŽI** - kritici soudobých životů anglické společnosti.
+  - **NEOREALISMUS** - **po pádu fašismu** se snaží zachytit **sociální problémy vesnických a městských vrstev**.
+  - **EXISTENCIONALISMUS** - "nic nemá smysl, tak proč nezemřít"
+### Albert Camus (1913-1960) - Francie
+- **Francouský spisovatel**, filozof, esejista, dramatik a **existencionalista**.
+- Nositel **Nobelovi ceny za literaturu**. 
+##### Cizinec (1942)
+- Román který **pojednává o absurditě člověka v absurdním světě**; *Mýtus o Sisyfovi*
+### Jean-Paul Sarte (1905-1980) - Francie
+- Francouský prozaik, dramatik, filozof a **existencionalista**.
+- Své názory pojednával v filozofických esejích.
+##### Zeď (1938)
+- Prozaický soubor, kde hrdina revolucionář **Ibbieta** čeká mezi čtyřmi zdmi sklepení na **rozsudek a popravu**.
+### George Orwell (1903-1950) - Anglie
+- Amglický prozaik, esejista a novinář který se proslavil **antiutopickými romány**.
+- Bral inspiraci z **totalitního režimu**.
+##### Farma zvířat (1945)
+- Novela, jinotaj pojednávací o **vzpouře zvířat** na farmě, která končí bojem mezi dvěmi vůdci.
+##### 1984 (1949)
+- **Antiutopický román**, který se odehrává v **Oceánii** řízené **Stranou a Velkým bratrem**.
+### Samuel Beckett (1906-1989) - Irsko
+- Irský dramatik, básník a prozaik **píšící anglicky a francousky**.
+- Nositel **Nobelovi ceny za literaturu**.
+##### Čekání na Godota (1952)
+- Absurdní drama, ve kterém se **"nic neděje"**... pojednává o bříběhu dvou tuláků **Estragona** a **Vladimíra** čekající na **Godota**. 
+### Alexandr Solženicyn (1918-2008) - Rusko
+- Ruský spisovatel, který **byl vězněn v sovětských táborech**.
+- Pomohl světu pochopit skutečnou podstatu stilinismu.
+##### Jeden den Ivana Děnisoviče (1962)
+- **Detailní realistická novela** pojedvácí detailně popisný den sovětského pracovníka v táboře.
+### Jurij Bondarev (1924-????) - Rusko
+- Ruský spisovatel, který **bojoval v druhé světové válce**.
+- **Realisticky zobrazuje situaci na frontě**.
+##### Hořící sníh (1970)
+- **Realistický válečný román**, který vyobrazuje osudy mnoha vojáků při obléhání Stalingradu.
+### Vladimir Vysockij (1938-1980)
+- **Ruský básník**, herec avantgardního moskevského Divadla Tagence.
+- **Vydával *zakázané písně*** na *neoficiálních* magnetonofových deskách
+
 <p align="right">
   <a href="./..">Go Back</a>
 </p>
