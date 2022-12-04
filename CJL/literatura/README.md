@@ -1,8 +1,6 @@
 ## <a href="./..">🗣️ Český Jazyk a Literatura (CJL) - Literatura</a>
 
-# 4. Ročník
-
-## Česká literatura v letech 1945-1948
+# Česká literatura v letech 1945-1948
 - **Společensko-historické pozadí**
   - **Osvobození od sovětského svazu** obyvatelstvo vítalo s nadšením, že se zase vrátí život opět do stejných koleí.
   - **Odpor Čechů proti Němcům** nahromaděním během válce => **divoký odsun** německých obyvatel, na který se navázal od srpna 1946 **organizovaný odsun**.
@@ -34,7 +32,7 @@
 ##### Reportáž, psaná na oprátce (1945)
 - **Self-reportáž** psaná během několika měsíců svého vězněení, kde **věnuje pozornost komunistickému systému** (hledí i nachyby, ale před vydáním komunisté dílo upravili).
 
-## Česká literatura v letech 1948-1958
+# Česká literatura v letech 1948-1958
 - **Společensko-historické pozadí**
   - **KSČ využila situaci pro převzetí moci ve státě**, což donutilo *Eduarda Beneše* odstoupit a jeho místo nahradil *Klement Gottwald*.
   - Někteří lidé **odešly do emigrace**, kvůli svým názorům politiky, ostatní se "likvidovali".  
