@@ -1,5 +1,7 @@
 ### School Zápisky
 
+###### Hledám někoho kdo by mi pomohl zapisovat, kontaktujte mě přes discord (neostetic@5391) !!!
+
 #### Předměty
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/CIT">💯 Číslicová Technika (CIT)</a>
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/CJL">🗣️ Český Jazyk a Literatura (CJL)</a>
