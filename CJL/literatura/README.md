@@ -10,20 +10,17 @@
   - V letech 1945-48 si uchovávala **poměrně svobodný charakter**.
   - Po válce přišla **inspirace ze západu a východu**.
   - **Silná regulace od Socialistického svazu**.
-
 #### Egon Hostovský (1908-1973)
 - Prozaik a novinář **židovského původu**.
 - Před druhou světovou válkou emigroval a poté **emigroval roku 1948**.
 - **Psyhologická a existencinální próza.**
 ##### Cizinec hledá byt (1947)
 - **Román** který vypráví příběh českého lékaře, který kvůli válce emigruje do USA kde se snaží najít "byt" - místo kde by se mohl cítit jako doma, ale nejde mu to.
-
 #### Jiří Weil (1900-1959)
 - Prozaik, novinář, literární kritik a překladatel.
 - Jeho dílo zásadně ovlivnilo vývoj české prózy.
 ##### Život s hvězdou (1949)
 - Román který pojednává o životě **bývalého židovského úředníka**, který nejdřívě čeká na transport do povolání ale poté postupuje izolací, kterou sám přijímá, aby si zachránil život.
-
 #### Jan Drda (1915-1970)
 - Prozaik, dramatik a novinář, který koncem 30. let vydával drobné novinové útvary.
 - První **předseda Svazu československých spisovatelů**, zažil dobu okupace.
