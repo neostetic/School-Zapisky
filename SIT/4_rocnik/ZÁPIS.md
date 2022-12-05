@@ -457,7 +457,7 @@ root@debian:~# nslookup 10.0.0.2
 ...
 ```
 
-#### AD (Active Directory) - jakoby teorie
+#### AD (Active Directory) ve Windows
 - **technologie od *miscrosoftu* pro spravování počítačové správě**
   - uživatelů
   - serverů
@@ -482,6 +482,9 @@ root@debian:~# nslookup 10.0.0.2
   - **Primary Domain Controller (PDC) emulator** - podpora historických systémů
   - **Infrastucture master** - řídí vztahy mezi objekty z různých domén
     - *GC (Global Catalog)* - slouží pro řízení
+
+##### SSO (Single Sing On)
+- jednotné přihlašování na vzdáleném PC 
 
 #### Nastavování a stáhnutí AD ve Windows Serveru
 - *Tools > DNS > Smazat zóny pokud potřeba*
@@ -686,4 +689,52 @@ Data (E:)
   - uzivatele > `Testovaci ucet` > Properties > Profile
     - `Profile path` : `\\ad1\Profile$\%username%`  
 
-#### Politiky GPO ve Windows
+#### GPO (Group Policy Objects) politiky ve Windows
+- nastavování politik
+  - chování Windowsů
+  - nastavování nástrojů, které se budou používat
+  - nastavování hesel
+  - nastavování jednotlivách aplikací
+  - instalace softwarových aplikací *(vzdáleně a hromadně)*
+  - instalace aktulizací a aplikací
+- **závisí na AD !!!**
+- *GPO Policy se ukládá do `C:\Windows\SYSVOL\sysvol\franta.local\Policies`* - obsahuje 2 politiky
+  - **Default domain policy** - výchozí politika domény
+  - **Default domain controlles policy** - výchozí politika na jednotlivé řadiče
+- **Server Manager > Tools > Group Policy Management**
+  - *Domains* > `franta.local`
+    - *Domain controllers* - obsahuje základní politiky
+    - *Group Policy Objects* - obsahuje všechny politiky
+    - *WMI Filters* - zacílí politiky na základě hardwaru
+    - *Starter GPOs* - šablony
+  - *Sites*
+  - *Group Policy Modeling* - simulace, jakej by měl dopad
+  - *Group Policy Results* - ukazuje výsledek simulace
+- **GPO se vážou na (GPO Link)**
+  -  *doménu*
+  -  *doménový řadič*
+  -  *OU (organizační jednotky)*
+  -  *Site*
+
+##### Politiky
+- `uzivatele` > (Right Click) > Create a GPO in this domain, and Link it here...
+- **Linked Group Policy Objects** - zobrazení propojených politik
+- **Group Policy Inheritance**
+- **Delegation** - nastavování přistupových práv
+- Rozkliknutí naší politiky - `test`
+  - **Scope** - Linkování, ochranný a WMI filter
+  - **Details** - základní informace
+    - *GPO Status* - nastavuje určitou PC část a uživatelskou část
+      - *PC část* - aplikuje se na PC bez ohledu Uživatele
+      - *Uživatelská část* - aplikuje se Uživatele bez ohledu na PC
+  - **Settings** - jaký nastavení politika obsahuje
+  - **Delegation** - určuje kdo si smí tu politiku stáhnout, naaplikovat, prohlídnout
+- Nastavení politiky > (Right Click) Edit
+  - **Computer** x **User Configuration**
+    - **Policies**
+      - *Software Settings* - slouží pro vzálenou instalaci softwaru na stanicí
+      - *Windows Settings* - základní věci; scripty, ochranné prvky (hesla apod.)
+      - *Administrative Templates* - nastavování ovládacích panelů, taskmanagerů, ...
+    - **Preferences**
+      - *Windows Settubgs* - nastavování prostředí, souborů, složek, rigistrů, ...
+      - *Control Panel Settings* - nastavení lokálních uživatelů, tiskáren, služeb, ...
