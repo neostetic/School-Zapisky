@@ -116,7 +116,7 @@
 - **Realisticky zobrazuje situaci na frontě**.
 ##### Hořící sníh (1970)
 - **Realistický válečný román**, který vyobrazuje osudy mnoha vojáků při obléhání Stalingradu.
-### Vladimir Vysockij (1938-1980)
+### Vladimir Vysockij (1938-1980) - Rusko
 - **Ruský básník**, herec avantgardního moskevského Divadla Tagence.
 - **Vydával *zakázané písně*** na *neoficiálních* magnetonofových deskách
 
