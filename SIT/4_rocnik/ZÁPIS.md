@@ -718,23 +718,30 @@ Data (E:)
 
 ##### Politiky
 - `uzivatele` > (Right Click) > Create a GPO in this domain, and Link it here...
-- **Linked Group Policy Objects** - zobrazení propojených politik
-- **Group Policy Inheritance**
-- **Delegation** - nastavování přistupových práv
-- Rozkliknutí naší politiky - `test`
-  - **Scope** - Linkování, ochranný a WMI filter
-  - **Details** - základní informace
-    - *GPO Status* - nastavuje určitou PC část a uživatelskou část
-      - *PC část* - aplikuje se na PC bez ohledu Uživatele
-      - *Uživatelská část* - aplikuje se Uživatele bez ohledu na PC
-  - **Settings** - jaký nastavení politika obsahuje
-  - **Delegation** - určuje kdo si smí tu politiku stáhnout, naaplikovat, prohlídnout
-- Nastavení politiky > (Right Click) Edit
-  - **Computer** x **User Configuration**
-    - **Policies**
-      - *Software Settings* - slouží pro vzálenou instalaci softwaru na stanicí
-      - *Windows Settings* - základní věci; scripty, ochranné prvky (hesla apod.)
-      - *Administrative Templates* - nastavování ovládacích panelů, taskmanagerů, ...
-    - **Preferences**
-      - *Windows Settubgs* - nastavování prostředí, souborů, složek, rigistrů, ...
-      - *Control Panel Settings* - nastavení lokálních uživatelů, tiskáren, služeb, ...
+  - **Linked Group Policy Objects** - zobrazení propojených politik
+  - **Group Policy Inheritance**
+  - **Delegation** - nastavování přistupových práv
+  - Rozkliknutí naší politiky - `test`
+    - **Scope** - Linkování, ochranný a WMI filter
+    - **Details** - základní informace
+      - *GPO Status* - nastavuje určitou PC část a uživatelskou část
+        - *PC část* - aplikuje se na PC bez ohledu Uživatele
+        - *Uživatelská část* - aplikuje se Uživatele bez ohledu na PC
+    - **Settings** - jaký nastavení politika obsahuje
+    - **Delegation** - určuje kdo si smí tu politiku stáhnout, naaplikovat, prohlídnout
+  - Nastavení politiky > (Right Click) Edit
+    - **Computer** x **User Configuration**
+      - **Policies**
+        - *Software Settings* - slouží pro vzálenou instalaci softwaru na stanicí
+        - *Windows Settings* - základní věci; scripty, ochranné prvky (hesla apod.)
+        - *Administrative Templates* - nastavování ovládacích panelů, taskmanagerů, ...
+      - **Preferences**
+        - *Windows Settubgs* - nastavování prostředí, souborů, složek, rigistrů, ...
+        - *Control Panel Settings* - nastavení lokálních uživatelů, tiskáren, služeb, ...
+- `uzivatele` > (Right Click) Block Inheritance
+  - jako první se blokují politiky který mají nižší prioritu (vyšší číslo)
+  - politika která má vyšší prioritu, tak přepisuje nižší
+    - ![image](https://user-images.githubusercontent.com/83291717/205629926-19db6110-fbf4-4fd1-9e66-93a5799b9a22.png)
+- (Right Click) Enforced
+  - nastaví prioritu a nemůže přepsat JI jiná politika
+ 
