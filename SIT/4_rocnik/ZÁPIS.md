@@ -745,4 +745,46 @@ Data (E:)
 - (Right Click) Enforced
   - nastaví prioritu a nemůže přepsat JI jiná politika
  
-#### SAMBA
+#### SAMBA protokol
+- **softwarový balíček který slouží pro sdílení souborů a tiskáren**
+- sdílení sériových portů
+- *založená na protokolu SMB/CIFS (Service Message Block / Commonn Internet File System)*
+- založena Miscrosoftem
+- vznikla z důvodu kompability operačního systému **Linux** a **Windows**
+- pro čistou Linux síť stačí protokol - *NFS (Network File System)*
+
+##### Samba Komunikace
+- **přímá komunikace** (doporučená)
+  - *port komunikace:* `TCP/UDP 445`
+  - používá *DNS* 
+- **nepřímá komunikace**
+  - *port komunikace:* `UDP 137,138`, `TCP 137,139`
+    - `TCP/UDP 137` - jmenné služby
+    - `UDP 138` - bezstavové spojení
+    - `TCP 139` - stavové spojení
+  - používá mezi-vrstvu *API NetBIOS*
+  - **mapování názvů**
+    - broadcast dotaz
+    - NBNS (centrální jmenná služba) *(WINS (Windows Internet Naming Service))*
+
+##### Samba Role
+- **Standalone server*
+  - není členem žádné domény
+  - sám si řeší autentizaci uživatelů, ...
+- **Domain member server**
+  - členem určité *AD domény* nebo *Win NT 4 domény*
+- **Domain controller**
+  - funkce doménového řadiče
+    - *PDC (Primary Domain Controller)* - z důvodu kompatibility *Win NT 4*
+    - *BDC (Backup Domain Controller)* - --//--
+    - *AD domain Controller*
+
+##### Samba Daemon
+- *Daemon* - služba běžící na pozadí
+  - **nmbd** - jmenná služba, spracovávání názvů
+  - **smbd** - zajišťuje sdílení služeb a tiskáren
+  - **winbindd** - pro spolupráci s windows doménami
+
+##### Samba Konfigurace - Linux
+- `apt install samba smbclient`
+- 
