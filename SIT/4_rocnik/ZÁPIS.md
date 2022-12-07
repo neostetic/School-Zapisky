@@ -745,3 +745,4 @@ Data (E:)
 - (Right Click) Enforced
   - nastaví prioritu a nemůže přepsat JI jiná politika
  
+#### SAMBA
