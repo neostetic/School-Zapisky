@@ -31,6 +31,54 @@ if(*podminka* & *podminka*) {}    // podminka se spusti 2x
 if(*podminka* && *podminka*) {}   // podminka se spusti 1x
 ```
 
+### Anotace
+```
+@Override
+```
+
+- Tvorba anotace
+```
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface RunThis {
+}
+```
+
+- Podmínka na invoke anotací
+```
+Method[] methods = Main.class.getDeclaredMethods();
+for (Method method : methods) {
+    RunThis annotationRunThis = method.getAnnotation(RunThis.class);
+    if (annotationRunThis == null) {
+        continue;
+    }
+    method.invoke(Main.class, null);
+}
+```
+
+- Anotace s vlatními parametry
+```
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface RunThis {
+    int run();
+}
+```
+```
+@RunThis(run = 3)
+...
+Method[] methods = Main.class.getDeclaredMethods();
+for (Method method : methods) {
+    RunThis annotationRunThis = method.getAnnotation(RunThis.class);
+    if (annotationRunThis == null) {
+        continue;
+    }
+    for (int i = 0; i < annotationRunThis.run(); i++) {
+        method.invoke(Main.class, null);
+    }
+}
+```
+
 <p align="right">
   <a href="https://github.com/neostetic/School-Zapisky/tree/main/PRO">Go Back</a>
 </p>
