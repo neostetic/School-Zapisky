@@ -814,6 +814,37 @@ Data (E:)
   - + `[verejne]`
     - + `comment = Verejna slozka`
     - + `path = /home/shares/verejne`
-    - ... učitel říkal že si to dopíšeme
+    - + `valid users = @users` - zavináč znamená skupina
+    - + `force group = users`
+    - + `create mask = 0661`
+    - + `directory mask = 0771`
+    - + `writable = yes`
+    - ![image](https://user-images.githubusercontent.com/83291717/207025335-83bf02b2-00af-4402-ab6c-d53e8e6be0fb.png)
   - **definice sdílených složek - `[nazev]` !!!**
+- **vyvoříme si složku *verejne* - `mkdir -p /home/shares/verejne`**
+- **změníme práva složky *verejne***
+  - `chown root:users verejne/`
+  - `chmod 770 verejne/`
 
+##### Založení uživatelů
+- **`testparm`** - zkontroluje syntaxy souboru
+- `useradd -s /usr/sbin/nologin -U test -G users`
+  - `grep test /etc/passwd` - kontrola, zda se uživatel vytvořil 
+  - `passwd test` - nastavení hesla uživatele
+- `smbpasswd [parametr] [uzivatel]` - tvorba sambového uživatele
+  - *parametry*
+    - `-a` - add
+    - `-x` - remove
+    - `-e` - enable
+    - `-d` - disable 
+  - `pdbedit -L` - zobrazí všechny uživatele SAMBY
+- `systemctl restart nmbd.service`
+- `systemctl restart smbd.service`
+- `systemctl status nmbd.service`
+- `systemctl status smbd.service`
+- `smbstatus` - 
+- **přidáme do BIND zóny nový záznam**
+  - ![image](https://user-images.githubusercontent.com/83291717/207030542-a46fc79f-d0d0-4402-a3d7-3c181ce8a833.png)
+- `rndc reload` - restart :)
+- na klientovy - `ping server`
+ 
