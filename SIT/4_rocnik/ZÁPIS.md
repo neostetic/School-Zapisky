@@ -745,7 +745,7 @@ Data (E:)
 - (Right Click) Enforced
   - nastaví prioritu a nemůže přepsat JI jiná politika
  
-#### SAMBA protokol
+### SAMBA protokol
 - **softwarový balíček který slouží pro sdílení souborů a tiskáren**
 - sdílení sériových portů
 - *založená na protokolu SMB/CIFS (Service Message Block / Commonn Internet File System)*
@@ -753,7 +753,7 @@ Data (E:)
 - vznikla z důvodu kompability operačního systému **Linux** a **Windows**
 - pro čistou Linux síť stačí protokol - *NFS (Network File System)*
 
-##### Samba Komunikace
+#### Samba Komunikace
 - **přímá komunikace** (doporučená)
   - *port komunikace:* `TCP/UDP 445`
   - používá *DNS* 
@@ -767,7 +767,7 @@ Data (E:)
     - broadcast dotaz
     - NBNS (centrální jmenná služba) *(WINS (Windows Internet Naming Service))*
 
-##### Samba Role
+#### Samba Role
 - **Standalone server**
   - není členem žádné domény
   - sám si řeší autentizaci uživatelů, ...
@@ -779,13 +779,13 @@ Data (E:)
     - *BDC (Backup Domain Controller)* - --//--
     - *AD domain Controller*
 
-##### Samba Daemon
+#### Samba Daemon
 - *Daemon* - služba běžící na pozadí
   - **nmbd** - jmenná služba, spracovávání názvů
   - **smbd** - zajišťuje sdílení služeb a tiskáren
   - **winbindd** - pro spolupráci s windows doménami
 
-##### Samba Konfigurace - Linux
+#### Samba Konfigurace - Linux
 - **naintalujeme si balíčky** - `apt install samba smbclient`
 - **otevřeme si konfiguraci smb** - `/etc/samba/smb.conf`
   - *vymažeme zbytečné komentáře*
@@ -826,7 +826,7 @@ Data (E:)
   - `chown root:users verejne/`
   - `chmod 770 verejne/`
 
-##### Založení uživatelů
+#### Založení uživatelů
 - **`testparm`** - zkontroluje syntaxy souboru
 - `useradd -s /usr/sbin/nologin -U test -G users`
   - `grep test /etc/passwd` - kontrola, zda se uživatel vytvořil 
