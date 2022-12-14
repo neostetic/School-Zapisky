@@ -796,14 +796,14 @@ Data (E:)
     - `bind interfaces only = yes`
     - `server role = standalone server` - nastavení roly Samby
     - `map to guest = bad user` - co se stane s uživatelem se špatnými přihlašovacími údaji
-    - + `security = user` - způsob přihlášení
-    - + `netbios name = server` - název serveru
-    - + `server string = Samba server %v` - při použití samby se ozve TÍMHLE STRINGEM
-    - + `dns proxy = no` - ne dns 👎 
+    - *+* `security = user` - způsob přihlášení
+    - *+* `netbios name = server` - název serveru
+    - *+* `server string = Samba server %v` - při použití samby se ozve TÍMHLE STRINGEM
+    - *+* `dns proxy = no` - ne dns 👎 
   - `[homes]` - definice domovských složek uživatelů
     - `comment = Home Directories` - komentář
-    - + `path = /home/shares/%S` - cesta ke složkám uživatelů
-    - + (nebude potřeba) `root preexec = bash -c '[ -d /home/shares/%S ] || mkdir -m 0700 /home/shares/%S && chown %S:%S /home/shares/%S'` - script; pokud složka uživatele neexistuje, tak se složka vytvoří
+    - *+* `path = /home/shares/%S` - cesta ke složkám uživatelů
+    - *+* (nebude potřeba) `root preexec = bash -c '[ -d /home/shares/%S ] || mkdir -m 0700 /home/shares/%S && chown %S:%S /home/shares/%S'` - script; pokud složka uživatele neexistuje, tak se složka vytvoří
     - `browseable = no` - zda se bude složka zobrazovat
     - `read only = no` - přístup pro zápis
     - `create mask = 0700` - jaká práva budou mít nově vytvořené soubory ve složce
@@ -812,13 +812,13 @@ Data (E:)
   - `[printers]` - definice sdílených tiskáren *(nepotřebujeme)*
   - `[print$]` - definice sdílených složek ovladačů tiskáren *(nepotřebujeme)*
   - + `[verejne]`
-    - + `comment = Verejna slozka`
-    - + `path = /home/shares/verejne`
-    - + `valid users = @users` - zavináč znamená skupina
-    - + `force group = users`
-    - + `create mask = 0661`
-    - + `directory mask = 0771`
-    - + `writable = yes`
+    - *+* `comment = Verejna slozka`
+    - *+* `path = /home/shares/verejne`
+    - *+* `valid users = @users` - zavináč znamená skupina
+    - *+* `force group = users`
+    - *+* `create mask = 0661`
+    - *+* `directory mask = 0771`
+    - *+* `writable = yes`
     - ![image](https://user-images.githubusercontent.com/83291717/207025335-83bf02b2-00af-4402-ab6c-d53e8e6be0fb.png)
   - **definice sdílených složek - `[nazev]` !!!**
 - **vyvoříme si složku *verejne* - `mkdir -p /home/shares/verejne`**
@@ -831,7 +831,7 @@ Data (E:)
 - `useradd -s /usr/sbin/nologin -U test -G users`
   - `grep test /etc/passwd` - kontrola, zda se uživatel vytvořil 
   - `passwd test` - nastavení hesla uživatele
-- `smbpasswd [parametr] [uzivatel]` - tvorba sambového uživatele
+- **`smbpasswd [parametr] [uzivatel]` - tvorba sambového uživatele**
   - *parametry*
     - `-a` - add
     - `-x` - remove
@@ -842,9 +842,13 @@ Data (E:)
 - `systemctl restart smbd.service`
 - `systemctl status nmbd.service`
 - `systemctl status smbd.service`
-- `smbstatus` - 
 - **přidáme do BIND zóny nový záznam**
   - ![image](https://user-images.githubusercontent.com/83291717/207030542-a46fc79f-d0d0-4402-a3d7-3c181ce8a833.png)
 - `rndc reload` - restart :)
-- na klientovy - `ping server`
- 
+- **na klientovy**
+  - `ping server`
+  - exlorer.exe > `\\server`
+  - exlorer.exe > `\\10.0.0.1`
+- `smbstatus` - v jakých složkách jsou přihlášení uživatelé
+- `smbclient -L //server/[složka] -U [uživatel]` - slouží pro práci se sdílenými složkami
+  - `smbclient -L //localhost -U test` - zobrazí sdílené složky 
