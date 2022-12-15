@@ -159,6 +159,37 @@ done
   ▉  ▉  ▉  ▉
 ```
 
+#### Ciklus 2
+```
+---------------------- nano ----------------------  
+#! /bin/bash
+#
+cisla="1 2 3 4 5 6 7 8 9 10 11 12"
+for cislo in $cisla
+do
+        Q=`expr $cislo % 2`
+        if [ $Q -eq 0 ]
+        then
+                echo "Cislo $cislo je sude"
+                continue
+        fi
+        echo "Cislo $cislo je liche"
+done
+--------------------------------------------------
+Cislo 1 je liche
+Cislo 2 je sude
+Cislo 3 je liche
+Cislo 4 je sude
+Cislo 5 je liche
+Cislo 6 je sude
+Cislo 7 je liche
+Cislo 8 je sude
+Cislo 9 je liche
+Cislo 10 je sude
+Cislo 11 je liche
+Cislo 12 je sude
+```
+
 
 <p align="right">
   <a href="./..">Go Back</a>
