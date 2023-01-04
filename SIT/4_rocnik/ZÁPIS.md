@@ -852,3 +852,106 @@ Data (E:)
 - `smbstatus` - v jakých složkách jsou přihlášení uživatelé
 - `smbclient -L //server/[složka] -U [uživatel]` - slouží pro práci se sdílenými složkami
   - `smbclient -L //localhost -U test` - zobrazí sdílené složky 
+
+### Apache2
+- vyřizování **http protokolu**
+  - slouží pro přenos webových stránek a jejich informací (obrázky, videa, ...)
+  - funguje na typu *klient (internetový prohlízeč)* a *server (apache)*
+  - *nestavový protokol* - neuchovává stav předchozích stránek
+    - pro uložení - Cookies, UseState, ...
+- verze: `HTTP/0.9`, `HTTP/1.0`, `HTTP/1.1`
+  - data přináší v podobě čitelného textu
+  - **MIME (Multipurpose Internet Mail Extensions)**
+    - umí překonvertovat soubor do textové podoby a na zpátek
+  - **TCP přenos**
+- verze: `HTTP/2`
+  - data se přenáší binárně
+  - umí vyřídit víc požadavků v jednom toku
+  - **musí být šifrovaný!**
+  - **TCP přenos**
+- verze: `HTTP/3` (6.6. 2022 :)))))
+  - **UDP přenos** - aby se propustnost zvýšila
+- *šifrování*
+  - **SSL** - `SSL 1.0`, `SSL 2.0`, `SSL 3.0`
+  - **TLS** - `1.0`, `1.1`, `1.2`, `1.3`
+- **nejpoužívanější software pro webové servery**
+  - Apache, NGINX, IIS 
+
+#### Adresování
+- **URL (URI) (Uniform Resource Locator/Identifier)**
+  - `hhtp://www.spsmb.cz:8080/index.php?p1=h1?p2=h2` : `PROTOKOL://ADRESA:PORT/DOKUMENT?queryString...`
+    - *PORT* pouze pokud se nejedná o standartní
+
+#### Metody HTTP
+- **GET** - vrátí data
+- **HEAD** - vrátí metadata
+- **POST** - odesílá data na server
+- **PUT** - požadavek na uložení
+- **PATCH** - částečná modifikace
+- **DELETE** - odstranění objektu na serveru
+- **TRACE** - zaslání kopie požadavku zpátky klientovi
+- **OPTIONS** - vypíše jaké motody máme k dispozici
+- **CONNECT** - slouží pro vytvoření tunelu *SSL* komunikaci nezabezpečeného systému
+
+#### Stavové kódy
+- **1xx** - Informace
+- **2xx** - Úspěch *(200)*
+- **3xx** - Přesměrování požadavku
+- **4xx** - Chyba na straně klienta *(404)*
+- **5xx** - Chyba na straně serveru *(500)*
+
+### Instalace Apache2 na Linux
+- `apt update`
+- `apt install apache2 libapache2-mod-php`
+- `cd /etc/apache2`
+- `ls -la`
+- **apache2.conf** - hlavní konfigurační soubor *apache*
+- **envvars** - nastavení základních proměnných
+- **magic** - obsahuje magické formule, pro převod bin/text a obráceně
+- **ports.conf** - obsahuje porty které bude *apache* používat
+
+#### Složky
+- **available** X **enabled**
+- */etc/apache2conf-...* - drobnější hlavní konfigurace
+- */etc/apache2mods-...* - rozšiřůjící apache konfigurace
+- */etc/apache2sites-...* - konfigurace webových stránek 
+- zapínání/vypínání stránek - `a2 en/dis conf/mod/site`
+- */var/www/* - výchozí složka pro webové stránky
+  - *html* - ukázková stránka apache
+- */usr/share/doc/apache2* - dokumentace a vzorové soubory
+
+#### Konfigurace
+- `nano /etc/apache2/apache2.conf`1
+  - `Timeout 100` - čas na vyřízení požadavku
+  - `KeepAlive...` -  požadavky
+  - *nastavení složek*
+```
+<Directory />
+         Options None
+         AllowOverride None
+         Require all denied
+</Directory>
+
+<Directory /usr/share>
+         Options None
+         AllowOverride None
+         Require all denied
+</Directory>
+
+<Directory /var/www>
+         Options None
+         AllowOverride None
+         Require all granted
+         <LimitExcept GET POST OPTIONS>
+                Require all denied
+         </LimitExceot>
+         LimitRequestBody 102400
+</Directory>
+
+LimitRequestFields 20
+LimitRequestFieldSize 7000
+
+...
+
+FileEtag: None    // nebudou se zobrazovat identifikátory souborů ze souborového systému
+```
