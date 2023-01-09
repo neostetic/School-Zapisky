@@ -921,7 +921,7 @@ Data (E:)
 - */usr/share/doc/apache2* - dokumentace a vzorové soubory
 
 #### Konfigurace
-- `nano /etc/apache2/apache2.conf`1
+- `nano /etc/apache2/apache2.conf`
   - `Timeout 100` - čas na vyřízení požadavku
   - `KeepAlive...` -  požadavky
   - *nastavení složek*
@@ -953,5 +953,65 @@ LimitRequestFieldSize 7000
 
 ...
 
-FileEtag: None    // nebudou se zobrazovat identifikátory souborů ze souborového systému
+FileEtag None      // nebudou se zobrazovat identifikátory souborů ze souborového systému
 ```
+- `nano /etc/apache2/conf-available/security.conf`
+```
+ServerTokens Prod   // server bude prozrazovat co nejmin informaci
+...
+ServerSignature Off
+...
+TraceEnable Off
+```
+- `nano /etc/apache2/sites-available/000-default.conf` - pro nezabezpečené http
+```
+<VirtualHost *:80>
+        ServerName www.franta.local
+        ServerAlias localhost
+        ServerAdmin admin@localhost
+        DocumentRoot /var/www/
+        
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet  // konfigurat pro vim
+```
+- `nano /etc/apache2/apache2.conf` - nebude u maturity !! - jenom vědět co to dělá
+  - pod `FileEtag None`
+```
+...
+RewriteEngine On
+RewriteCond %{THE_REQUEST} !HTTP/1.1$
+RewriteRule .* - [F]
+
+<IfModule mod_header.c>
+        Header set X-XSS-Protection: "1; mode-block"
+        Header edit Set-Cookie ^(.*)$ $1:HttpOnly:Secure
+        Header always append X-Frame-Options SAMEORIGIN
+</IfModule>
+```
+- `cd etc/apache2/mods-available/`
+- `a2enmod rewrite headers`
+- `cd ../../../var`
+- `chown www-data:www-data www`
+- `cd www`
+- `rm -r html` - smažeme složku html
+- `nano index.php`
+```
+<?php phpinfo(); ?>
+```
+- `nano etc/bind/zones/db.franta.local` - generace certifikátu
+  - `www IN CNAME ns1`
+- `rdnc reload`
+- `cd /etc/ssl`
+- `openssl req -new -x509 -newkey rsa:4096 -days 365 -nodes -out server.pem -keyout server.key
+  - `CZ`
+  - `Czech Republic`
+  - `Mlada Boleslav`
+  - `SPSMB`
+  - `4. Bi`
+  - `www.franta.local`
+  - `admin@localhost`
+
+!!!! DODELAT DEFAULT-SSL.CONF
