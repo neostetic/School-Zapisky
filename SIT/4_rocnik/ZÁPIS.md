@@ -1047,3 +1047,22 @@ RewriteRule .* - [F]
 - v prohlížeči : `inet 192.168.8.23`
 
 ### Mailový Server
+![image](https://user-images.githubusercontent.com/83291717/211796240-88070178-3d71-4348-ae02-9248e22c1b88.png)
+- zajišťuje provoz **SMTP protokolu**
+- přenos poštovních zpráv mezi mailové servery
+- *starej protokolový dědula*
+- **MSA** (Mail Submission Agent) - odesílatel
+- **MTA** (Message Tranfer Agent) - přesílatel
+- **MDA** (Mail Delivery Agent) - doručovatel
+- **MUA** (Mail User Agent) - rozhrání
+- **POP3**
+  - **nezabezpečený port: *110***
+  - **zabezpečený port: *995***
+  - stahuje záhlaví, zbytek po otevření
+- **IMAP4**
+  - **nezabezpečený port: *143***
+  - **zabezpečený port: *993***
+  - pokročilejší protokolu *POP3*
+- *open-relay* - odesílá všechno všem, zneužití pro SPAM
+- *Exim4* - zajšťuje činnost **MSA**, **MTA**, **MDA**
+- *dpvecot* - zajišťuje činnost prokolou **POP3** a **IMAP4**
