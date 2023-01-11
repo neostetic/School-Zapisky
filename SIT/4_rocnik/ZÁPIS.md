@@ -1005,7 +1005,7 @@ RewriteRule .* - [F]
   - `www IN CNAME ns1`
 - `rdnc reload`
 - `cd /etc/ssl`
-- `openssl req -new -x509 -newkey rsa:4096 -days 365 -nodes -out server.pem -keyout server.key
+- `openssl req -new -x509 -newkey rsa:4096 -days 365 -nodes -out server.pem -keyout server.key`
   - `CZ`
   - `Czech Republic`
   - `Mlada Boleslav`
@@ -1034,3 +1034,16 @@ RewriteRule .* - [F]
         </VirtualHost>
 </IfModule>
 ```
+- `cd /etc/apache2/sites-available`
+- `a2ensite default-ssl.conf`
+- `nano /etc/apache2/mods-available/ssl.conf`
+- **řádek 59** `Alt + C`
+  - `SSLCipherSuite HIGH:!MEDIUM:!RC4:!MD5:!aNULL`
+- `a2enmod ssl`
+- `systemctl restart apache2.service`
+
+#### Test
+- `ifconfig` - zjistíme ip
+- v prohlížeči : `inet 192.168.8.23`
+
+### Mailový Server
