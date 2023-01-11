@@ -1013,5 +1013,24 @@ RewriteRule .* - [F]
   - `4. Bi`
   - `www.franta.local`
   - `admin@localhost`
-
-!!!! DODELAT DEFAULT-SSL.CONF
+- `nano etc/apache2/sites-available/default-ssl`
+```
+<IfModule mod_ssl.c>
+        <VirtualHost *:443>
+                ServerAdmin admin@localhost
+                ServerName www.franta.local
+                DocumentRoot /var/www
+                ServerAlias localhost
+                
+                LogLevel info ssl:warn
+                
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/error.log combined
+                
+                SSLEngine on
+                
+                SSLCertificateFile      /etc/ssl/server.pem
+                SSLCertificateKeyFile /etc/ssl/server.key
+        </VirtualHost>
+</IfModule>
+```
