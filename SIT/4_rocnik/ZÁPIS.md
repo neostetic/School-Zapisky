@@ -1066,3 +1066,36 @@ RewriteRule .* - [F]
 - *open-relay* - odesílá všechno všem, zneužití pro SPAM
 - *Exim4* - zajšťuje činnost **MSA**, **MTA**, **MDA**
 - *dpvecot* - zajišťuje činnost prokolou **POP3** a **IMAP4**
+
+#### Instalace
+- `apt update`
+- `apt install exim4-daemon-heavy`
+- `cd /etc/exim4`
+  - `conf.d` - složka dílčích šablon konfigurací
+    - `acl`, `auth`, `main`, `retry`, `rewrite`, `router`, `transport`
+  - `exim4.conf.template` - *VELKÁ* konfigurační šablona
+  - `passwd.client` - přihlašovací údaje, např. pro data s cizí poštovní schránky 
+  - `update-exim4.conf.conf` - šablona pro uživatelskou konfiguraci
+- `dpkg-reconfigure exim4-config`
+  - **PRŮVODCE 1** - konfigurace
+     - **`internet site`** 
+     - `mail sent by smarthost: SMTP` - cizí příjemce, velká schránka
+     - `mail sent by smarthost: no local mail` - odesílání bez pošty 
+     - `local delivery only` - lokální doručování zpráv
+     - `no configuration at this time` - bez konfigurace
+   - **PRŮVODCE 2** - mail
+     - `mail.franta.local`
+   - **PRŮVODCE 3** - ip adresa
+     - `... ; 10.0.0.1`
+   - **PRŮVODCE 4** - doména
+     - `franta.local`
+   - **PRŮVODCE 5** - relay domén
+     - ` `
+   - **PRŮVODCE 6**
+     - ` `
+   - **PRŮVODCE 7**
+     - `No`
+   - **PRŮVODCE 8**
+     - `mbox`
+   - **PRŮVODCE 9**
+     - `No`
