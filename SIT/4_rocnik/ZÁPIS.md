@@ -1067,7 +1067,7 @@ RewriteRule .* - [F]
 - *Exim4* - zajšťuje činnost **MSA**, **MTA**, **MDA**
 - *dpvecot* - zajišťuje činnost prokolou **POP3** a **IMAP4**
 
-#### Instalace
+#### Instalace a Konfigurace
 - `apt update`
 - `apt install exim4-daemon-heavy`
 - `cd /etc/exim4`
@@ -1083,19 +1083,71 @@ RewriteRule .* - [F]
      - `mail sent by smarthost: no local mail` - odesílání bez pošty 
      - `local delivery only` - lokální doručování zpráv
      - `no configuration at this time` - bez konfigurace
-   - **PRŮVODCE 2** - mail
+   - **PRŮVODCE 2** - název serveru - jménem
      - `mail.franta.local`
-   - **PRŮVODCE 3** - ip adresa
-     - `... ; 10.0.0.1`
-   - **PRŮVODCE 4** - doména
+   - **PRŮVODCE 3** - ip adresa/adresy, které bude server naslouchat
+     - `127.0.0.1 ; ::1 ; 10.0.0.1`
+   - **PRŮVODCE 4** - doména pro kterou chceme příjímat elektrickou poštu
      - `franta.local`
-   - **PRŮVODCE 5** - relay domén
+   - **PRŮVODCE 5** - relay domén; cizí domény
      - ` `
-   - **PRŮVODCE 6**
+   - **PRŮVODCE 6** - relay domén; cizí subnety nebo adresy
      - ` `
-   - **PRŮVODCE 7**
+   - **PRŮVODCE 7** - vytáčené připojení
      - `No`
-   - **PRŮVODCE 8**
-     - `mbox`
-   - **PRŮVODCE 9**
+   - **PRŮVODCE 8** - přiřazení uživatelských souborů
+     - `mbox format in /var/mail/`
+   - **PRŮVODCE 9** - split konfigurace
      - `No`
+- `update-exim4.conf` - generace konfigurace z generovaných souborů
+- `systemctl restart exim4`
+- `systemctl status exim4`
+
+##### Konfigurace anti- spamu
+- `apt install sa-exim spamassassin`
+- `find / -name sa-exim.so >> exim.conf.template` - přidání cesty anti-spamu na konec souboru
+- `nano /etc/exim4/exim4.conf.template`
+  - na posledním řádku zkopírujeme `Ctrl + K` řádek cesty a dáme ho úplně na horu
+  - `/usr/lib/exim4/local_scan/sa-exim.so` - upravíme na - `local_scan_path = /usr/lib/exim4/local_scan/sa-exim.so`
+- `nano /etc/exim4/sa-exim.conf`
+  - `Alt + C`
+  - odkomentujeme **řádky `54`, `55` a `162`**
+  - zakomentujeme **řádek `68`**
+  - řádek `79` **změníme hodnotu 0 na 1**
+- `update-exim4.conf`
+- `systemctl restart exim4`
+- `systemctl restart spamassassin`
+
+##### Konfigurace Pop3 a IMAP (Dovecot)
+- `apt install dovecot-pop3d dovecot-imapd`
+- `cd /etc/dovecot/conf.d`
+  - nano `10-auth.conf`
+    - `disable_plaintext_auth = yes` - změnit na `disable_plaintext_auth = no` 
+- `systemctl restart dovecot.service`
+
+##### Konfigurace Squirrellmail
+- `w3m www.squirrelmail.org`
+  - **Download**
+  - **Stable version**
+  - **Refresh (5 sec) https://...**
+  - **Enter**
+- `tar -xvf squirrelmail-webmail-1.4.22.tar.gz`
+- `cp -r squirrelmail-webmail-1.4.22 /var/www`
+- `cd /var/www`
+- `mv squirrelmail-webmail-1.4.22 squirrel` - přejmenování
+- `cd squirrel/config`
+- `./conf.pl`
+  - *Server Settings > Domain > `franta.local`*
+  - `Alt + F2` - vytvoříme si složky v nové konzoli
+    - `cd /var/local`
+    - `mkdir -p squirrelmail/data`
+    - `mkdir -p squirrelmail/attach`
+    - `chown www-data:www-data squirrelmail/ -R`
+  - *Languages > Default Language > `UTF-8`*
+  - *Languages > Default Charset > `UTF-8`*
+  - *Set pre-defined settings for specific IMAP servers > `dovecot`*
+  - *Save data*
+- `nano /etc/apache2/sites-available/default-ssl.conf`
+  - `DocumentRoot /var/www/squirrel`
+- `systemctl restart apache2`
+- na Windows prohlížeči `https://[NASE IP ADRESA]`
