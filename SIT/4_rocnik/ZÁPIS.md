@@ -1067,7 +1067,7 @@ RewriteRule .* - [F]
 - *Exim4* - zajšťuje činnost **MSA**, **MTA**, **MDA**
 - *dpvecot* - zajišťuje činnost prokolou **POP3** a **IMAP4**
 
-#### Instalace a Konfigurace
+#### Instalace a Konfigurace - Linux
 - `apt update`
 - `apt install exim4-daemon-heavy`
 - `cd /etc/exim4`
@@ -1103,7 +1103,7 @@ RewriteRule .* - [F]
 - `systemctl restart exim4`
 - `systemctl status exim4`
 
-##### Konfigurace anti- spamu
+##### Konfigurace anti-spamu
 - `apt install sa-exim spamassassin`
 - `find / -name sa-exim.so >> exim.conf.template` - přidání cesty anti-spamu na konec souboru
 - `nano /etc/exim4/exim4.conf.template`
@@ -1150,4 +1150,49 @@ RewriteRule .* - [F]
 - `nano /etc/apache2/sites-available/default-ssl.conf`
   - `DocumentRoot /var/www/squirrel`
 - `systemctl restart apache2`
-- na Windows prohlížeči `https://[NASE IP ADRESA]`
+- na Windows prohlížeči `https://[NASE IP ADRESA]` nebo ``https://franta.local``
+  - *Compose* - posílání zpráv
+![image](https://user-images.githubusercontent.com/83291717/212663001-358f0240-a2b6-4193-9727-4290572abd81.png)
+- přidání uživatele - `useradd -m -s /bin/bash -U postak`
+- přidání hesla - `passwd postak`
+  - `New password: student`
+  - `Retype password: student`
+  
+### IIS - Windows Server
+- stické *html stránky*
+- dynamické *wrbové aplikace* (**ASP.NET**, PHP, ...)
+- možnost pluginů
+- nativní podpora databázového systému **MS SQL SERVER**
+- propojení s AD
+- služby **FTP *(File Transfer Protokol)***
+
+#### Konfigurace
+- *Manage* > *Add Roles and Features*
+  - *Server Roles*
+    - `[x] Web Server (IIS)`
+  - *Features*
+    - `[x] .NET Framework 4.8 Fratures (2 of 7 installed)`
+      - `[x] ASP.NET 4.8`
+  - *Role Services*
+    - `[x] Health and Diagnostics`
+      - `[x] Custom Logging`
+      - `[x] Logging Tools`
+      - `[x] Request Monitor`
+      - `[x] Tracing`
+    - `[x] Performance`
+      - `[x] Dynamic Content Compression`
+    - `[x] Security`
+      - `[x] Basic Authentication`
+      - `[x] IP and Domain Restrictions`
+      - `[x] URL Authentication`
+      - `[x] Windows Authentication`
+    - `[x] Application Development`
+      - `[x] .NET Extensibility 4.8`
+      - `[x] ASP`
+      - `[x] APS.NET 4.8`
+      - `[x] CGI`
+      - `[x] ISAPI Extensions`
+      - `[x] ISAPI Filters`
+    - `[x] Management Tools`
+      - `[x] IIS Management Scripts and Tools`
+  - *Install*
