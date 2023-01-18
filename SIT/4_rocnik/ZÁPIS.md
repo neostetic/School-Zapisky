@@ -1166,7 +1166,7 @@ RewriteRule .* - [F]
 - propojení s AD
 - služby **FTP *(File Transfer Protokol)***
 
-#### Konfigurace
+#### Instalace
 - *Manage* > *Add Roles and Features*
   - *Server Roles*
     - `[x] Web Server (IIS)`
@@ -1196,3 +1196,75 @@ RewriteRule .* - [F]
     - `[x] Management Tools`
       - `[x] IIS Management Scripts and Tools`
   - *Install*
+
+#### Konfigurace
+- *Tools* > *Internet Information Services (IIS) Manager*
+- `AD1 (FRANTA/Administrator)`
+- **Actions**
+  - spuštění, restart a zastavení
+  - *View Application Pools*
+  - *View Sites* - přepne do prohlížení stránkami
+- **Connections**
+  - *AD1* - server
+    - *Application Pools*
+      - nastavení serveru včetně nastavení webové aplikace
+    - *Sites*
+      - *Default Web Site*
+        - **Actions**
+          - *Explore* - otevře umístění souborů stránky
+          - *Bindings* - nastavuje se na jakém protokolu, rozhrání a portech je stránka přístupná klientům
+          - *Basic Settings* - nastavování fyzické umístění stránky (lokálně, vzdálené úložiště)
+          - *View Aplication* a *View Virtual Directories* - ukazuje rozhrání virtuálních a lokálních aplikací/adresářů
+          - *Browse ⭐:80* - otevře na počítači naši stránku
+          - *Limits* - nastavování time out a klientů
+          - *HSTS* - konfigurace šifrování přenosu
+          - ***Advanced Settings* - nastavení všeho najednou**
+
+#### Tvorba HTML stránky
+- *Tools* > *Internet Information Services (IIS) Manager*
+  - *Default Web Site* > *(right click) Remove*
+  - `C:\inetpub`
+    - odstraníme složku `wwwroot`
+  - *Site* > *(right click) Add Website*
+    - ![image](https://user-images.githubusercontent.com/83291717/213161000-f7884be0-e3e2-4caf-a8ab-6f2b04ba5cf2.png)
+  - *MujWeb*
+    - **Actions** > *Edit Permissions*
+      - *Security* > *Edit* > *Add*
+        - uživatelská skupina
+          - ![image](https://user-images.githubusercontent.com/83291717/213162028-5a356d86-3d4b-40fb-882d-827b2bc914bc.png)
+        - přidáváme práva dynamickým aplikacím
+          - ![image](https://user-images.githubusercontent.com/83291717/213162605-35fbdab0-8e9e-465b-8fb6-297edb186c58.png)
+          - **Check Names**
+          - ![image](https://user-images.githubusercontent.com/83291717/213162657-4db11c06-0c4f-446e-bfb5-5ff20dc31d69.png)
+          - `Modify - Allow [X]`
+    - **Actions** > *Explore*
+      - vytvoříme file `index.html`
+```
+<html>
+<head>
+	<title>Muj web :)</title>
+	<style>
+		* {
+			font-family: sans-serif
+		}
+	</style>
+</head>
+<body>
+	<h1>Webova stranka je cool</h1>
+	<h2>Vítej ty uživateli jeden :*</h2>
+	<p>Moje stránka není cool</p>
+</body>
+</html>
+```
+- *Tools* > *DNS Manager*
+  - *Forward Lookup Zones* > *franta.local* > (right click) *New CNAME*
+    - ![image](https://user-images.githubusercontent.com/83291717/213164476-58d056a5-2cf2-42de-9de3-02fb3cc7fd29.png)
+- *Tools* > *Internet Information Services (IIS) Manager*
+  - **Actions** > *Browse www.franta.local on ⭐:80 (http)*
+  - *AD1 (FRANTA/Administrator)* > *Server Certificates*
+    - **Create Self-Signed Certificate**
+      - ![image](https://user-images.githubusercontent.com/83291717/213165198-b8c4782b-1585-43c8-8ade-03cab6fefcd6.png)
+  - *MujWeb*
+    - **Actions** > *Bindings*
+      - ![image](https://user-images.githubusercontent.com/83291717/213165672-77b5594c-15bd-471b-a1cc-e40460edef32.png)
+    - **Actions** > *Browse www.franta.local on ⭐:443 (https)*
