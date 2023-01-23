@@ -1268,3 +1268,46 @@ RewriteRule .* - [F]
     - **Actions** > *Bindings*
       - ![image](https://user-images.githubusercontent.com/83291717/213165672-77b5594c-15bd-471b-a1cc-e40460edef32.png)
     - **Actions** > *Browse www.franta.local on ⭐:443 (https)*
+
+#### Ikonky
+- ![image](https://user-images.githubusercontent.com/83291717/214026361-c13f4411-0216-431f-ad22-f550b708e541.png)
+- ***AD1 Home*** *- Server Ikonky*
+  - ***ASP.NET*** - nastavování protokolu *ASP.NET*
+    - **.NET Authorization Rules** - nastavování autorizačních nástrojů
+    - **.NET Compilation** - nastavování kompilování zdrojových kódů 
+    - **.NET Error Pages** - nadefinování vlastní chybové stránky 
+    - **.NET Globalization** - nastavení prostředí
+    - **.NET Trust Levels** - nastavování úrovní zabezpečení
+    - **Application Settings** - nastavování aplikací 
+    - **Connection Strings** - nastavování připojení k databázím
+    - **Machine Key** - nastavování speciálního klíče pro šifrování
+    - **Pages and Controls** - nastavování stránek a řadičů
+    - **Providers** - *Providery* pro nastavování připojení databází
+    - **Session State** - nastavování cookies, ...
+    - **SMTP E-mail** - *SMTP Server* - nastavování mailového serveru
+  - ***IIS*** - nastavování celkového protokolu
+    - **ASP**
+    - **Authentication** - nastavování authetizační metody 
+    - **Authorization Rules**
+    - **CGI** - spravuje databázi osobních a komerčních pojistných smluv
+    - **Compression** - komprese přenosu 
+    - **Default Document** - výchozí document, který se otevře
+    - **Directory Browsing** - procházení složek a souborů na webu
+    - **Error Pages** - nadefinování vlastní chybové stránky 
+    - **Failed Request Tracing Rules**
+    - **FastCGI Settings** - nastavovíní rychlého *CGI*
+    - **Handler Mappings** - nastavování různých souborů a jejich zpracovávní
+    - **HTTP Response Headers** - *META-HEADS* které se přidají do odesílaných dokumentů
+    - **IP Address and Domain Restrictions** - omezení přistupu webu na základě adresy klienta
+    - **ISAPI Filters** - konfigurace rozšíření *ISAPI*
+    - **Logging** - nastavení systémových logů
+    - **MIME Types** - nastavování koncovek
+    - **Modules** - nastavování různých modulů a jejich vlastností
+    - **Output Caching** - cachování výstupů aplikace *(může pomoct urychlit server)*
+    - **Request Filtering** - nastavování kritérií požadavků a jejich akcí po splnění kritéria
+    - **Server Cetificates** - nastavování serverových certifikátů
+    - **Worker Processes** - nastavování pracovních procesů aplikací a stránek
+  - ***Connection Strings*** - *NEPODSTATNÉ*
+    - **Configuration Editor** 
+    - **Feature Delegation**
+    - **Shared Configuration**
