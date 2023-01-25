@@ -1313,4 +1313,6 @@ RewriteRule .* - [F]
     - **Shared Configuration**
 
 ### Microsoft Exchange Server
-- 
+- potřeba **Active Directory**, **DHCP Server** a **DNS Server**
+- `\\vboxsvr`
+- přidat funkci *(Features)* **Media Faundation**
