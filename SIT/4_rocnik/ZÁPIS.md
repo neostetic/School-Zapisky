@@ -1316,3 +1316,30 @@ RewriteRule .* - [F]
 - potřeba **Active Directory**, **DHCP Server** a **DNS Server**
 - `\\vboxsvr`
 - přidat funkci *(Features)* **Media Faundation**
+
+#### Exchange Administrative Center
+![image](https://user-images.githubusercontent.com/83291717/214828659-ab654e1d-c2fd-4cdd-9245-78dbc77daa24.png)
+- **recipients** - mailové adresy a uživatelé
+- **permissions** - nastavení oprávnění
+- **compliance management**
+- **organization** - nastavení organizací a skupin
+- **protection** - nastavení ochrany uživatelů a odesílaných dat
+- **mail flow** - malové adresy a jejich pravidla
+- **mobile** - nastavení přístupů z mobilních zařízení
+- **public folders** - *speciální* veřejné složky *(plánovače, různé úkoly, ...)*
+- **unified messaging** - nastavení komunikace s voice IP
+- **servers** - základní nastavení serveru, databází, certifikátů
+  - *servers* - přes ![image](https://user-images.githubusercontent.com/83291717/214828774-dd48e125-b01b-435b-9510-8039afeeddc1.png) můžeme upravovat
+    - *general*
+    - *databases and database availability groups* - nastavování databází na serveru
+      - organizace by se mela delit na vice databazi z duvodu bezpecnostního a mailového
+    - *POP3* - nastavení banneru, přistupových PORTŮ *(Zabezpečený a Nezabezpečený)*, limitů
+    - *IMAP4* - nastavení způsobu přihlášní, PORTŮ, limitů
+    - *DNS lookups* - jakým způsobem server řeší překlad doménových jmen, s jakým rozhráním
+    - *transport limits* - nastavení doby spojení, počty opakování spojení
+    - *transport logs* - systémové logy SMTP protokolu
+    - *Outlook Anywhere* - připojení desktopového *Outlooku* na Exchange, v případě vzdálené síťi
+  - *database* - nastavení
+    - ... `tady jsme skončili`
+- **hybrid** - nastavení **hybridního režimu** *(exchange má několik verzí)*
+- **tools** - pro **hybridní režim**
