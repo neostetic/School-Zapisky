@@ -1320,11 +1320,40 @@ RewriteRule .* - [F]
 #### Exchange Administrative Center
 ![image](https://user-images.githubusercontent.com/83291717/214828659-ab654e1d-c2fd-4cdd-9245-78dbc77daa24.png)
 - **recipients** - mailové adresy a uživatelé
+  - *mailboxes* - nastavování maolových schránek
+    - *general*
+    - *email address* - přidávání dalších mailových adres
+    - *mailbox features* - nastavování ruzných přídavných funkcí, přesměrování, IMAP, ...
+    - *member of* - hormadné doručování
+    - *mailbox delegation* - ruzné přistupové práva pro schránku *(originální, v zastoupení, plný přístup)*
+  - *goups* - nastavování a vytváření skupin
+    - *general*
+    - *ownership* 
+    - *delivery management* - nastavování pro odesílání po internetu
+    - *message approval*
+    - *email option* - nastavování adresy skupiny
+    - *group delegation* - nastavování posílání zpráv jako skupina
+  - *contacts* - externí mailové adresy/kontakty
+  - *shared* - nastavování sdílených schránek
+  - *migration* - přesun do jiné ...
 - **permissions** - nastavení oprávnění
 - **compliance management**
 - **organization** - nastavení organizací a skupin
 - **protection** - nastavení ochrany uživatelů a odesílaných dat
 - **mail flow** - malové adresy a jejich pravidla
+  - *rules* - pravidla pro doručování elektrické pošty
+  - *delivery reports* - doručovací odpovědi
+  - *accepted domains* - domény pro které příjímáme mail
+  - *email address policies* - nastavování formy e-mailových adres
+  - *receive connectors* - cesty kterými server přijíma e-maily
+    - *general* - limity velikostí zpráv
+    - *security* - z jakých typů serverů se pošta posílá, šifrování đ
+    - *scoping* - na jakém portu se nachází
+  - ***send connectors*** - cesty pro odesílanou poštu; ![image](https://user-images.githubusercontent.com/83291717/215464817-3a82a566-e953-40dc-9178-f2b481b81a1b.png)
+    - `[x] Custom` > Next
+    - `[x] MX record associated with recipient domain` > Next
+    - ![image](https://user-images.githubusercontent.com/83291717/215464817-3a82a566-e953-40dc-9178-f2b481b81a1b.png) - `*` > Save > Next
+    - ![image](https://user-images.githubusercontent.com/83291717/215464817-3a82a566-e953-40dc-9178-f2b481b81a1b.png) - Zvolíme vytvořený > Finish
 - **mobile** - nastavení přístupů z mobilních zařízení
 - **public folders** - *speciální* veřejné složky *(plánovače, různé úkoly, ...)*
 - **unified messaging** - nastavení komunikace s voice IP
@@ -1333,13 +1362,35 @@ RewriteRule .* - [F]
     - *general*
     - *databases and database availability groups* - nastavování databází na serveru
       - organizace by se mela delit na vice databazi z duvodu bezpecnostního a mailového
-    - *POP3* - nastavení banneru, přistupových PORTŮ *(Zabezpečený a Nezabezpečený)*, limitů
-    - *IMAP4* - nastavení způsobu přihlášní, PORTŮ, limitů
+    - *POP3* - nastavení banneru, **přistupových PORTŮ** *(Zabezpečený a Nezabezpečený)*, limitů
+    - *IMAP4* - nastavení způsobu přihlášní, **PORTŮ**, limitů
     - *DNS lookups* - jakým způsobem server řeší překlad doménových jmen, s jakým rozhráním
     - *transport limits* - nastavení doby spojení, počty opakování spojení
     - *transport logs* - systémové logy SMTP protokolu
     - *Outlook Anywhere* - připojení desktopového *Outlooku* na Exchange, v případě vzdálené síťi
-  - *database* - nastavení
-    - ... `tady jsme skončili`
+  - *database* - nastavování, přidání, odebírání databází ![image](https://user-images.githubusercontent.com/83291717/214828774-dd48e125-b01b-435b-9510-8039afeeddc1.png)
+    - *general* - název, nastavení, cesta do Databáze
+      - *Database path: `C:\Program Files\Microsoft\...`* - cesta k souboru databáze 
+    - *maintanance* - údržba databáze; umožnuje úpravu databáze na menší velikost
+    - *limits* - limity velikosti poštovní schránky, údržba koše mailboxů
+    - *client settings* - odkaz na adresář
+  - *database availibility groups* - nastavování replikace a propojení s ostatními servery
+  - *virtual directories*
+  - *certifivates* - nastavování certifykátů
 - **hybrid** - nastavení **hybridního režimu** *(exchange má několik verzí)*
 - **tools** - pro **hybridní režim**
+
+#### Nastavování schránky a uživatelů
+- **Server Manager*
+  - *Tools* > *Active Directory Users and Computers*
+    - `franta.local` (Right Click) > New > Organization Unit > uzivatele
+      - New > User
+    - `franta.local` (Right Click) > New > Organization Unit > skupiny
+- **Exchange Admin Center**
+  - *recipients* > *mailboxes* > +
+    - `[x] Existing User`
+      - *Browse* - najdeme si našeho uživatele
+    - `[x] New User`
+      - *...*
+
+`test:Password123.` a `postak:Heslo123.`
