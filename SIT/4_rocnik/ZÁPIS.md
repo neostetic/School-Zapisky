@@ -1394,3 +1394,47 @@ RewriteRule .* - [F]
       - *...*
 
 `test:Password123.` a `postak:Heslo123.`
+
+### NFTables
+
+#### firewally
+- **firewall je proces který sleduje proces komunikace, poravnává ji s nadefinovanými pravidli a podle nich provede akci**
+- **nestavové firewally *(stateless, packtový filtr)***
+  - vyhodnocuje
+    - zdrojová a cílová IP adresa *(síťová vrstva)*
+    - zdrojový a cílový PORT *(transportní vrstva)*
+  - vyhodnocuje komunikaci na základě procesů
+  - nachází se na routeru
+- **stavové firewally *(stateful, SPI)***
+  - vyhodnocuje *(také)*
+    - zdrojová a cílová IP adresa *(síťová vrstva)*
+    - zdrojový a cílový PORT *(transportní vrstva)*
+  - vyhodnocují stav komunikace *(4. vrstva)*
+    - zda je spojení nové nebo už již navázané
+    - nebo zda nezapadá ani do jedné z kategorií
+- **aplikační firewally**
+  - schopen vyhodnocovat komunikaci na protokolech 7. vrstvy *(http, ftp, ...)*
+  - nastavení připojení přístupu internetu nebo určitému síťovému spojení *(řídít přístup internetu)*
+  - *cachování* stránek, kvůli menší zátěži
+  - **proxy server**
+    - chová se jako svůj vlastní malý server
+    - spracovává požadavky a vyhodnocuje je
+
+#### **NAT *(Network Address Translation)***
+- překládá IP adresy mezi privátním a veřejným adresním prostorem
+- **překlady**
+  - *1:N* - jedna věřejná adresa a několik privátních
+  - *1:1* - statický NAT
+  - *N:N* - více veřejných adres a více privátních *(různě se překládají mezi sebou)*
+- **typy NAT**
+  - *trychtýřový (full cone NAT)*
+    - ve výchozím stavu jsou všechny PORTY uzavřený
+    - po první kominikaci se otevře 1 PORT který se potom využívá pro všechny 
+    - slouží pouze pro překládaní adres, *se zabezpečením nemá nic společného*
+  - *omezený (restricted cone NAT)*
+    - po první komunikaci se otevře PORT a je přístupný pouze s počítačem komunikace
+  - *symetrický (symmetric)*
+    - pro každou kombinaci *privátní komunikaci* na PORTU přiřadí kombinaci *veřejné* adresy a PORT
+
+### **PAT *(Port Access Translation)***
+- mapuje více privátních IP na jednu veřejnou (NAT overload)
