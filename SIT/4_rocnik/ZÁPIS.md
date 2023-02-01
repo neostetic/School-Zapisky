@@ -1395,8 +1395,34 @@ RewriteRule .* - [F]
 
 `test:Password123.` a `postak:Heslo123.`
 
-### NFTables
-
+### ntables
+- **základ konfigurace - `ruleset`**
+  - *`nft list ruleset` - vypíše konfiguraci*
+  - *`nft flush ruleset` - smaže konfiguraci*
+- **rodina protokolů**
+  - *ip* ... IPv4
+  - *ip6* ... IPv6
+  - *inet* ... IPv4 + IPv6
+- **tvoření tabulky**
+  - `add`, `delete`, `list`, `flush`
+  - `nft add table rodina nazev_tabulky`
+- **řetězce** 
+  - `add`, `create`, `delete`, `rename`, `list`, `flush`
+  - **typy řetězců**
+    - `filter`, `nat`, `route` 
+  - `nft add chain ip rodina nazev_tabulky retezec`
+- **hook**
+![image](https://user-images.githubusercontent.com/83291717/216037303-4f720552-1d6b-426f-9d91-3124da0db4f5.png)
+  - `prerouting`
+  - `input`
+  - `forward`
+  - `output`
+  - `postrouting`
+  - `ingress`
+- **priority**
+  - distnat: -100
+  - filter: 0
+  - srcnat: 100 
 #### firewally
 - **firewall je proces který sleduje proces komunikace, poravnává ji s nadefinovanými pravidli a podle nich provede akci**
 - **nestavové firewally *(stateless, packtový filtr)***
@@ -1436,5 +1462,25 @@ RewriteRule .* - [F]
   - *symetrický (symmetric)*
     - pro každou kombinaci *privátní komunikaci* na PORTU přiřadí kombinaci *veřejné* adresy a PORT
 
-### **PAT *(Port Access Translation)***
+#### **PAT *(Port Access Translation)***
 - mapuje více privátních IP na jednu veřejnou (NAT overload)
+
+#### iptables x nftables
+- **iptables**
+  - má definováno *defaultních* 5 tabulek a 5 řetězců
+  - dá se pravidla přidávat
+  - delší zápis
+- **nftables**
+  - jedná se o stránku která ná větší propustnost a neobsahuje žádné řetězce
+  - umožňuje pro více protokolů zápis jedním pravidlem *(najednou)*
+  - kratší zápis
+
+#### Konfigurace na Linux
+- `apt update`
+- `apt install nftables`
+- `systemctl enable nftables`
+- `reboot`
+- `nft list ruleset`
+- `nft flush ruleset`
+- `nft add table ip filtrovani`
+- `nft add chain ip filtrovani vstup`
