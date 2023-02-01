@@ -1395,7 +1395,7 @@ RewriteRule .* - [F]
 
 `test:Password123.` a `postak:Heslo123.`
 
-### ntables
+### nftables
 - **základ konfigurace - `ruleset`**
   - *`nft list ruleset` - vypíše konfiguraci*
   - *`nft flush ruleset` - smaže konfiguraci*
