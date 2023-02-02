@@ -1405,12 +1405,12 @@ RewriteRule .* - [F]
   - *inet* ... IPv4 + IPv6
 - **tvoření tabulky**
   - `add`, `delete`, `list`, `flush`
-  - `nft add table rodina nazev_tabulky`
+  - **syntaxe:** `nft add table [rodina] [nazev_tabulky]`
 - **řetězce** 
   - `add`, `create`, `delete`, `rename`, `list`, `flush`
   - **typy řetězců**
     - `filter`, `nat`, `route` 
-  - `nft add chain ip rodina nazev_tabulky retezec`
+  - **syntaxe:** `nft add chain [rodina] [nazev_tabulky] [retezec]`
 - **hook**
 ![image](https://user-images.githubusercontent.com/83291717/216037303-4f720552-1d6b-426f-9d91-3124da0db4f5.png)
   - `prerouting`
@@ -1423,6 +1423,36 @@ RewriteRule .* - [F]
   - distnat: -100
   - filter: 0
   - srcnat: 100 
+- **politiky**
+  - `accept`
+  - `drop`
+  - *příkaz:* `nft add chain [rodina] [tabulka] [nazev_retezce] \{ type [type_retezte] hook [typ_hooku] priority [priorita] \; policy [vychozi_politika] \; \}`
+- **direktiva pravidel**
+  - `iif` - index vstupního rozhrání
+  - `oif` - index výstupního rozhrání
+  - `iifname` - název vstupního rozhrání
+  - `oifname` - název výstupního rozhrání
+  - `saddr` - zdrojová adresa *(původce komunikace)*
+  - `daddr` - cílová adresa *(příjemce komunikace)*
+  - `sport` - zdrojový PORT
+  - `dport` - cílový PORT
+  - `ct state` - stav komunikace *(new, esablished, related, untracked)*
+  - `counter` - počítadlo packetů
+  - protokoly - `tcp`, `udp`, `icmp`, `all` a další dle **názvu** nebo **čísla**
+- **akce**
+  - `accept` - packety jsou přijaty *(propuštěby dála)*
+  - `drop` - packety jsou zahozeny *(komunikace je zablokována)*
+  - `continue` - pokračuje ve zpracování dalšáho pravidla *(výchozí akce, pokud nedošlo ke schodě s aktuálním pravidlem)*
+  - `jump` - skok do jiného řetězce, zpracovávání pokračuje prvním pravidlem v novém řetězci, pokud k finálnímu rozhodnutí nebo akci return *(projetí všech pravidel)*, uchovává původní pozici, při akci return oijračuje na původní pozici původního řezězce
+  - `goto` - stejné jako `jump`, ale neushovává pozici
+  - `log` - zapíše událost *(shoda s pravidlem)* do systémového logu
+  - `reject` - podobné jako `drop`, ale vrací chybovou zprávu
+  - `snat to adresa` - odchozí NAT, v packetu opouštějícím LAN nahradí odchozí privátní IP adresu veřejnou IP adresou
+  - `dnat to adresa` - přichozí NAT, určuje na jakou vnitřní adresu v LAN a PORT má být packet nasměrován
+  - `masquerade` - totéž jako `snat` ale použává se, pokud je IP adresa odchozího rozhrání nastavena z DHCP serveru
+  - `redirect to PORT` - přesměrování vnitřní komunikace na jiný PORT
+  - **syntaxe pro přidání pravidla:** `nft add rule [rodina] [nazev_tabulky] [nazev_retezce] [direktivy_pravidla] [pocitadlo] [akce]`
+
 #### firewally
 - **firewall je proces který sleduje proces komunikace, poravnává ji s nadefinovanými pravidli a podle nich provede akci**
 - **nestavové firewally *(stateless, packtový filtr)***
@@ -1484,3 +1514,67 @@ RewriteRule .* - [F]
 - `nft flush ruleset`
 - `nft add table ip filtrovani`
 - `nft add chain ip filtrovani vstup`
+- `nft delete chain ip filtrovani vstup`
+- `nft add chain ip filtrovani vstup \{ type filter hook input priority 0\; policy drop \; \}`
+- ***nftables* se po restartu vynuluje**
+- `nft list ruleset > fw.nft` - **přesune na začátek souboru**
+- `nano fw.nft`
+```
+table ip filtrovani {
+	chain vstup {
+		type filter hook input priority filter; policy drop;
+	}
+	chain vystup {
+		type filter hook output priority filter; policy accept;
+	}
+	chain router {
+		type filter hook forward priority filter; policy drop;
+	}
+}
+
+table ip natovani {
+	chain natvstup {
+		type nat hook prerouting priority -100; policy accept;
+	}
+	chain natvstup {
+		type nat hook postrouting priority 100; policy accept;
+	}
+}
+```
+- `nft flush ruleset`
+- `nft -f fw.nft` - **přesune ze soubor do tabulky**
+- `nano fw.nft`
+  - **`Shitf` + `Alt` + `S`** - zalámování textu
+```
+table ip filtrovani {
+	chain vstup {
+		type filter hook input priority filter; policy drop;
+			iifname lo ip saddr 127.0.0.1 counter accept
+			icmpt type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
+			upd dport 53 counter accept
+			ip protocol tcp ct state related,established counter accept
+			ip protocol udp ct state related,established counter accept
+	}
+	chain vystup {
+		type filter hook output priority filter; policy accept;
+	}
+	chain router {
+		type filter hook forward priority filter; policy drop;
+			iifname eth0 oifname eth1 icmpt type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
+			iifname eth0 oifname eth1 upd dport 53 counter accept
+			iifname eth0 oifname eth1 ip protocol tcp ct state related,established counter accept
+			iifname eth0 oifname eth1 ip protocol udp ct state related,established counter accept
+			iifname eth1 oifname eth0 ip saddr 10.0.0.0/24 ip daddr !=10.0.0.0/24 counter accept
+	}
+}
+
+table ip natovani {
+	chain natvstup {
+		type nat hook prerouting priority -100; policy accept;
+	}
+	chain natvstup {
+		type nat hook postrouting priority 100; policy accept;
+			oifname eth0 counter masquerade
+	}
+}
+```
