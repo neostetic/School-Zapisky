@@ -203,3 +203,8 @@ v konfiguračních souborech.
 - Základy šifrování – symetrická vs. asymetrická šifra, hash
 - Princip elektronického podpisu, rozšíření S/MIME u elektronické pošty
 - Handshake protokolů SSL a TLS
+
+
+<p align="right">
+  <a href="./..">Go Back</a>
+</p>
