@@ -13,112 +13,147 @@
   - podle topologie
   - podle postavení uzlů
   
-  </details>
+</details>
+<details>
+  <summary><h3>2. Strukturovaná kabeláž</h3></summary>
 
-### 1. Vrstvové modely a základní dělení sítí
-- vrstvové modely
-  - proč používáme vrstvové modely
-  - modely ISO/OSI a TCP/IP
-  - popište jednotlivé vrstvy výše uvedených modelů a porovnejte je
-- dělení sítí
-  - podle rozlehlosti
-  - podle provozovatele
-  - podle topologie
-  - podle postavení uzlů
-### 2. Strukturovaná kabeláž
-- vysvětlete pojem strukturovaná kabeláž, její složení
-- zásady pro plánování strukt. kabeláže
-- dělení metalických spojů a jejich značení, kategorie, použití, náhradní schéma
-- spojování metalických kabelů, krimpování – praktický příklad
-- optická vlákna, Snellův zákon, složení optického vlákna, používané materiály
-- dělení optických vláken a jejich značení
-- spojování optických vláken
-### 3. Ethernet
-- uveďte, jaké vrstvy pokrývá Ethernet v modelu ISO/OSI a v modelu TCP/IP
-- detailně popište ethernetový rámec
-- detailně vysvětlete přístupovou metodu CSMA/CD
-- jaké jsou standardy Ethernetu
-- uveďte rychlosti Ethernetu od historických až po nejnovější
-- co to je fyzická adresa
-- co to je ARP
-- porovnejte hub a switch, u switche popište základní operace
-### 4. Bezdrátový přenos
-- základy bezdrátové komunikace
-- vysvětlete pojmy wifi, bluetooth
-- vlnová délka, pásma, kanály, dělení kmitočtu
-- uveďte a popište rozdělení bezdrátových sítí
-- základní vlastnosti, popis a použití wi-fi
-- Fresnelova zóna
-- CSMA/CA, RTS/CTS
-- bezpečnost bezdrátového přenosu
-- v praktické části nastavte a zabezpečte wi-fi router
-### 5. Síťová vrstva
-- vysvětlete funkci síťové vrstvy, vyjmenujte a popište služby síťové vrstvy
-- detailně popište PDU používané v síťové vrstvě
-- co je směrování, popište ho podrobně krok za krokem
-- popište adresu IPv4 a IPv6
-- pomocí zadané IP adresy a masky spočítejte parametry daného subnetu
-- popište zařízení pracující na síťové vrstvě
-### 6. Kyberbezpečnost – kybernetické útoky
-- rozdělte kybernetické útoky do jednotlivých kategorií a popište je
+- **vysvětlete pojem strukturovaná kabeláž, její složení**
+- **zásady pro plánování strukt. kabeláže**
+- **dělení metalických spojů a jejich značení, kategorie, použití, náhradní schéma**
+- **spojování metalických kabelů, krimpování – praktický příklad**
+- **optická vlákna, Snellův zákon, složení optického vlákna, používané materiály**
+- **dělení optických vláken a jejich značení**
+- **spojování optických vláken**
+  
+</details>
+<details>
+  <summary><h3>3. Ethernet</h3></summary>
+  
+- **uveďte, jaké vrstvy pokrývá Ethernet v modelu ISO/OSI a v modelu TCP/IP**
+- **detailně popište ethernetový rámec**
+- **detailně vysvětlete přístupovou metodu CSMA/CD**
+- **jaké jsou standardy Ethernetu**
+- **uveďte rychlosti Ethernetu od historických až po nejnovější**
+- **co to je fyzická adresa**
+- **co to je ARP**
+- **porovnejte hub a switch, u switche popište základní operace**
+  
+</details>
+<details>
+  <summary><h3>4. Bezdrátový přenos</h3></summary>
+  
+- **základy bezdrátové komunikace**
+- **vysvětlete pojmy wifi, bluetooth**
+- **vlnová délka, pásma, kanály, dělení kmitočtu**
+- **uveďte a popište rozdělení bezdrátových sítí**
+- **základní vlastnosti, popis a použití wi-fi**
+- **Fresnelova zóna**
+- **CSMA/CA, RTS/CTS**
+- **bezpečnost bezdrátového přenosu**
+- **v praktické části nastavte a zabezpečte wi-fi router**
+  
+</details>
+<details>
+  <summary><h3>5. Síťová vrstva</h3></summary>
+  
+- **vysvětlete funkci síťové vrstvy, vyjmenujte a popište služby síťové vrstvy**
+- **detailně popište PDU používané v síťové vrstvě**
+- **co je směrování, popište ho podrobně krok za krokem**
+- **popište adresu IPv4 a IPv6**
+- **pomocí zadané IP adresy a masky spočítejte parametry daného subnetu**
+- **popište zařízení pracující na síťové vrstvě**
+  
+</details>
+<details>
+  <summary><h3>6. Kyberbezpečnost – kybernetické útoky</h3></summary>
+  
+- **rozdělte kybernetické útoky do jednotlivých kategorií a popište je**
   - útoky na síťovou infrastrukturu a serverové služby
   - útoky na bezdrátové sítě wifi
   - útoky na emailovou komunikaci
   - útoky na autentizační údaje
   - útoky na databázové systémy
-### 7. Směrování – směrovací protokol RIP
-- zařazení protokolu RIP dle velikosti sítě, principu činnosti
-- verze RIP protokolu a rozdíly mezi nimi
-- podrobný popis principu aktualizace směrovacích tabulek (zprávy)
-- časové intervaly, nekonečná vzdálenost
-- změny v topologii – split horizon, triggered update, reverse cache poison
-### 8. Směrování – směrovací protokol OSPF a BGP
-- Zařazení protokolu OSPF dle velikosti sítě, princip činnosti
-- Popis algoritmu použitého v protokolu OSPF
-- Typy OSPF oblastí (Area)
-- Typy routerů v OSPF
-- Kde se používá protokol BGP
-- Vlastnosti protokolu BGP
-### 9. Transportní vrstva
-- vysvětlete význam transportní vrstvy, vyjmenujte a popište služby transportní vrstvy
-- adresace v transportní vrstvě, uveďte příklad
-- detailně popište PDU používané v transportní vrstvě, popište datagram a segment
-- popište službu TCP a UDP, u TCP podrobně popište proces navázání a ukončení spojení
-### 10. Windows Server
-- struktura Windows Serveru
+  
+</details>
+<details>
+  <summary><h3>7. Směrování – směrovací protokol RIP</h3></summary>
+  
+- **zařazení protokolu RIP dle velikosti sítě, principu činnosti**
+- **verze RIP protokolu a rozdíly mezi nimi**
+- **podrobný popis principu aktualizace směrovacích tabulek (zprávy)**
+- **časové intervaly, nekonečná vzdálenost**
+- **změny v topologii – split horizon, triggered update, reverse cache poison**
+  
+</details>
+<details>
+  <summary><h3>8. Směrování – směrovací protokol OSPF a BGP</h3></summary>
+  
+- **Zařazení protokolu OSPF dle velikosti sítě, princip činnosti**
+- **Popis algoritmu použitého v protokolu OSPF**
+- **Typy OSPF oblastí (Area)**
+- **Typy routerů v OSPF**
+- **Kde se používá protokol BGP**
+- **Vlastnosti protokolu BGP**
+  
+</details>
+<details>
+  <summary><h3>9. Transportní vrstva</h3></summary>
+  
+- **vysvětlete význam transportní vrstvy, vyjmenujte a popište služby transportní vrstvy**
+- **adresace v transportní vrstvě, uveďte příklad**
+- **detailně popište PDU používané v transportní vrstvě, popište datagram a segment**
+- **popište službu TCP a UDP, u TCP podrobně popište proces navázání a ukončení spojení**
+  
+</details>
+<details>
+  <summary><h3>10. Windows Server</h3></summary>
+  
+- **struktura Windows Serveru**
   - Popište strukturu serveru. Vysvětlete funkci HAL, jádra, služeb, GUI.o Co je třeba uvážit před počátkem instalace?
   - Jaký je rozdíl mezi jednotlivými edicemi serveru (essentials, standard, datacenter...)?
   - Jaké jsou možnosti ovládání Windows Serveru?
-- role, funkce, služby; jejich instalace a konfigurace
+- **role, funkce, služby; jejich instalace a konfigurace**
   - Vysvětlete, co jsou u WS role a funkce, jaký je jejich vztah ke službám?
   - Jako příklad nainstalujte roli DHCP server. Vysvětlete všechna dílčí nastavení.
-### 11. Autentifikace a důvěra v systémech AD
-- Jaký je rozdíl mezi autentifikací a autorizací?
-- Jak autentifikace probíhá v systémech Windows bez domény?
-- Jak autentifikace probíhá v systémech Windows s AD doménou?
-- Popište službu SSO v doméně AD a to, jak ovlivňuje přihlašování do dalších serverů Microsoft
-(Exchange, SQL atd.)
-- Popište účel a princip činnosti protokolu Kerberos v sítích s AD doménou.
-- Co je Windows Vault?
-### 12. Active Directory
-- struktura Active Directory
+  
+</details>
+<details>
+  <summary><h3>11. Autentifikace a důvěra v systémech AD</h3></summary>
+  
+- **Jaký je rozdíl mezi autentifikací a autorizací?**
+- **Jak autentifikace probíhá v systémech Windows bez domény?**
+- **Jak autentifikace probíhá v systémech Windows s AD doménou?**
+- **Popište službu SSO v doméně AD a to, jak ovlivňuje přihlašování do dalších serverů Microsoft
+(Exchange, SQL atd.)**
+- **Popište účel a princip činnosti protokolu Kerberos v sítích s AD doménou.**
+- **Co je Windows Vault?**
+  
+</details>
+<details>
+  <summary><h3>12. Active Directory</h3></summary>
+  
+- **struktura Active Directory**
   - Co je Active Directory a k čemu slouží?
   - Jaké typy objektů v AD existují, vysvětlete funkci jednotlivých organizačních jednotek,
 vytvořených po instalaci AD
   - Operation master roles
-- základní operace, tvorba objektů, nastavování vlastností
+- **základní operace, tvorba objektů, nastavování vlastností**
   - Vytvořte uživatelský účet se zadanými vlastnostmi
   - Vytvořte zabezpečovací skupinu
   - Nastavte zadanou složku jako sdílenou, definujte vlastnosti sdílení a zabezpečení, vysvětlete
 význam jednotlivých nastavení
   - Co jsou zděděná oprávnění? Jak je v případě potřeby odstranit?
-- uživatelské účty a skupiny
+- **uživatelské účty a skupiny**
   - Místní a cestovní profil uživatele
   - Definice síťové domovské složky
   - Přiřazení skriptu uživateli
   - Zařazení do skupin, změna zařazení, výchozí skupina
-### 13. Instalace a konfigurace DNS Serveru na platformě Windows Serveru
-- kořenové servery
+  
+</details>
+<details>
+  <summary><h3>13. Instalace a konfigurace DNS Serveru na platformě Windows Serveru</h3></summary>
+  
+- **kořenové servery**
   - Jak se instaluje a konfiguruje DNS server?
   - K čemu slouží DNS server?
   - S jakými protokoly DNS server pracuje?
@@ -126,44 +161,59 @@ význam jednotlivých nastavení
   - Zóna dopředného vyhledávání - co je, co obsahuje?
   - Zóna zpětného vyhledávání - co je, co obsahuje?
   - Typy záznamů v DNS serveru
-- autoritativní servery, rekurzivní vyhledávání, cachovací DNS Server
+- **autoritativní servery, rekurzivní vyhledávání, cachovací DNS Server**
   - Vysvětlete pojmy
-- nakonfigurujte DNS server pod OS Windows 2016 Server
-### 14. Instalace a konfigurace DHCP Serveru na platformě Windows Serveru
-- konfigurace oboru adres
+- **nakonfigurujte DNS server pod OS Windows 2016 Server**
+  
+</details>
+<details>
+  <summary><h3>14. Instalace a konfigurace DHCP Serveru na platformě Windows Serveru</h3></summary>
+  
+- **konfigurace oboru adres**
   - Co je DHCP server, k čemu slouží?
   - Jak se instaluje a konfiguruje? Proveďte!
   - Co je obor adres? Definujte!
   - Jak probíhá přidělení IP adresy, popište průběh komunikace
-- výjimky, rezervace, nastavení doby zapůjčení
+- **výjimky, rezervace, nastavení doby zapůjčení**
   - K čemu a kdy se používají výjimky?
   - K čemu a kdy se provádějí rezervace?
   - Co je doba zapůjčení?
-- množina oborů
+- **množina oborů**
   - K čemu slouží
   - Vytvořte obor adres pro každou vnitřní síťovou kartu serveru. Jak zajistíte připojení pracovní
 stanice na zadanou kartu a do předepsaného oboru adres?
-### 15. Politiky GPO
-- vysvětlení pojmu, místo uložení
+  
+</details>
+<details>
+  <summary><h3>15. Politiky GPO</h3></summary>
+  
+- **vysvětlení pojmu, místo uložení**
   - Co jsou to GPO? Kam se ukládají?
   - Co je Default Domain Policy a Default Domain Controller Policy?
   - Pomocí jakých nástrojů spravujeme GPO?
-- vazby, pořadí provádění GPO
+- **vazby, pořadí provádění GPO**
   - Na jaké objekty se mohou GPO vázat?
   - V jakém pořadí se GPO vyhodnocují?
-- nastavování pravidel pro uživatele a počítač
+- **nastavování pravidel pro uživatele a počítač**
   - Co představují pravidla pro uživatele a pro počítač? Kdy která aplikujeme?
   - Vytvořte pro danou organizační jednotku GPO, která dané skupině uživatelů zajistí
 předepsané nastavení. Ověřte přihlášením uživatele!
-### 16. Exchange server
-- popište funkce, instalaci a konfiguraci Exchange Serveru 2013
-- konfigurace poštovních schránek
+  
+</details>
+<details>
+  <summary><h3>16. Exchange server</h3></summary>
+  
+- **popište funkce, instalaci a konfiguraci Exchange Serveru 2013**
+- **konfigurace poštovních schránek***
   - vytvoření poštovní schránky
   - konfigurace databáze
   - konfigurace limitůo konfigurace konektorů
-- protokoly elektronické pošty - IMAP4, POP3, SMTP
-- Outlook Web Access
-- nastavení DNS
+- **protokoly elektronické pošty - IMAP4, POP3, SMTP**
+- **Outlook Web Access**
+- **nastavení DNS**
+  
+</details>
+
 ### 17. IIS
 - webové služby Microsoft Serveru
 - nastavení přístupu k webovým stránkám
