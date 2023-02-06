@@ -1,7 +1,7 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT) - Maturitní otázky</a>
 
-- [Otázky](./questions)
-- [Řešení](./solutions)
+- [Samotné otázky](./questions)
+- [Vyřešené otázky](./solutions)
 
 <p align="right">
   <a href="./..">Go Back</a>
