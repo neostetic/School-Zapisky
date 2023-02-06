@@ -1,4 +1,4 @@
-## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník - Maturitní otázky</a>
+## <a href="./..">🔌 Počítačové Sítě (SIT) - Maturitní otázky</a>
 
 - [Otázky](./questions)
 - [Řešení](./solutions)
