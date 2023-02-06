@@ -1578,3 +1578,51 @@ table ip natovani {
 	}
 }
 ```
+
+#### Zkouška firewallu na klientovy
+- `ping www.google.com`
+- **na serveru zapneme routování**
+  - `cat /proc/sys/net/ipv4/ip_forward` - když vyhodí 0, tak není nastavený routování
+  - `nano /etc/sysctl.conf`
+    - `net.ipv4.ip_forward=1`
+- `apt update`
+- `apt install ssh`
+
+##### Pravidlo "routovací"
+- `nano fw.nft`
+```
+table ip filtrovani {
+	chain vstup {
+		type filter hook input priority filter; policy drop;
+			iifname lo ip saddr 127.0.0.1 counter accept
+			icmpt type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
+			upd dport 53 counter accept
+			ip protocol tcp ct state related,established counter accept
+			ip protocol udp ct state related,established counter accept
+	}
+	chain vystup {
+		type filter hook output priority filter; policy accept;
+	}
+	chain router {
+		type filter hook forward priority filter; policy drop;
+			iifname eth0 oifname eth1 icmpt type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
+			iifname eth0 oifname eth1 upd dport 53 counter accept
+			iifname eth0 oifname eth1 ip protocol tcp ct state related,established counter accept
+			iifname eth0 oifname eth1 ip protocol udp ct state related,established counter accept
+			iifname eth1 oifname eth0 ip saddr 10.0.0.0/24 ip daddr !=10.0.0.0/24 counter accept
+			iifname eth0 oifname eth1 ip daddr 10.0.0.100 tcp dport 22 counter accept		// novy radek
+	}
+}
+
+table ip natovani {
+	chain natvstup {
+		type nat hook prerouting priority -100; policy accept;
+			iifname eth0 tcp dport 22 dnat to 10.0.0.100:22		// novy radek
+	}
+	chain natvstup {
+		type nat hook postrouting priority 100; policy accept;
+			oifname eth0 counter masquerade
+	}
+}
+```
+- [PUTTY DOWNLOAD](https://putty.org/) - **POKRACOVANI PRISTE**
