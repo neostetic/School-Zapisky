@@ -4,12 +4,11 @@
 
 #### Předměty
 - [💯 Číslicová Technika (CIT)](./CIT)
-- <a href="https://github.com/neostetic/School-Zapisky/tree/main/CJL">🗣️ Český Jazyk a Literatura (CJL)</a>
-- <a href="https://github.com/neostetic/School-Zapisky/tree/main/DBA">📂 Databzové Systémy (DBA)</a>
-- <a href="https://github.com/neostetic/School-Zapisky/tree/main/OPS">📴 Operační Systémy (OPS)</a>
-- <a href="https://github.com/neostetic/School-Zapisky/blob/main/PRO/README.md">💾 Programování (PRO)</a>
-- <a href="https://github.com/neostetic/School-Zapisky/tree/main/SIT">🔌 Počítačové Sítě (SIT)</a>
-- <a href="https://github.com/neostetic/School-Zapisky/tree/main/WAP">🌐 Webové Aplikace (WAP)</a>
+- [🗣️ Český Jazyk a Literatura (CJL)](./CJL)
+- [📂 Databzové Systémy (DBA)](./DBA)
+- [💾 Programování (PRO)](./PRO)
+- [🔌 Počítačové Sítě (SIT)](./SIT)
+- [🌐 Webové Aplikace (WAP)](./WAP)
 
 #### Maturitní okruhy
 - [Programování 2022/23](https://github.com/KRBNJSF/Maturita-okruhy#maturitn%C3%AD-okruhy-pro-20222023) (ask for invite <a href="https://github.com/KRBNJSF">@KRBNJSF</a>)
