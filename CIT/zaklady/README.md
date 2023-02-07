@@ -46,9 +46,8 @@ Vbat = 5V
 Vlef = Vbat - Vf
 Vled = 5 - 2 = 3V
 ## Ohmův zákon : R = Vled/If ##
-R = 3/0,03 = 100Ohm
-             ------
-
+R = 3/0,03 = 100 Ω
+             -----
 ```
 - pomocí různých řad Rezistorů si můžeme dočíst jakou vybrat
 
