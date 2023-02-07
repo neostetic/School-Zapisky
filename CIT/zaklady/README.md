@@ -1,7 +1,8 @@
 ## [💯 Číslicová Technika (CIT)](./..)
 ### Základní registry
-- PORTx - výstup
-- DDRx - výrody nastavuje na I/O
+- PORTx - výstup (výstupní registr – určuje výstupní hodnotu pinu nastaveného jako výstup, zapíná nebo
+vypíná pull-up rezistory u pinů nastavených na vstup.)
+- DDRx - vývody nastavuje na I/O (data direction register – nastavuje příslušný port na vstup nebo na výstup)
 
 ### LED Diody Switch
 ```
