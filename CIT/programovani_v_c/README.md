@@ -75,4 +75,6 @@ printf(%d, result); // 3*4 = 12
 | 1111    | 15        | F            |
 
 </details>
-<p align="right"><a href="https://github.com/neostetic/School-Zapisky">Go Back</p>
+<p align="right">
+  <a href="./../../..">Go Back</a>
+</p>
