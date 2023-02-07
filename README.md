@@ -3,7 +3,7 @@
 ###### Hledám někoho kdo by mi pomohl zapisovat, v případě zájmu, kontaktujte mě přes discord (neostetic@5391) !!!
 
 #### Předměty
-- <a href="https://github.com/neostetic/School-Zapisky/tree/main/CIT">💯 Číslicová Technika (CIT)</a>
+- [💯 Číslicová Technika (CIT)](./CIT)
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/CJL">🗣️ Český Jazyk a Literatura (CJL)</a>
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/DBA">📂 Databzové Systémy (DBA)</a>
 - <a href="https://github.com/neostetic/School-Zapisky/tree/main/OPS">📴 Operační Systémy (OPS)</a>
