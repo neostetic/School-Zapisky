@@ -15,7 +15,7 @@ int main(void)
 {
     
     DDRA=0b11111111;
-    DDRC=0x4;
+    DDRC=0x4; // DDRC|=(1<<PORTC2)
     int mssa = 1024;
 	while (1) 
     {
