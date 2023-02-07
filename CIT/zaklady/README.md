@@ -37,7 +37,7 @@ int main(void)
 - **Ir** - maximální proud, který bude protékat, když ji zapojáme v závěrném směru
 - ***Vbat*** - napětí baterie
 
-#### Jakej zvolit rezistor
+#### Jaký rezostor zvolit?
 ```
 Vf = 2V
 If = 30mA
