@@ -29,6 +29,30 @@ int main(void)
     }
 }
 ```
+
+### LED
+- **Vf** - minimální napětí, které musíme připojit pro funkci LED
+- **If** - minimální proud, která je deklarovaný vyrobcem LED
+- **Vr** - maximální napětí v závěrném směru
+- **Ir** - maximální proud, který bude protékat, když ji zapojáme v závěrném směru
+- ***Vbat*** - napětí baterie
+
+#### Jakej zvolit rezistor
+```
+Vf = 2V
+If = 30mA
+Vbat = 5V
+------------
+Vlef = Vbat - Vf
+Vled = 5 - 2 = 3V
+## Ohmův zákon : R = Vled/If ##
+R = 3/0,03 = 100Ohm
+             ------
+
+```
+- pomocí různých řad Rezistorů si můžeme dočíst jakou vybrat
+
+
 <p align="right">
   <a href="./..">Go Back</a>
 </p>
