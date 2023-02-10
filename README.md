@@ -6,6 +6,7 @@
 - [💯 Číslicová Technika (CIT)](./CIT)
 - [🗣️ Český Jazyk a Literatura (CJL)](./CJL)
 - [📂 Databzové Systémy (DBA)](./DBA)
+- [💻 Operační systémy (OPS)](./OPS)
 - [💾 Programování (PRO)](./PRO)
 - [🔌 Počítačové Sítě (SIT)](./SIT)
 - [🌐 Webové Aplikace (WAP)](./WAP)
