@@ -1159,6 +1159,7 @@ RewriteRule .* - [F]
   - `Retype password: student`
   
 ### IIS - Windows Server
+![image](https://user-images.githubusercontent.com/83291717/218061653-9c057b8e-4b6f-456a-8b02-1ef51aad8dfe.png)
 - stické *html stránky*
 - dynamické *wrbové aplikace* (**ASP.NET**, PHP, ...)
 - možnost pluginů
