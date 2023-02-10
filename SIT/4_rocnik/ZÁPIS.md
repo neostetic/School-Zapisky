@@ -1160,6 +1160,7 @@ RewriteRule .* - [F]
   
 ### IIS - Windows Server
 <img src="https://user-images.githubusercontent.com/83291717/218061653-9c057b8e-4b6f-456a-8b02-1ef51aad8dfe.png" width="200px"/>
+
 - stické *html stránky*
 - dynamické *wrbové aplikace* (**ASP.NET**, PHP, ...)
 - možnost pluginů
