@@ -1,5 +1,5 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník - zápis</a>
-- [🗒️ Soubory zápisu](./soubory)
+- [📁 Soubory zápisu](./soubory)
 - [🤔 Maturitní otázky](./maturita)
 - [🌐 LEARNIIT.tech / SÍTĚ](https://learniit.tech/site)
 
