@@ -149,8 +149,8 @@ PORTD = 0b[1]0000000;
 if(bit_is_clear(PIND, PIND7)) { ... }; 
 ```
 
-<spoiler>
-	<details>Zdrojový kód klikání a přepínání</details>
+<details>
+	<summary>Zdrojový kód klikání a přepínání</summary>
 <code>
 #define F_CPU 100000UL
 
@@ -207,7 +207,7 @@ int main(void)
 	}
 }
 	</code>
-	</spoiler>
+	</details>
 
 <p align="right">
   <a href="./..">Go Back</a>
