@@ -151,7 +151,8 @@ if(bit_is_clear(PIND, PIND7)) { ... };
 
 <details>
 	<summary>Zdrojový kód klikání a přepínání</summary>
-<code>
+
+```
 #define F_CPU 100000UL
 
 #include <avr/io.h>
@@ -206,7 +207,8 @@ int main(void)
 		_delay_ms(mssa);
 	}
 }
-	</code>
+```
+	
 	</details>
 
 <p align="right">
