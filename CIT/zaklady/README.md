@@ -1,8 +1,10 @@
 ## [💯 Číslicová Technika (CIT)](./..)
 ### Základní registry
-- PORTx - výstup (výstupní registr – určuje výstupní hodnotu pinu nastaveného jako výstup, zapíná nebo
+- **PIN** - zjišťujeme, zda je port vypnutý, nebo zapnutý *(detekce vstupu)*
+  - *vyhodnocení* - `int bit_is_clear(PINx, PINxn);` 
+- **PORTx** - výstup (výstupní registr – určuje výstupní hodnotu pinu nastaveného jako výstup, zapíná nebo
 vypíná pull-up rezistory u pinů nastavených na vstup.)
-- DDRx - vývody nastavuje na I/O (data direction register – nastavuje příslušný port na vstup nebo na výstup)
+- **DDRx** - vývody nastavuje na I/O (data direction register – nastavuje příslušný port na vstup nebo na výstup)
 
 ### LED Diody Switch
 ```
@@ -121,7 +123,91 @@ int main(void)
       	- ![image](https://user-images.githubusercontent.com/83291717/220279833-8cedd8dd-a293-4f6a-b77f-3e0fecfe7912.png)
       - *pull-down rezistor* - funguje opačně, jak *pull-up*, místo vytáhnutí, proud sníží
         - ![image](https://user-images.githubusercontent.com/83291717/220280892-d97b6a8c-befe-4f66-9b93-8e83c4938e27.png)
- 
+- *dělička napětí* - sériové zapojení rezistorů, napětí mezi nimi je poloviční
+```
+Ubat = 10 V
+R1 = 10 kΩ
+R2 = 0,1 Ω
+------------
+I = U / R = 10 / 10000,1 = (cca) 0,001 A
+Ur1 = R1 * I1 = 10000 * 0,001 = 10 V
+
+| VELIČINA | R1    | R2    | CELKEM     |
+|----------|-------|-------|------------|
+| U[V]     | 10    | 0     | 10         |
+| I[A]     | 0,001 | 0,001 | 0,001      |
+| R[Ω]     | 10000 | 0,1   | 10000,1    |
+```
+- **ATMEGA**
+  - *zapnutí pull-up**
+    - **DDRx** -
+    - **PORTx** - 
+```
+DDRD  = 0b[0]0000000;
+PORTD = 0b[1]0000000;
+	   - zapíná proud pull-up
+if(bit_is_clear(PIND, PIND7)) { ... }; 
+```
+
+<spoiler>
+	<details>Zdrojový kód klikání a přepínání</details>
+<code>
+#define F_CPU 100000UL
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/sfr_defs.h>
+#include <stdbool.h>
+
+void showNumber(char num)
+{
+	switch(num)
+	{
+		case 1: PORTA=0b01001000; break;
+		case 2: PORTA=0b00111101; break;
+		case 3: PORTA=0b01101101; break;
+		case 4: PORTA=0b01001011; break;
+		case 5: PORTA=0b01100111; break;
+		case 6: PORTA=0b01110111; break;
+		case 7: PORTA=0b01001100; break;
+		case 8: PORTA=0b11111111; break;
+		case 9: PORTA=0b01101111; break;
+		case 0: PORTA=0b01111110; break;
+	}
+}
+
+// uint8_t = 0;
+// bool tl = 0;
+
+int main(void)
+{
+	DDRA=0b11111111;
+	DDRC|=(1<<PORTC2)|(1<<PORTC3);
+	PORTD|=(1<<PORTD7);
+	int mssa = 64;
+	int i = 0;
+	int h = 0;
+	while (1)
+	{
+		if (bit_is_clear(PIND, PIND7)) {
+			if (!h) {
+				if (i == 100) { i=0; };
+				i++;
+				h++;
+			}
+		} else { h=0; };
+		int i1 = i / 10;
+		int i2 = i % 10;
+		PORTC=0b00000100;
+		showNumber(i1);
+		_delay_ms(mssa);
+		PORTC=0b00001000;
+		showNumber(i2);
+		_delay_ms(mssa);
+	}
+}
+	</code>
+	</spoiler>
 
 <p align="right">
   <a href="./..">Go Back</a>
