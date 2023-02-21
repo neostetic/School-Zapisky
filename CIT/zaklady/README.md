@@ -106,6 +106,20 @@ int main(void)
 }
 ```
 
+![image](https://user-images.githubusercontent.com/83291717/220274945-a3d83a18-8ffd-4ced-a992-f3076b7964a2.png)
+
+### Spínače
+- **problémy**
+  - **zákmity spínače *(switch bounce)*** - díky pruřnosti kontaktů, může mezi kontakty probíhat elektrický proud i po vypnutí spínače
+    - **řešení problému**
+      - *software* - počká se určitý úsek, aby se nezachytávaly elektromagnetické vlny
+      - *hardware* - zkrze *rezistor* se nabijí *kondenzátor* do určitého napětí spínače
+  - **rušení** - nesepnutý spínač může fungovat jako anténa a vývod může přes elektromagnetické rušení spínač sepnout
+    - **řešení problému**
+      - *pull-up rezistor* - mezi vývod a spínač se zapojí *pull-up rezistor*, jedna část obvodu se stáhne k nule a druhá k výši proudu
+      	- ![image](https://user-images.githubusercontent.com/83291717/220279833-8cedd8dd-a293-4f6a-b77f-3e0fecfe7912.png)
+      - *pull-down rezistor* - 
+
 <p align="right">
   <a href="./..">Go Back</a>
 </p>
