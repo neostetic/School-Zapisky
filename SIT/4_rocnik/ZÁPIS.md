@@ -1628,4 +1628,13 @@ table ip natovani {
 	}
 }
 ```
-- [PUTTY DOWNLOAD](https://putty.org/) - **POKRACOVANI PRISTE**
+- [PUTTY DOWNLOAD](https://putty.org/)
+
+#### Mapy a Sety
+- **mapy** - na princiupu slovníku, klíč a hodnota, pro využití NAT ve více pravidlech -
+  - *pojmenované*
+  - *anonymní*
+- **sety** - výrayně zjednodušuje pravidlo do jednoho řádku
+  - *pojmenované* - předem připravit, může se měnit za běhu
+  - *anonymní* - využito už v pravidlu, musí se flushnout a znova načíst
+
