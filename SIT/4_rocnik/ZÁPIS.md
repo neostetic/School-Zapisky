@@ -1598,7 +1598,7 @@ table ip filtrovani {
 	chain vstup {
 		type filter hook input priority filter; policy drop;
 			iifname lo ip saddr 127.0.0.1 counter accept
-			icmpt type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
+			icmp type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
 			upd dport 53 counter accept
 			ip protocol tcp ct state related,established counter accept
 			ip protocol udp ct state related,established counter accept
@@ -1608,7 +1608,7 @@ table ip filtrovani {
 	}
 	chain router {
 		type filter hook forward priority filter; policy drop;
-			iifname eth0 oifname eth1 icmpt type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
+			iifname eth0 oifname eth1 icmp type { echo-reply, destination-unreachable, redirect, echo-request, time-exceeded } counter accept
 			iifname eth0 oifname eth1 upd dport 53 counter accept
 			iifname eth0 oifname eth1 ip protocol tcp ct state related,established counter accept
 			iifname eth0 oifname eth1 ip protocol udp ct state related,established counter accept
@@ -1622,7 +1622,7 @@ table ip natovani {
 		type nat hook prerouting priority -100; policy accept;
 			iifname eth0 tcp dport 22 dnat to 10.0.0.100:22		// novy radek
 	}
-	chain natvstup {
+	chain natvystup {
 		type nat hook postrouting priority 100; policy accept;
 			oifname eth0 counter masquerade
 	}
