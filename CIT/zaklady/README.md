@@ -153,7 +153,7 @@ if(bit_is_clear(PIND, PIND7)) { ... };
 	<summary>Zdrojový kód klikání a přepínání</summary>
 
 ```
-#define F_CPU 100000UL
+#define F_CPU 1000000UL
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -185,12 +185,13 @@ int main(void)
 	DDRA=0b11111111;
 	DDRC|=(1<<PORTC2)|(1<<PORTC3);
 	PORTD|=(1<<PORTD7);
-	int mssa = 64;
+	int mssa = 50;
 	int i = 0;
 	int h = 0;
 	while (1)
 	{
 		if (bit_is_clear(PIND, PIND7)) {
+			_delay_us(50);
 			if (!h) {
 				if (i == 100) { i=0; };
 				i++;
@@ -210,6 +211,8 @@ int main(void)
 ```
 	
 </details>
+
+	
 
 <p align="right">
   <a href="./..">Go Back</a>
