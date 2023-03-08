@@ -1638,3 +1638,6 @@ table ip natovani {
   - *pojmenované* - předem připravit, může se měnit za běhu
   - *anonymní* - využito už v pravidlu, musí se flushnout a znova načíst
 
+
+### Zabezpečená komunikace
+- [tady](../soubory/9%20-%20Zabezpe%C4%8Den%C3%A1%20komunikace.docx)
