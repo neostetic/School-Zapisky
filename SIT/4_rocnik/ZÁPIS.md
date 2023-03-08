@@ -1,7 +1,7 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník - zápis</a>
 - [📁 Soubory zápisu](./soubory)
 - [🤔 Maturitní otázky](./maturita)
-- [🌐 LEARNIIT.tech / SÍTĚ](https://learniit.tech/site)
+- [🌐 LEARNIIT.cz / SÍTĚ](https://learniit.cz/site)
 
 ### Routování
 - **statické** (ručné v Routovací Tabulce)
