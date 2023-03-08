@@ -1640,4 +1640,4 @@ table ip natovani {
 
 
 ### Zabezpečená komunikace
-- [tady](/soubory/9%20-%20Zabezpe%C4%8Den%C3%A1%20komunikace.docx)
+- [tady](./soubory/9%20-%20Zabezpe%C4%8Den%C3%A1%20komunikace.docx)
