@@ -1641,3 +1641,54 @@ table ip natovani {
 
 ### Zabezpečená komunikace
 - [tady](./soubory/9%20-%20Zabezpe%C4%8Den%C3%A1%20komunikace.docx) - zapsat do zápisků !!!
+
+
+### Vrstvové modely 
+- **výhody**
+  - řešení pouze části komunikace
+  - víme kde bude chyba
+  - umožnují zavedení konkurence mezi vývojáři
+- **ISO/OSI**
+  - novější
+  - *vrstvy*
+    - **1) Fyzická** 
+      - kabely, routery, et *(elektronagnetické centrum)*
+      - řeší převod jednotvlivých bitů na fyzické signály *(rádiové apod.)*
+    - **2) Linková**
+      - propojuje dva počítače na stejném segmentu
+      - zapouzřuje packety do rámců a předává je na fyzické médium
+      - adresování - MAC *(24 bitů a 24 bitů)*
+      - protokol ARP
+      - co obsahuje rámec - Preambule, SFD, Mac cíle, Mac zdroje, Typ/Dálka, Data a výplň, CRC32, Mezera
+    - **3) Síťová**
+      - propojuje sítě mezi sebou
+      - protokoly - RIP, OSPB, IGRP, EIGRP
+      - adresování - IP adresama
+    - **4) Transportní**
+      - vytváří ENDStoENDS mezi dvěma počítači
+      - protokoly - TCP _(zajistí doručení dat a správné pořadí dat)_ a UDP _(rychlost)_
+      - adresování - PORT *(0-65535)*
+      	 - typy PORTŮ - privilegovaný, privátní, registrovaný
+    - **5) Relační**
+      - navazování spojení
+      - umisťuje snačky do komunikace, aby bylo jednodušší zjištění přerušení 
+    - **6) Prezentační**
+      - přenáší "kódování" - data do čitelné hodnoty 
+    - **7) Aplikační**
+      - rozdává data různým aplikacím
+      - funkce - MULTIPLEXY _(mohou se přenášet více dat na jednou)_ 
+- **TCP/IP**
+  - první model a starší
+  - *vrstvy*
+    - **1) Vrstva síťového rozhrání**
+    - **2) Síťová**
+    - **3) Transportní**
+    - **4) Aplikační**
+- **Dělení sítí**
+  - podle rozhlehlosti - LAN, MAN, VAN
+  - podle provozovatele - veřejné _(internet)_, privátní _(lan)_ a virtuální _(pro spojení dvou a více LAN)_
+  - podle topologie - sběrnicová, stromová _(více mezi sebou)_, mash _(každý uzel s každým)_, menší mash _(rúzně mezi sebou)_
+  - podle postavení uzlů - PeerToPeer, ClientToServer
+
+### Struktorovaná kabeláž
+...
