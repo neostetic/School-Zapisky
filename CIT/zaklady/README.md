@@ -220,6 +220,10 @@ int main(void)
 - **Countery**
   - **základní funkce** - počítadlo jevů *(stisk tlačítka, apod.)*
 
+<details>
+	<summary>Tabulka</summary>
+	
+	
 | Mode  | WGM13 | WGM12 (CTC1) | WGM11 (PWM11) | WGM10 (PWM10) | Timer/Counter Mode of Operation(1)  | TOP | Update of OCR1x | TOV1 Flag Set on |
 |---|---|---|---|---|---|---|---|---|
 | 0  | 0  | 0  | 0  | 0  | Normal  | 0xFFFF  | Immediate  | MAX |
@@ -238,9 +242,11 @@ int main(void)
 | 13  | 1  | 1  | 0  | 1  | (Reserved)  | –  | –  | – |
 | 14  | 1  | 1  | 1  | 0  | Fast PWM  | ICR1  | BOTTOM  | TOP |
 | 15  | 1  | 1  | 1  | 1  | Fast PWM  | OCR1A  | BOTTOM  | TOP |
+
+</details>
 	
-	
-#### ATMEGA8
+#### Hardwarové přerušení
+- 
 
 	
 
