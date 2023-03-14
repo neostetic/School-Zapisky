@@ -13,23 +13,19 @@ vypíná pull-up rezistory u pinů nastavených na vstup.)
 #include <avr/io.h>
 #include <util/delay.h>
 
-
 int main(void)
 {
-    
     DDRA=0b11111111;
     DDRC=0x4; // DDRC|=(1<<PORTC2)
     int mssa = 1024;
-	while (1) 
-    {
-		while (1)
-		{
+	while (1) {
+		while (1) {
 			PORTA = 0b10101010;
 			_delay_ms(mssa);
 			PORTA = 0b01010101;
 			_delay_ms(mssa);	
 		}
-    }
+  }
 }
 ```
 
@@ -211,6 +207,39 @@ int main(void)
 ```
 	
 </details>
+
+### Timery/Countery
+- `_delay_ms()` - funkce k počkání na **hlavním** procesoru
+- na procesoru *ATMEGA8* se přidaly nové samostatné vlákna *(Timer a Counter)*
+- **Timery**
+  - **základní funkce** - stopky, počítá určitý nastavený čas
+  - **režimy**
+    - **normal** - počítá od 0 do MAX, a poté jede odznova
+    - **CTC** - počítá od 0 do vlastního MAX
+    - **PWM** - řízení moderního osvělení, motorů, generování zvuků
+- **Countery**
+  - **základní funkce** - počítadlo jevů *(stisk tlačítka, apod.)*
+
+| **Mode ** | **WGM13** | **WGM12 (CTC1)** | **WGM11 (PWM11)** | **WGM10 (PWM10)** | **Timer/Counter Mode of Operation(1) ** | **TOP** | **Update of OCR1x** | **TOV1 Flag Set on** |
+|-----------|-----------|------------------|-------------------|-------------------|-----------------------------------------|---------|---------------------|----------------------|
+| 0         | 0         | 0                | 0                 | 0                 | Normal                                  | 0xFFFF  | Immediate           | MAX                  |
+| 1         | 0         | 0                | 0                 | 1                 | PWM, Phase Correct, 8-bit               | 0x00FF  | TOP                 | BOTTOM               |
+| 2         | 0         | 0                | 1                 | 0                 | PWM, Phase Correct, 9-bit               | 0x01FF  | TOP                 | BOTTOM               |
+| 3         | 0         | 0                | 1                 | 1                 | PWM, Phase Correct, 10-bit              | 0x03FF  | TOP                 | BOTTOM               |
+| 4         | 0         | 1                | 0                 | 0                 | CTC                                     | OCR1A   | Immediate           | MAX                  |
+| 5         | 0         | 1                | 0                 | 1                 | Fast PWM, 8-bit                         | 0x00FF  | BOTTOM              | TOP                  |
+| 6         | 0         | 1                | 1                 | 0                 | Fast PWM, 9-bit                         | 0x01FF  | BOTTOM              | TOP                  |
+| 7         | 0         | 1                | 1                 | 1                 | Fast PWM, 10-bit                        | 0x03FF  | BOTTOM              | TOP                  |
+| 8         | 1         | 0                | 0                 | 0                 | PWM, Phase and Frequency Correct        | ICR1    | BOTTOM              | BOTTOM               |
+| 9         | 1         | 0                | 0                 | 1                 | PWM, Phase and Frequency Correct        | OCR1A   | BOTTOM              | BOTTOM               |
+| 10        | 1         | 0                | 1                 | 0                 | PWM, Phase Correct                      | ICR1    | TOP                 | BOTTOM               |
+| 11        | 1         | 0                | 1                 | 1                 | PWM, Phase Correct                      | OCR1A   | TOP                 | BOTTOM               |
+| 12        | 1         | 1                | 0                 | 0                 | CTC                                     | ICR1    | Immediate           | MAX                  |
+| 13        | 1         | 1                | 0                 | 1                 | (Reserved)                              | –       | –                   | –                    |
+| 14        | 1         | 1                | 1                 | 0                 | Fast PWM                                | ICR1    | BOTTOM              | TOP                  |
+| 15        | 1         | 1                | 1                 | 1                 | Fast PWM                                | OCR1A   | BOTTOM              | TOP                  |
+
+#### ATMEGA8
 
 	
 
