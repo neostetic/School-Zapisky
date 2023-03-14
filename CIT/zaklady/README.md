@@ -220,6 +220,8 @@ int main(void)
 - **Countery**
   - **základní funkce** - počítadlo jevů *(stisk tlačítka, apod.)*
 
+#### Tabulka Timeru/Counteru
+  
 <details>
 	<summary>Tabulka</summary>
 	
@@ -245,9 +247,90 @@ int main(void)
 
 </details>
 	
-#### Hardwarové přerušení
-- 
+#### Hardwarové přerušení *(HW interrupt)
+- potřeba si určit frekvenci timeru pomocí tabulky
+	
+| CS12  | CS11  | CS10  | Description |
+|---|---|---|---|
+| 0  | 0  | 0  | No clock source. (Timer/Counter stopped) |
+| 0  | 0  | 1  | clkI/O/1 (No prescaling) |
+| 0  | 1  | 0  | clkI/O/8 (From prescaler) |
+| 0  | 1  | 1  | clkI/O/64 (From prescaler) |
+| 1  | 0  | 0  | clkI/O/256 (From prescaler) |
+| 1  | 0  | 1  | clkI/O/1024 (From prescaler) |
+| 1  | 1  | 0  | External clock source on T1 pin. Clock on falling edge |
+| 1  | 1  | 1  | External clock source on T1 pin. Clock on rising edge |
 
+```
+Ftimer = ?
+F_CPU = n
+PS = n
+------------PŘÍKLAD------------
+F_CPU = 1000000 Hz
+t = 1 s
+[ Ft = (F_CPU / PS) * t ]
+PS = 8 => Ft = 125000 Hz
+               125000 !< 65535
+PS = 64 => Ft = 15625 Hz
+                15625 < 65535
+-------------------------------
+```
+
+#### ATMEGA8 priklad v Simulide
+```
+#define F_CPU 1000000UL
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/sfr_defs.h>
+#include <stdbool.h>
+#include <avr/interrupt.h>
+
+void showNumber(char num)
+{
+	switch(num)
+	{
+		case 1: PORTB=0b01001000; break;
+		case 2: PORTB=0b00111101; break;
+		case 3: PORTB=0b01101101; break;
+		case 4: PORTB=0b01001011; break;
+		case 5: PORTB=0b01100111; break;
+		case 6: PORTB=0b01110111; break;
+		case 7: PORTB=0b01001100; break;
+		case 8: PORTB=0b11111111; break;
+		case 9: PORTB=0b01101111; break;
+		case 0: PORTB=0b01111110; break;
+	}
+}
+
+uint8_t sec = 0;
+
+int main(void)
+{
+	int mssa = 1;
+	DDRB = 0xFF;						// vystup pro LCD
+	DDRC |= (1<<PC2) | (1<<PC3);		// vystup pro LCD
+	TCCR1B |= (1<<WGM12);				// Timer, rezim CTC, kanal A
+	TCCR1B |= (1<<CS11) | (1<<CS10);	// nastavi prescaler timeru na hodnotu 64
+	OCR1A = 15624;						// nastavi MAX hodnotu v timeru v rezimu CTC
+	TIMSK |= (1<<OCIE1A);				// vyvola preruseni pri napocitani MAX timeru v rezimu CTC, kanal A
+	sei();								// zapne moznost pouzivat Hardwarove preruseni
+	while (1)
+	{
+		showNumber(sec/10);
+		PORTC=0b00000100;
+		_delay_ms(mssa);
+		showNumber(sec%10);
+		PORTC=0b00001000;
+		_delay_ms(mssa);
+	}
+}
+
+ISR(TIMER1_COMPA_vect) {
+	sec++;
+	if (sec == 60) { sec = 0; }
+}
+```
 	
 
 <p align="right">
