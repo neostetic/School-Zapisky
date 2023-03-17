@@ -1691,4 +1691,20 @@ table ip natovani {
   - podle postavení uzlů - PeerToPeer, ClientToServer
 
 ### Struktorovaná kabeláž
-...
+- **metalické** a **optické** prvnky užívané k sítím a přenášení **analogového** a **digitálního** signálu
+- **záadady pro plánování struktorované kabeláže**
+  - plánujeme vždy do budoucna pro více zařízení
+- **metalické spoje** 
+  - *stíněné*
+    - **STP (každej vodič je stínenej fólií)**, **FTP (celý kabel stíněný fólií)**
+    - **SSTP (každej vodič je stínenej fólií + měď)**, **SFTP (celý kabel stíněný fólií + měď)*
+  - *nestíněné*
+    - **UTP (unshielded)** 
+- **kategorie**
+  - **CAT 5** - 100mHz a 100mb 
+  - **CAT 5e** - 100mHz a 1000mb 
+  - **CAT 6** - 250mHz a 1000-10000mb 
+  - **CAT 6a** - 500mHz a 10000mb 
+  - **CAT 7** - 600-700mHz a 10000mb
+- **použití**
+  - ...
