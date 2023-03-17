@@ -1706,5 +1706,6 @@ table ip natovani {
   - **CAT 6** - 250mHz a 1000-10000mb 
   - **CAT 6a** - 500mHz a 10000mb 
   - **CAT 7** - 600-700mHz a 10000mb
+  - - **CAT 7a** - mam rad velky pera
 - **použití**
   - ...
