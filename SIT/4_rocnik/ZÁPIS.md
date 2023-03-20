@@ -1729,12 +1729,14 @@ table ip natovani {
 - **standarty**
   - základní standart je definován *iee802.3*
   - **rychlosti (pojmenovat)**
-    - 1.5GB/s 
-    - 2.5GB/s 
-    - 10GB/s 
-    - 40GB/s 
-    - 100GB/s
-    - 400GB/s   
+    - 10Mb/s
+    - 100Mb/s 
+    - 1.5Gb/s 
+    - 2.5Gb/s 
+    - 10Gb/s 
+    - 40Gb/s 
+    - 100Gb/s
+    - 400Gb/s   
 - **ARP**
   - protokol přidávání IP adres
   - počítač posílá data `ARP Request` jestli někdo má tuto adresu a switch odešle `ARP Reply`, switch se podívá do tabulky jestli ji má a kdyžtak se IP adresa vloží, když adresu zná, pošle ji na port a pokud port nezná, pošle ji všem broadcastem
