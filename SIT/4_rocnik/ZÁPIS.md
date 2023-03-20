@@ -1724,8 +1724,8 @@ table ip natovani {
   - min velikost 64 bytů, pokud bude menší se zahodí
   - max velikost 1518 bytů, pokud bude větší, tak se nafragmentuje
 - **CSMA/CD**
-  - _CD_ - collision detection
-  - _CSMA_ - ...
+  - _CD_ - _collision detection_, kolize se ošetřují tím, že čeká přes uzel, který hlídá jestli vše probíhá v pořádku
+  - _CSMA_ - zařízení čekají, jestli někdo nevysílá - zda-li je volno
 - **standarty**
   - základní standart je definován *iee802.3*
   - **rychlosti (pojmenovat)**
