@@ -1708,3 +1708,42 @@ table ip natovani {
   - **CAT 7** - 600-700mHz a 10000mb
 - **použití**
   - ...
+
+### Ethernet
+- používá se pro spojení dvou zařízení, zajišťuje tok a komunikaci
+- pokrývá **Fyzickou** a **Linkovou** verstvu ISO/OSI
+- **popis rámec**
+  - obsahuje 
+    - preambule *(7 bytů)*
+    - značka, která označuje začátek rámce
+    - MAC adresy *(cíle a zdroje, jsou velké 6 bytů)*
+    - typ/dálka dat *(2 byty)*
+    - data
+    - kotrolní součet *(4 byty)*
+    - 12 bytová mezera
+  - min velikost 64 bytů, pokud bude menší se zahodí
+  - max velikost 1518 bytů, pokud bude větší, tak se nafragmentuje
+- **CSMA/CD**
+  - _CD_ - collision detection
+  - _CSMA_ - ...
+- **standarty**
+  - základní standart je definován *iee802.3*
+  - **rychlosti (pojmenovat)**
+    - 1.5GB/s 
+    - 2.5GB/s 
+    - 10GB/s 
+    - 40GB/s 
+    - 100GB/s
+    - 400GB/s   
+- **ARP**
+  - protokol přidávání IP adres
+  - počítač posílá data `ARP Request` jestli někdo má tuto adresu a switch odešle `ARP Reply`, switch se podívá do tabulky jestli ji má a kdyžtak se IP adresa vloží, když adresu zná, pošle ji na port a pokud port nezná, pošle ji všem broadcastem
+- **hub x switch**
+  - **hub**
+    - posílá všem
+    - pracuje na **Fyzické vsrtvě**
+  - **switch**
+    - posílá podle ARP tabulky
+    - metody
+      - `STORE`, `FORWARD`, `CUT-THROUGH`, ...
+
