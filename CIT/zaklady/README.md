@@ -276,7 +276,7 @@ PS = 64 => Ft = 15625 Hz
 -------------------------------
 ```
 
-#### ATMEGA8 priklad v Simulide
+#### ATMEGA8 hodiny v Simulide
 ```
 #define F_CPU 1000000UL
 
@@ -304,31 +304,57 @@ void showNumber(char num)
 }
 
 uint8_t sec = 0;
+uint8_t min = 0;
+uint8_t hour = 0;
 
 int main(void)
 {
 	int mssa = 1;
-	DDRB = 0xFF;						// vystup pro LCD
-	DDRC |= (1<<PC2) | (1<<PC3);		// vystup pro LCD
-	TCCR1B |= (1<<WGM12);				// Timer, rezim CTC, kanal A
+	DDRB = 0xFF;				// vystup pro LCD
+	DDRC = 0xFF;				// vystup pro LCD
+	TCCR1B |= (1<<WGM12);			// Timer, rezim CTC, kanal A
 	TCCR1B |= (1<<CS11) | (1<<CS10);	// nastavi prescaler timeru na hodnotu 64
-	OCR1A = 15624;						// nastavi MAX hodnotu v timeru v rezimu CTC
-	TIMSK |= (1<<OCIE1A);				// vyvola preruseni pri napocitani MAX timeru v rezimu CTC, kanal A
-	sei();								// zapne moznost pouzivat Hardwarove preruseni
+	OCR1A = 156;				// nastavi MAX hodnotu v timeru v rezimu CTC
+	TIMSK |= (1<<OCIE1A);			// vyvola preruseni pri napocitani MAX timeru v rezimu CTC, kanal A
+	sei();					// zapne moznost pouzivat Hardwarove preruseni
 	while (1)
 	{
 		showNumber(sec/10);
-		PORTC=0b00000100;
+		PORTC=0b11111101;
 		_delay_ms(mssa);
 		showNumber(sec%10);
-		PORTC=0b00001000;
+		PORTC=0b11111110;
+		_delay_ms(mssa);
+		showNumber(min/10);
+		PORTC=0b11101111;
+		_delay_ms(mssa);
+		showNumber(min%10);
+		PORTC=0b11011111;
+		_delay_ms(mssa);
+		showNumber(hour%10);
+		PORTC=0b11111011;
+		_delay_ms(mssa);
+		showNumber(hour/10);
+		PORTC=0b11110111;
 		_delay_ms(mssa);
 	}
 }
 
 ISR(TIMER1_COMPA_vect) {
 	sec++;
-	if (sec == 60) { sec = 0; }
+	if (sec == 60) {
+		sec = 0;
+		min++;	
+	}
+	if (min == 60)
+	{
+		min = 0;
+		hour++;
+	}
+	if (hour == 24)
+	{
+		hour = 0;
+	}
 }
 ```
 	
