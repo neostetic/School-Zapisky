@@ -247,7 +247,7 @@ int main(void)
 
 </details>
 	
-#### Hardwarové přerušení *(HW interrupt)
+#### Hardwarové přerušení *(HW interrupt)*
 - potřeba si určit frekvenci timeru pomocí tabulky
 	
 | CS12  | CS11  | CS10  | Description |
