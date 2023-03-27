@@ -1783,3 +1783,4 @@ table ip natovani {
 - probíhá na základě ticketů _(obsahují časový limit a hodnotu uživatelů)_
 
 ![image](https://user-images.githubusercontent.com/83291717/227888644-b15252be-810e-47ac-880e-38d28f9e28f7.png)
+*skey = session key
