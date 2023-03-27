@@ -1752,24 +1752,24 @@ table ip natovani {
 ### Autentifikace a důvěra v systémech AD
 - **autentifikace**
   - _ověření uživatele_
-  - potřebuje se 
-    - přihlašovací jméno s helsem
-    - certifikát, autorita a PKI
-    - tokeny, smardcard _(flashdisc jako svůj vlastní počítač, který v sobě má svůj klíč s pinem)_
-    - ovladače které zajišťují komunikaci
-  - lokální autentifikace na Windows
-    - pomocí přihlašovací obrazovky
-    - porovnávají se pomocí uživatelského jména a hesla v databázi
-    - databáze se ukládá do `%windir%\system32\config\SAM` a je šifrovaná pomocí _do Windows 10_ **RC4**, a _od Windows 10_ **AES**
-    - hesla jsou hashována pomocí hashovací funkce **LM** nebo **NTML** _(LM je zastaralá)_, aktuálně **NTLMv2**
-  - autentifikace v sítích microsotf
-    - pomocí protokolů **NTLM** nebo **Kerberos**
-    - _v AD se používá **Kerberos**_, mohou se používat i starší _(LM, NTLM)_
-    - v sítích AD je možné používat tzv. integrované ověřování Windows, označuje se **SSO** _(single sign on)_, ověření pak probíhá automaticky v rámci komunikace s AD, uživatel tak nemusí se pokaždé znova přihlašovat
-    - pro integrovaní ověřování musí být vytvořen **vztah důvěry** v AD, ten vzniká připojením přislušné pracovní stanice k doméně AD
-    - **vztah důvěry** naopak umožňuje správcům převzít kontrolu a spravovat stanici
 - **autorizace** 
   - _udělování práv_
+- potřebuje se 
+  - přihlašovací jméno s helsem
+  - certifikát, autorita a PKI
+  - tokeny, smardcard _(flashdisc jako svůj vlastní počítač, který v sobě má svůj klíč s pinem)_
+  - ovladače které zajišťují komunikaci
+- lokální autentifikace na Windows
+  - pomocí přihlašovací obrazovky
+  - porovnávají se pomocí uživatelského jména a hesla v databázi
+  - databáze se ukládá do `%windir%\system32\config\SAM` a je šifrovaná pomocí _do Windows 10_ **RC4**, a _od Windows 10_ **AES**
+  - hesla jsou hashována pomocí hashovací funkce **LM** nebo **NTML** _(LM je zastaralá)_, aktuálně **NTLMv2**
+- autentifikace v sítích microsotf
+  - pomocí protokolů **NTLM** nebo **Kerberos**
+  - _v AD se používá **Kerberos**_, mohou se používat i starší _(LM, NTLM)_
+  - v sítích AD je možné používat tzv. integrované ověřování Windows, označuje se **SSO** _(single sign on)_, ověření pak probíhá automaticky v rámci komunikace s AD, uživatel tak nemusí se pokaždé znova přihlašovat
+  - pro integrovaní ověřování musí být vytvořen **vztah důvěry** v AD, ten vzniká připojením přislušné pracovní stanice k doméně AD
+  - **vztah důvěry** naopak umožňuje správcům převzít kontrolu a spravovat stanici
 
 #### Protokol Kerberos
 - používá se prioritně v AD jako ověřovací protokol
@@ -1777,10 +1777,13 @@ table ip natovani {
 - skládá se z několika částí
   - **AS** - autentifikační server
   - **SS** - servisní středisko _(poskytovatel služby)_
-  - **TGS** - Ticket Granting Server - řídící server, který dává tickety 
-  - **TGT** - Ticket Granting Ticket - oprávnění ke komunikaci TGS, samotná ticket
+  - **TGS** - _Ticket Granting Server_ - řídící server, který dává tickety 
+  - **TGT** - _Ticket Granting Ticket_ - oprávnění ke komunikaci TGS, samotná ticket
 - při použítí se heslo nepoužívá po síti
 - probíhá na základě ticketů _(obsahují časový limit a hodnotu uživatelů)_
 
 ![image](https://user-images.githubusercontent.com/83291717/227888644-b15252be-810e-47ac-880e-38d28f9e28f7.png)
-*skey = session key
+- _skey_ = session key
+
+#### Windows Vault
+- pro služby, kde nelze použít ověření pomocí AD
