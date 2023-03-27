@@ -1781,4 +1781,5 @@ table ip natovani {
   - **TGT** - Ticket Granting Ticket - oprávnění ke komunikaci TGS, samotná ticket
 - při použítí se heslo nepoužívá po síti
 - probíhá na základě ticketů _(obsahují časový limit a hodnotu uživatelů)_
+
 ![image](https://user-images.githubusercontent.com/83291717/227888644-b15252be-810e-47ac-880e-38d28f9e28f7.png)
