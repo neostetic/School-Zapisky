@@ -357,7 +357,90 @@ ISR(TIMER1_COMPA_vect) {
 	}
 }
 ```
-	
+
+### Hodiny
+```
+#define F_CPU 1000000UL
+
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/sfr_defs.h>
+#include <stdbool.h>
+#include <avr/interrupt.h>
+
+void showNumber(char num)
+{
+	switch(num)
+	{
+		case 1: PORTB=0b01001000; break;
+		case 2: PORTB=0b00111101; break;
+		case 3: PORTB=0b01101101; break;
+		case 4: PORTB=0b01001011; break;
+		case 5: PORTB=0b01100111; break;
+		case 6: PORTB=0b01110111; break;
+		case 7: PORTB=0b01001100; break;
+		case 8: PORTB=0b11111111; break;
+		case 9: PORTB=0b01101111; break;
+		case 0: PORTB=0b01111110; break;
+	}
+}
+
+uint8_t sec = 0;
+uint8_t min = 0;
+uint8_t hour = 0;
+
+int main(void)
+{
+	int mssa = 1;
+	DDRB = 0xFF;											// vystup pro LCD
+	DDRC = 0xFF;		// vystup pro LCD
+	TCCR1B |= (1<<WGM12);									// Timer, rezim CTC, kanal A
+	TCCR1B |= (1<<CS11) | (1<<CS10);						// nastavi prescaler timeru na hodnotu 64
+	OCR1A = 16;											// nastavi MAX hodnotu v timeru v rezimu CTC
+	TIMSK |= (1<<OCIE1A);									// vyvola preruseni pri napocitani MAX timeru v rezimu CTC, kanal A
+	sei();													// zapne moznost pouzivat Hardwarove preruseni
+	while (1)
+	{
+		showNumber(sec/10);
+		PORTC=0b11111101;
+		_delay_ms(mssa);
+		showNumber(sec%10);
+		PORTC=0b11111110;
+		_delay_ms(mssa);
+		showNumber(min/10);
+		PORTC=0b11101111;
+		_delay_ms(mssa);
+		showNumber(min%10);
+		PORTC=0b11011111;
+		_delay_ms(mssa);
+		showNumber(hour%10);
+		PORTC=0b11111011;
+		_delay_ms(mssa);
+		showNumber(hour/10);
+		PORTC=0b11110111;
+		_delay_ms(mssa);
+	}
+}
+
+ISR(TIMER1_COMPA_vect) {
+	if (bit_is_clear(PINC, PINC6)) {
+		sec++;
+		if (sec == 60) {
+			sec = 0;
+			min++;
+		}
+		if (min == 60)
+		{
+			min = 0;
+			hour++;
+		}
+		if (hour == 24)
+		{
+			hour = 0;
+		}	
+	}
+}
+```
 
 <p align="right">
   <a href="./..">Go Back</a>
