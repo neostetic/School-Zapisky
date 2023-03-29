@@ -319,10 +319,20 @@
   - `switchport mode access`
   - `switchport nonegotiate`
   - `switchport access vlan 10`
+  - `no sh`
   - `int fa0/4`
   - `switchport mode access`
   - `switchport nonegotiate`
   - `switchport access vlan 20`
+  - `no sh`
+  - `int fa0/1`
+  - `switchport mode trunk`
+  - `switchport trunk allowed vlan none`
+  - `switchport trunk allowed vlan 10,20`
+  - `switchport trunk native vlan 10`
+  - `do wr`
+- na PC potřeba zapnout autokonfiguraci
+- ping v pc - `ping [adresa druheho pocitace]`
 
 <p align="right">
   <a href="./..">Go Back</a>
