@@ -1,6 +1,6 @@
 ## <a href="./..">🔌 Počítačové Sítě (SIT) - 4. ročník - New Cisco</a>
  
-#### Nastavování Routerů
+## Nastavování Routerů
 - `en`
 - `conf t`
 - `host R0`
@@ -21,27 +21,27 @@
 - `exit`
 - `do wr` / `wr`
 - nyní running konfiguraci exportujeme a nacteme na jiný router
-- Router 1
+#### Router 1
   - `en`
   - `reload`
   - heslo bude `cisco`
   - `host R1`
   - `ban motd "R1"
   - `do wr`
-- Router 1
+#### Router 1
   - `en`
   - `reload`
   - `host R2`
   - `ban motd "R2"`
   - `do wr`
-- Router 3
+#### Router 3
   - `en`
   - `reload`
   - `host R3`
   - `ban motd "R3"`
   - `do wr`
-- přidání adres IPv6
-- Router 0
+### přidání adres IPv6
+#### Router 0
   - `en`
   - `conf t`
   - `ipv6 unicast-routing`
@@ -55,7 +55,7 @@
   - `int gi0/2`
   - `ipv6 address 2001:0:0:10::/64 eui-64`
   - `no sh`
-- Router 1
+#### Router 1
   - `en`
   - `conf t`
   - `ipv6 unicast-routing`
@@ -66,7 +66,7 @@
   - ping
     - `do sh ipv6 int br` - pro ukázku adres
     - `ping [adresa]`  
-- Router 1 
+#### Router 1 
   - `en`
   - `conf t` 
   - `ipv5 router ospf 1`
@@ -84,7 +84,7 @@
   - `ipv6 router ospf 1`
   - `passive-interface gi0/1`
   - `do wr`
-- Router 2
+#### Router 2
   - `en`
   - `conf t`
   - `int gi0/0`
@@ -115,7 +115,7 @@
   - `exit`
   - `int gi0/0`
   - `ipv6 ospf 1 area 0`
-- Router 0
+#### Router 0
   - `en`
   - `conf t`
   - nastavení OSPF kompletně
@@ -129,7 +129,7 @@
     - `int gi0/2`
     - `ipv6 ospf 1 area 0`
     - `do wr`
-- Router 3
+#### Router 3
   - `en`
   - `conf t`
   - `ipv6 unicast-routing`
@@ -159,7 +159,7 @@
   - `ipv6 rip ripng enable`
   - `no sh`
   - `do wr`
-- Router 4
+#### Router 4
   - `en`
   - `conf t`
   - `ipv6 unicast-routing`
@@ -181,36 +181,36 @@
   - `ipv6 rip ripng enable`
   - `do wr`
 - kontrola - `ipv6 route`
-- Router 2
+#### Router 2
   - `int g0/1.10`
   - `ipv6 ospf 1 area 0`
   - `int gi0/2`
   - `ipv6 ospf 1 area 0`
   - `do wr`
 
-#### Nastavení Switchů
-- vytvoření šablony
-  - Switch 0
-    - `en`
-    - `conf t`
-    - `host SW0`
-    - `ban motd "SW0"`
-    - `line con 0`
-    - `pass cisco`
-    - `login`
-    - `exit`
-    - `ip domain-name franta.local`
-    - `username franta secret cisco`
-    - `crypto key generate rsa general-key modulus 4096`
-    - `pass cisco`
-    - `transport input ssh`
-    - `login local`
-    - `exit`
-    - `enable secret cisco`
-    - `service password-encryption`
-    - `do wr`
-  - vyexportíme a naimportujeme na ostatní routery
-- Switch 1  
+## Nastavení Switchů
+### vytvoření šablony
+#### Switch 0
+- `en`
+- `conf t`
+- `host SW0`
+- `ban motd "SW0"`
+- `line con 0`
+- `pass cisco`
+- `login`
+- `exit`
+- `ip domain-name franta.local`
+- `username franta secret cisco`
+- `crypto key generate rsa general-key modulus 4096`
+- `pass cisco`
+- `transport input ssh`
+- `login local`
+- `exit`
+- `enable secret cisco`
+- `service password-encryption`
+- `do wr`
+- vyexportíme a naimportujeme na ostatní routery
+#### Switch 1  
   - `en`
   - `reload`
   - `en`
@@ -218,7 +218,7 @@
   - `host SW1`
   - `ban motd "SW1"`
   - `do wr`
-- Switch 2
+#### Switch 2
   - `en`
   - `reload`
   - `en`
@@ -226,7 +226,7 @@
   - `host SW2`
   - `ban motd "SW2"`
   - `do wr`
-- Switch 3  
+#### Switch 3  
   - `en`
   - `reload`
   - `en`
@@ -234,8 +234,8 @@
   - `host SW3`
   - `ban motd "SW3"`
   - `do wr`
-- přidání adres IPv6
-- Switch 2
+### přidání adres IPv6
+#### Switch 2
   - `en`
   - `conf t` 
   - `sdm prefer dual-ipv4-ipv6 default`
@@ -248,7 +248,7 @@
   - `ipv6 address autoconfig`
   - `no sh`
   - `do wr`
-- Swicth 3
+#### Swicth 3
   - `en`
   - `conf t` 
   - `sdm prefer dual-ipv4-ipv6 default`
@@ -261,7 +261,7 @@
   - `ipv6 address autoconfig`
   - `no sh`
   - `do wr`
-- Switch 1 *(více vlan)*
+#### Switch 1 *(více vlan)*
   - `en`
   - `conf t` 
   - `sdm prefer dual-ipv4-ipv6 default`
@@ -295,7 +295,7 @@
   - `end`
   - `sh vlan br` - vypíše vlany
   - `show interfaces switchport`
-- Switch 0
+#### Switch 0
   - `en`
   - `conf t`
   - `sdm prefer dual-ipv4-ipv6 default`
