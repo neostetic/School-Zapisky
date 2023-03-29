@@ -234,7 +234,7 @@
   - `host SW3`
   - `ban motd "SW3"`
   - `do wr`
-
+- IPv6
 - Switch 2
   - `en`
   - `conf t` 
@@ -312,6 +312,17 @@
   - `ipv6 address autoconfig`
   - `no sh`
   - `int fa0/2`
+  - `switchport mode trunk`
+  - `switchport trunk allowed vlan none`
+  - `switchport trunk allowed vlan 10,20`
+  - `int fa0/3`
+  - `switchport mode access`
+  - `switchport nonegotiate`
+  - `switchport access vlan 10`
+  - `int fa0/4`
+  - `switchport mode access`
+  - `switchport nonegotiate`
+  - `switchport access vlan 20`
 
 <p align="right">
   <a href="./..">Go Back</a>
