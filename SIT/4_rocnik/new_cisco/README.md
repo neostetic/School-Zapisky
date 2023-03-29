@@ -40,7 +40,7 @@
   - `host R3`
   - `ban motd "R3"`
   - `do wr`
-
+- přidání adres IPv6
 - Router 0
   - `en`
   - `conf t`
@@ -234,7 +234,7 @@
   - `host SW3`
   - `ban motd "SW3"`
   - `do wr`
-- IPv6
+- přidání adres IPv6
 - Switch 2
   - `en`
   - `conf t` 
