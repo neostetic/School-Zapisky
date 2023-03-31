@@ -334,6 +334,182 @@
 - na PC potřeba zapnout autokonfiguraci
 - ping v pc - `ping [adresa druheho pocitace]`
 
+### Menší oprava
+#### Router 3
+- `en`
+- `conf t`
+- `ipv6 router rpng`
+- `redistribude connected`
+- `do wr`
+
+### IPv4
+#### Router 0
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip address 134.11.25.69 255.255.255.252`
+- `int gi0/1`
+- `ip address 134.11.25.65 255.255.255.252`
+- `int gi0/2`
+- `ip address 134.11.25.73 255.255.255.252`
+- `exit`
+- `router ospf 1`
+- `network 134.11.25.68 255.255.255.252 area 0`
+- `network 134.11.25.64 255.255.255.252 area 0`
+- `network 134.11.25.73 255.255.255.252 area 0`
+- `do wr`
+
+#### Router 1
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip address 134.11.25.70 255.255.255.252`
+- `int gi0/1`
+- `ip address 134.11.16.1 255.255.252.0`
+- `exit`
+- `router ospf 1`
+- `network 134.11.25.68 255.255.255.252 area 0`
+- `do wr`
+
+#### Router 2
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip address 134.11.25.66 255.255.255.252`
+- `int gi0/1.10`
+- `ip address 134.11.0.1 255.255.248.0`
+- `int gi0/2`
+- `ip address 134.11.22.1 255.255.254.0`
+- `exit`
+- `ro ospf 1`
+- `network 134.11.25.64 255.255.255.252 area 0`
+- `network 134.11.0.0 255.255.248.0 area 0`
+- `do wr`
+
+#### Router 3
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip address 134.11.25.74 255.255.255.252`
+- `int gi0/2`
+- `ip address 134.11.20.1 255.255.254.0`
+- `int gi0/1`
+- `ip address 134.11.25.77 255.255.255.252`
+- `exit`
+- `ro ospf 1`
+- `network 134.11.25.72 255.255.255.252 area 0`
+- `network 134.11.20.0 255.255.254.0 area 0`
+- `redistribute rip metric 1 subnets`
+- `exit`
+- `ro rip`
+- `ver 2`
+- `network 134.11.25.79`
+- `redistibute ospf 1 metric 1`
+- `do wr`
+
+#### Router 4
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip address 134.11.25.78 255.255.255.252`
+- `int gi0/1`
+- `ip address 134.11.8.1 255.255.248.0`
+- `int gi0/2`
+- `ip address 134.11.25.1 255.255.255.192`
+- `exit`
+- `router rip`
+- `ver 2`
+- `network 134.11.25.76`
+
+#### Switch 1
+- `en`
+- `conf t`
+- `int vlan10`
+- `ip address 134.11.0.2 255.255.248.0`
+- `exit`
+- `ip default-getaway 134.11.0.1`
+- `do wr`
+
+#### Switch 0
+- `en`
+- `conf t`
+- `int vlan10`
+- `ip address 134.11.0.3 255.255.248.0`
+- `exit`
+- `ip defaiult-gateway 134.11.0.1`
+- `do wr`
+
+#### Switch 2
+- `en`
+- `conf t`
+- `int vlan1`
+- `ip address 134.11.20.2 255.255.254.0`
+- `exit`
+- `ip default-gateway 134.11.20.1`
+- `do wr`
+
+#### Switch 3
+- `en`
+- `conf t`
+- `int vlan1`
+- `ip address 134.11.8.2 255.255.248.0`
+- `exit`
+- `ip default-gateway 134.11.8.1`
+- `do wr`
+
+### IPv4 na PC
+- PC2 > config > gateway IPv4 : 134.11.0.1 , IP: 134.11.0.6 / 255.255.248.0
+- PC0 > config > gateway IPv4 : 134.11.0.1 / IP: 134.11.0.4 / 255.255.248.0
+- PC1 > config > gateway IPv4 : 134.11.0.1 / IP: 134.11.0.3 / 255.255.248.0
+- PC3 > config > gateway IPv4 : 134.11.0.1 , IP: 134.11.0.7 / 255.255.248.0
+- PC4 > config > gateway IPv4 : 134.11.20.1 , IP: 134.11.20.3 / 255.255.248.0
+- PC5 > config > gateway IPv4 : 134.11.8.1 , IP: 134.11.8.3 / 255.255.248.0
+
+### Autentizace
+#### Router 0
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip ospf message-digest-key 1 md5 cisco`
+- `int gi0/1`
+- `ip ospf message-digest-key 1 md5 cisco`
+- `int gi0/2`
+- `ip ospf message-digest-key 1 md5 cisco`
+- `exit`
+- `router ospf 1`
+- `area 0 authetication message-diggest`
+- `do wr`
+
+#### Router 1
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip ospf message-digest-key 1 md5 cisco`
+- `exit`
+- `router ospf 1`
+- `area 0 authetication message-diggest`
+- `do wr`
+
+#### Router 2
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip ospf message-digest-key 1 md5 cisco`
+- `exit`
+- `router ospf 1`
+- `area 0 authetication message-diggest`
+- `do wr`
+
+#### Router 3
+- `en`
+- `conf t`
+- `int gi0/0`
+- `ip ospf message-digest-key 1 md5 cisco`
+- `exit`
+- `router ospf 1`
+- `area 0 authetication message-diggest`
+- `do wr`
+
 <p align="right">
   <a href="./..">Go Back</a>
 </p>
