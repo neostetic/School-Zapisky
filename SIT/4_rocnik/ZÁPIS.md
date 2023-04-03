@@ -1787,3 +1787,34 @@ table ip natovani {
 
 #### Windows Vault
 - pro služby, kde nelze použít ověření pomocí AD
+
+### Bezdrátové připojení
+- **výhody**: nemusí se tahat kabely, prostor
+- **nevýhody**: zabezpečení, může se komunikace odchytit, rychlost přenosu, rušení volného pásma, omezený dosah, musí se mezi odesílatel a přijemce přímá viditelnost
+- **WIFI** - pro větší sítě, LAN
+  - 2.5GHz 
+- **Bluetooth** - pro PAM, blízké sítě
+  - 2.4GHz 
+- **vlnová délka**
+  - `lambda = c / f`
+    - **c** = rychlost světla (300000 km/s)
+  - **pásma** - 1-13 _(v ČR je použitelných 11)_ 
+    - 1. 2 pásma v budovách
+    - ostatní venku
+  - **kanály** - max 3 bez obvlivňování ostatních
+- **WI-FI**
+  - režim _infrastructure_, který se chová jako centrální bod, a k němu se připojují klienti
+- **Fresnelova zóna**
+  - uvnitř zóny se nesmí obsahovat žádné překážky
+- **CSMA/CA** - v menších sítí 
+- **RTS/STC** - ve větších sítí, řeší problém, kdy jednotlivé body, na sebe nevidí
+- **bezdrátový přenos**
+  - **WEP**
+  - **WPA**
+  - **WPA2**
+    - metoda šifrování: `AS`, `PK` 
+  - **WPA3**
+  - antény
+    - _všesměrové_ - signál se směřuje do všech směrů rovnoměrně
+    - _směrové_ - směrově zaměřená, hustý signál, aby nerušil signály v okolí
+    - _sektorové_ - obsluhluje sektor v určité výseči
