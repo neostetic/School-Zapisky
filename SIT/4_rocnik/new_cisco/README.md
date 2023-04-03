@@ -419,7 +419,7 @@
 - `exit`
 - `router rip`
 - `ver 2`
-- `network 134.11.25.76`
+- `network 134.11.0.0`
 
 #### Switch 1
 - `en`
