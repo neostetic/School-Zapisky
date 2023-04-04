@@ -442,6 +442,17 @@ ISR(TIMER1_COMPA_vect) {
 }
 ```
 
+### ADC
+- slouží pro převádění anologového signálu _(zvuk, vlnové dělky)_ na digitální
+- **anologový signál**
+  - spojovný, nepřerušovaný
+- **digitální**
+  - diskrétní bitový signál, plný hodnot
+- využívá se všude, kde jsme schopný převést měřenou veličinu na výši napětí
+  - využívá se při měřením proudu *(ampérmetrem)*
+- **ATMEGA8** a **ATMEGA16** obsahují ADC
+  - (./files/ATMEGA16.pdf)[ATMEGA16 *(str. 196)*]
+
 <p align="right">
   <a href="./..">Go Back</a>
 </p>
