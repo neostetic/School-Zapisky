@@ -451,7 +451,7 @@ ISR(TIMER1_COMPA_vect) {
 - využívá se všude, kde jsme schopný převést měřenou veličinu na výši napětí
   - využívá se při měřením proudu *(ampérmetrem)*
 - **ATMEGA8** a **ATMEGA16** obsahují ADC
-  - (./files/ATMEGA16.pdf)[ATMEGA16 *(str. 196)*]
+  - (./files/ATMEGA16.pdf)[ATMEGA16 *(kap. 22, str. 196)*]
 
 <p align="right">
   <a href="./..">Go Back</a>
