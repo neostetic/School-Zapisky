@@ -486,7 +486,58 @@ ISR(TIMER1_COMPA_vect) {
   - *ADCSRA*
   - *ADC* - skládá se ze dvou částÍ *(ADCL, ADCR)*
   - `ADC = ( Vin * 1024 ) / Vref`
+	
+```
+#define F_CPU 1000000UL
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
+#include <math.h>
 
+void showNumber(char num)
+{
+	switch(num)
+	{
+		case 1: PORTB=0b01001000; break;
+		case 2: PORTB=0b00111101; break;
+		case 3: PORTB=0b01101101; break;
+		case 4: PORTB=0b01001011; break;
+		case 5: PORTB=0b01100111; break;
+		case 6: PORTB=0b01110111; break;
+		case 7: PORTB=0b01001100; break;
+		case 8: PORTB=0b11111111; break;
+		case 9: PORTB=0b01101111; break;
+		case 0: PORTB=0b01111110; break;
+	}
+}
+
+float voltage = 0;
+uint8_t timer = 0;
+
+float conversion() {
+	ADCSRA |= (1 << ADSC)					// zapíše 1 na bit ADSC
+	loop_until_bit_is_clear(ADCSRA, ADSC)	// čeká na dokončení koverze
+	return ADC;								// vrátí hodnotu po dokončéní konverze
+}
+
+EMPTY_INTERRUPT(ADC_vect);
+
+int main(void) {
+	DDRB = 0xFF;
+	DDRC |= (1 << PC2) | (1 << PC3);
+	PORTC |= (1 << PC2) | (1 << PC3);
+	ADMUX |= (3 << REFS0);					// nastavení interního referenčního napětí
+	ADCSRA |= (3 << ADPS0);					// nastaví prescaler ADC na 8 (125kHz)
+    ADCSRA |= (1 << ADEN);					// zapne funkci ADC
+	TCCR1B |= (1 << WGM12);					// 10b timer, režim CTC, kanál A
+	TCCR1B |= (1 << CS10) | (1 << CS11);	// nastaví prescaler 64 pro timer
+	TIMSK |= (1 << OCIE1A);					// při shodě CRC se zavolá HW přerušení
+	OCR1A = 15624;							// vlastní max. pro režim CTC
+	sei();									// zapne gloválně HW interrupt
+	while (1) {
+    }
+}	
+```
 
 <p align="right">
   <a href="./..">Go Back</a>
