@@ -451,7 +451,42 @@ ISR(TIMER1_COMPA_vect) {
 - využívá se všude, kde jsme schopný převést měřenou veličinu na výši napětí
   - využívá se při měřením proudu *(ampérmetrem)*
 - **ATMEGA8** a **ATMEGA16** obsahují ADC
-  - (./files/ATMEGA16.pdf)[ATMEGA16 *(kap. 22, str. 196)*]
+  - **ATMEGA16A**
+    - (./files/ATMEGA16.pdf)[ATMEGA16 *(kap. 22, str. 196)*]
+    - 8 single-ended vstupů
+    - 7 diff. vstupů
+      - integrovaný zesilovač signálu
+    - rozlišení 10b *(1024 úrovní)*
+    - **čas konverze** - *13-260µs*
+    - **vzorkovací frekvence** - 0-25kHz *(optimální 50-200kHz)*
+    - **interní referenční napětí** - `Vref = 2.56V`
+    - **chybovost** - `±2LSB (least significant bit)`
+    - **typy konverzí**
+      - *single conversion* - změří se jenom jedna hodnosta
+      - *free running mode* - konverze probíhá cyklem, dokud ho nevypneme
+      - *triggered mode* - čeká se do nějaké události, poté se zapne
+  - **ATMEGA8**
+    - (./files/ATMEGA8.pdf)[ATMEGA8]
+    - 6 diff. vstupů
+    - v podstatě stejný jako *ATMEGA16A*, bez diferenčního režimu
+- postupná apromximace
+  - základem *A/D převodníku* je *D/A převodník (DAC)*
+    - pomocí D/A převodníku výrabíme a porovnáváme signál
+  - analogový komparátor - určuje, které napětí je větší
+  - ![image](https://user-images.githubusercontent.com/83291717/229710681-b80fe117-2dc3-466f-882b-d134ff4b41a9.png)
+    - **nad Vref** - první bitem z leva 1
+    - **pod Vref** - první bitem z prava 0
+    - **nad Vref/2** - dalším bitem z leva 1
+    - **pod Vref/2** - dalším bitem z prava 0
+    - **nad Vref/4** - dalším vitem z leva 1
+    - **pod Vref/4** - dalším bitem z prava 0
+- **registr bity**
+  - *ADMUX* - nastavuje ref napětí zarovnání bitů z leva nebo z prava, bolba vývodu pro AD převodník
+  - *ADVAR* 
+  - *ADCSRA*
+  - *ADC* - skládá se ze dvou částÍ *(ADCL, ADCR)*
+  - `ADC = ( Vin * 1024 ) / Vref`
+
 
 <p align="right">
   <a href="./..">Go Back</a>
