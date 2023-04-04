@@ -1,0 +1,76 @@
+AD převodník (Analog to digital converter)
+- převádí analogový signál (zvuk, vlnové délky) na digitální
+  - analogový signál je tzv. spojitý
+  - digitální, diskrétní se skládá z binárních hodnot
+- využívá se všude, kde jsem schopný převést měřenou veličinu na výši napětí
+  - např. měření proudu: ampérmetr, multimetr -> převedení hodnoty na digitálně zobrazovanou
+- Atmega16 jsou AD převodníky vybaveny
+
+chapter 22 Analog to Digital Converter, page 196
+
+Atmega16
+- 8 single-ended vstup
+  -
+- 7 differential vstupů
+  - Každý vstup na jiný vývod
+  - má integrovaný zesilovač signálu (Pokud je slabý signál, zesílí jej až 200x)
+- 10b rozlišení: Můžeme sledovat 2^10 => 1024 úrovní
+- čas konverze je 60 - 260 micro seconds (v jakých intervalech jsem schopen získat informace)
+- vzorkovací frekvence: 0 - 260 kHz (Na okrajích frekvenčního spektra dochází ke zkreslení)
+  - Optimální frekvence činí tedy 50 - 200KHz => nejvyšší přesnost
+- Interní referenční napětí (Vref = 2,56V)
+  - tj. napětí, se kterým porovnávám vstupní, abych dokázel určit jeho úroveň
+- Chybovost +- 2LSB (Least significant bit -> bit s nejmenší prioritou)
+  - např. 0b01100101 -> je to ten poslední bit
+
+Typy konverzí:
+  - Single conversion: změřím jednu hodnotu a hotovo
+  - Free running mode: konverze probíhá cyklicky, dokud ji nezastavím
+  - triggered mode: čekám na nějakou událost
+    - mám signál, jakmile signál naskočí, změřím jej
+
+Atmega8 vs Atmega16
+- má pouze 6 vstupů AD converteru
+- neumí diferenční mode
+
+Postupná aproximace
+ - Základem A/D převodníku je D/A (DAC) převodník
+   - Pomocí DA převodníku vyrábíme každou z 1024 úrovní a s nimi porovnáváme vstupní signál
+ - Analogový komparátor: určí, jaké ze dvou zvolených napětí je vyšší
+
+Princip postupné aproximace:
+ Jesliže signál leží:
+  nad Vref
+   - prvním bitem zleva 1
+  pod Vref
+   - prvním bitem z prava 0
+
+  nad Vref/2
+   - dalším bitem zleva 1
+  pod Vref/2
+   - dalším bitem z prava 0
+
+  nad Vref/4
+   - dalším bitem zleva 1
+  pod Vref/4
+   - dalším bitem z prava 0
+...
+Tuto operaci opakujeme, dokud nedojdeme k výsledku
+
+Registry
+ - ADMUX: 
+   - nastavuje ref napětí
+   - zarovnávání bitu vlevo či vpravo: ADVAR
+   - volba vývodu pro AD převodník
+ - ADCSRA
+   - spusti se kovnerze
+   - typ konverze
+   - zapnutí vypnutí fce
+   - adsc start konverze jako takové
+   - adfr nastavuje free running mod
+   - bit 4 nastavi, jestli chceme interrupt
+   - hardware preruseni
+   - 1, 2 nastaveni prescaleru: frekvence konverze
+ - ADC (2 části: ADCL, ADCR) 
+   - Obsahuje vlasní výsledek konverze
+   - ADC = (Vin * 1024) / Vref
