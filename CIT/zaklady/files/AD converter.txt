@@ -60,7 +60,7 @@ Tuto operaci opakujeme, dokud nedojdeme k výsledku
 Registry
  - ADMUX: 
    - nastavuje ref napětí
-   - zarovnávání bitu vlevo či vpravo: ADVAR
+   - zarovnávání bitu vlevo či vpravo: ADLAR
    - volba vývodu pro AD převodník
  - ADCSRA
    - spusti se kovnerze
