@@ -15,7 +15,7 @@ Atmega16
   - Každý vstup na jiný vývod
   - má integrovaný zesilovač signálu (Pokud je slabý signál, zesílí jej až 200x)
 - 10b rozlišení: Můžeme sledovat 2^10 => 1024 úrovní
-- čas konverze je 60 - 260 micro seconds (v jakých intervalech jsem schopen získat informace)
+- čas konverze je 13 - 260 micro seconds (v jakých intervalech jsem schopen získat informace)
 - vzorkovací frekvence: 0 - 260 kHz (Na okrajích frekvenčního spektra dochází ke zkreslení)
   - Optimální frekvence činí tedy 50 - 200KHz => nejvyšší přesnost
 - Interní referenční napětí (Vref = 2,56V)
