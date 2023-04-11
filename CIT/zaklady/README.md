@@ -556,7 +556,7 @@ ISR(TIMER1_COMPA_vect) {
 		if (voltage == 2.56) {
 			voltage = 0;
 		}
-		 
+		 _delay_ms(1);
 	}
 }
 
