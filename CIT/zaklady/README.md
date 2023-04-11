@@ -516,9 +516,9 @@ float voltage = 0;
 uint8_t timer = 0;
 
 float conversion() {
-	ADCSRA |= (1 << ADSC);					//zapise 1 na bit ADSC 
-	loop_until_bit_is_clear(ADCSRA, ADSC);	// ceka na dokonceni konverze
-	return ADC;								// vrati hodnotu po dokonceni konverze
+	ADCSRA |= (1 << ADSC);				   //zapise 1 na bit ADSC 
+	loop_until_bit_is_clear(ADCSRA, ADSC);	           // ceka na dokonceni konverze
+	return ADC;					   // vrati hodnotu po dokonceni konverze
 }
 
 EMPTY_INTERRUPT(ADC_vect);
@@ -531,10 +531,10 @@ int main(void) {
 	ADCSRA |= (3<<ADPS0);				   //nastavi prescaler ADC na 8 (125kHz)
 	ADCSRA |= (1 << ADEN);				   //zapne funkci ADC
 	TCCR1B |= (1<<WGM12);				   //10b timer, rezim CTC, kanal 4
-	TCCR1B |= (1<<CS10) | (1<<CS11);	   //nastavi prescaler na 64 pro timer
+	TCCR1B |= (1<<CS10) | (1<<CS11);	   	   //nastavi prescaler na 64 pro timer
 	TIMSK |= (1<<OCIE1A);				   // pri shode CTC se zavola HW preruseni
-	OCR1A = 15624;						   // vlastni max. pro rezim CTC
-	sei();								   //zapne gloabalne HW interrupt
+	OCR1A = 15624;				           // vlastni max. pro rezim CTC
+	sei();					           //zapne gloabalne HW interrupt
 	
     while (1) {
 		showNumber(floor(voltage));
@@ -552,7 +552,7 @@ ISR(TIMER1_COMPA_vect) {
 		timer = 0;
 		voltage = conversion();
 		voltage = voltage * 2.56 / 1024;	    //prepocet hodnoty ADC na skutecne napeti ve V
-		voltage = round(voltage * 100) / 100;   //zaokrouhli vysledek na 2 des. mista
+		voltage = round(voltage * 100) / 100;       //zaokrouhli vysledek na 2 des. mista
 		if (voltage == 2.56) {
 			voltage = 0;
 		}
