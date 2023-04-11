@@ -489,12 +489,13 @@ ISR(TIMER1_COMPA_vect) {
 	
 ```
 #define F_CPU 1000000UL
+
 #include <avr/io.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
 #include <math.h>
 
-void showNumber(char num)
+void showNumber(int num)
 {
 	switch(num)
 	{
@@ -515,9 +516,9 @@ float voltage = 0;
 uint8_t timer = 0;
 
 float conversion() {
-	ADCSRA |= (1 << ADSC)					// zapíše 1 na bit ADSC
-	loop_until_bit_is_clear(ADCSRA, ADSC)	// čeká na dokončení koverze
-	return ADC;								// vrátí hodnotu po dokončéní konverze
+	ADCSRA |= (1 << ADSC);					//zapise 1 na bit ADSC 
+	loop_until_bit_is_clear(ADCSRA, ADSC);	// ceka na dokonceni konverze
+	return ADC;								// vrati hodnotu po dokonceni konverze
 }
 
 EMPTY_INTERRUPT(ADC_vect);
@@ -525,18 +526,40 @@ EMPTY_INTERRUPT(ADC_vect);
 int main(void) {
 	DDRB = 0xFF;
 	DDRC |= (1 << PC2) | (1 << PC3);
-	PORTC |= (1 << PC2) | (1 << PC3);
-	ADMUX |= (3 << REFS0);					// nastavení interního referenčního napětí
-	ADCSRA |= (3 << ADPS0);					// nastaví prescaler ADC na 8 (125kHz)
-    ADCSRA |= (1 << ADEN);					// zapne funkci ADC
-	TCCR1B |= (1 << WGM12);					// 10b timer, režim CTC, kanál A
-	TCCR1B |= (1 << CS10) | (1 << CS11);	// nastaví prescaler 64 pro timer
-	TIMSK |= (1 << OCIE1A);					// při shodě CRC se zavolá HW přerušení
-	OCR1A = 15624;							// vlastní max. pro režim CTC
-	sei();									// zapne gloválně HW interrupt
-	while (1) {
+	PORTC |= (1<<PC2) | (1 << PC3);
+	ADMUX |= (3<<REFS0);				   //nastaveni interniho referencniho napeti
+	ADCSRA |= (3<<ADPS0);				   //nastavi prescaler ADC na 8 (125kHz)
+	ADCSRA |= (1 << ADEN);				   //zapne funkci ADC
+	TCCR1B |= (1<<WGM12);				   //10b timer, rezim CTC, kanal 4
+	TCCR1B |= (1<<CS10) | (1<<CS11);	   //nastavi prescaler na 64 pro timer
+	TIMSK |= (1<<OCIE1A);				   // pri shode CTC se zavola HW preruseni
+	OCR1A = 15624;						   // vlastni max. pro rezim CTC
+	sei();								   //zapne gloabalne HW interrupt
+	
+    while (1) {
+		showNumber(floor(voltage));
+		PORTC = 0b11110111;
+		_delay_ms(1);
+		showNumber(floor(voltage * 10) - floor(voltage * 10));
+		PORTC = 0b11111011;
+		_delay_ms(1);
     }
-}	
+}
+
+ISR(TIMER1_COMPA_vect) {
+	timer++;
+	if (timer == 5) {
+		timer = 0;
+		voltage = conversion();
+		voltage = voltage * 2.56 / 1024;	    //prepocet hodnoty ADC na skutecne napeti ve V
+		voltage = round(voltage * 100) / 100;   //zaokrouhli vysledek na 2 des. mista
+		if (voltage == 2.56) {
+			voltage = 0;
+		}
+		 
+	}
+}
+
 ```
 
 <p align="right">
