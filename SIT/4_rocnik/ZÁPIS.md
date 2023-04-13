@@ -1818,3 +1818,77 @@ table ip natovani {
     - _všesměrové_ - signál se směřuje do všech směrů rovnoměrně
     - _směrové_ - směrově zaměřená, hustý signál, aby nerušil signály v okolí
     - _sektorové_ - obsluhluje sektor v určité výseči
+
+### Síťová vrstva
+- **řeší směrování _(hledá určitou cestu k cíly)_, eukalapsaci, adresování**
+- základ routování, adresování
+- protokoly ARP, ICMP
+
+#### IPv4 (IPversion4)
+- např.: `192.168.42.69/19`
+- rozdělujeme do 5 kategorií (ABCDE (D - multicast, E - rezerva))
+  - **Kategorie A** - 0-127
+  - **Kategorie B** - 128-191
+  - **Kategorie C** - 192-223
+  - **Kategorie D** - 224-239
+  - **Kategorie E** - 240-255
+- privátní IP adresy
+  - 10.0.0.0 - 10.255.255.255
+  - 172.16.0.0 - 172.31.255.255
+  - 192.168.0.0 - 192.168.255.255
+  - **Localhost / Loopback** - 127.0.0.0 - 127.255.255.255
+  - **Link-local / Lokální spojení** - 169.254.0.0 - 169.255.255.255
+- _oktet = 8 bitů = 1 bajt_
+
+#### IPv6 (IPversion6)
+- 128 bitů - 8 skupin po 16 bitech
+- síťový prefix + adresa pc
+- namá broadcast
+- **Unicast** - `2001:db8:8:800:200c:471a`
+- **Multicast** - `ff01::101`
+- **Localhost / Loopback** - `::1`
+- **nespecifikovaná adresa** - `::`
+- globální unicast adresa - jedinečná celosvětové
+
+#### Packet
+- datová jednotka síťové vrstvy - **Packet**
+- ![image](https://user-images.githubusercontent.com/83291717/231758254-35ca3e25-41a6-4902-9d0e-57588276b171.png)
+- **IPv6 má danou délku**
+- [ze 3. ročníku](https://github.com/KRBNJSF/SIT#ipv6-1) 
+
+#### Jak krok po kroku funguje Router
+1. **router příjme rámec**
+2. **zkontroluje kontrolní součet rámce (pokud nesouhlasí, tak ho zahodí)**
+3. **vybalí packet a záhlaví a zápatí vyhodí**
+4. **porovná TTL**
+5. **porovná adresy pomocí masky z routovací tabulky a od příjemce adresu**
+6. **podívá se zda adresa souhlasí (pokud nesouhlasí, podívá se o řádek víš)**
+7. **sníží TTL**
+8. **vygeneruje novou hlavičku a patičku rámce**
+9. **rozešle dál**
+
+#### Počátaní adresy subnetu
+- [tady](../4_rocnik/4_POCITANI_IP_BROADCAST.txt)
+
+#### Router
+- jedná se o počítač, který má CPU, RAM, paměť
+- jeho úkolem je pomocí daného protokolu hledat cesty a upravovat routovací tabulku
+
+
+### Routovací protokoly
+- **statické** (ručné v Routovací Tabulce)
+- **dynamické (DHCP)** (pomocí Routovací Protokolů)
+  - **IGP** (Interior Gateway Protocol)
+    - Distance-Vector _(hledá podle vzdálenosti od sebe)_
+      - vzdálenost se hodnotí podle hopů _(vzálenost mezi 2 routery)_
+      - omezení max 16 hopů
+      - **RIP**, IGRP, EIGRP
+    - Link-State
+      - IS-IS, **OSPF** 
+  - **EGP** (Exterior Gateway Protocol)
+    - Path-Vector
+      - BGP
+- pro malé sítě stačí routování statické
+- pro komunikaci s okolními sítěmi
+  - gateway (adresa nejbližšího serveru)
+  - dns server (překládá IP na doménová jména)
