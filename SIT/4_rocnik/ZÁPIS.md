@@ -2,6 +2,7 @@
 - [📁 Soubory zápisu](./soubory)
 - [🤔 Maturitní otázky](./maturita)
 - [🌐 LEARNIIT.cz / SÍTĚ](https://learniit.cz/site)
+- [🌐 Samurai-cz.com](https://www.samuraj-cz.com/)
 
 ### Routování
 - **statické** (ručné v Routovací Tabulce)
@@ -1875,22 +1876,46 @@ table ip natovani {
 - jeho úkolem je pomocí daného protokolu hledat cesty a upravovat routovací tabulku
 
 
-### Routovací protokoly
-- **statické** (ručné v Routovací Tabulce)
-- **dynamické (DHCP)** (pomocí Routovací Protokolů)
-  - **IGP** (Interior Gateway Protocol)
-    - Distance-Vector _(hledá podle vzdálenosti od sebe)_
-      - vzdálenost se hodnotí podle hopů _(vzálenost mezi 2 routery)_
-      - omezení max 16 hopů
-      - **RIP**, IGRP, EIGRP
-    - Link-State
-      - IS-IS, **OSPF** 
-  - **EGP** (Exterior Gateway Protocol)
-    - Path-Vector
-      - BGP
-- pro malé sítě stačí routování statické
-- pro komunikaci s okolními sítěmi
-  - gateway (adresa nejbližšího serveru)
-  - dns server (překládá IP na doménová jména)
+### RIP, timery... potřeba upravit a dodělat v [otázkách](./maturita/questions#7-směrování--směrovací-protokol-rip)
 
-#### RIP a OSPF, a jejich timery... potřeba upravit a dodělat v [otázkách](./maturita/questions#7-směrování--směrovací-protokol-rip)
+### OSPF
+- vlastnosti
+  - Dijkstrův algoritmus
+  - LSA protokol
+  - pužitelnost pro malé i velké sítě
+  - rychle reaguje na změnu v topologii
+  - velké sítě se dělí na podoblasti
+  - podpora IPv4 a IPv6
+  - podpora autentizace
+  - multicast
+  - používá IP Protokol
+- tabulky
+  - **routovací (routing)** - nejlepší routy do destinací
+  - **topologie (topology)** - routovací záznamy do všech destinací
+  - **sousedů (adjacency)** - informace o sousedních routerech
+  - **link-state database** - stejná pro všechny routery, synchronizace pomocí zaplavení LSA, pomocí ní se vytvoří routovací tabulky, obraz síťové topologie ve stromové struktuře
+- činnosti protokolu OSPF
+  - pro sousední routery se používá **Hello protokol** který se aktivuje v době 10 vteřín
+  - poté se kontroluje, zda na routeru nedorazí **Hello Packet** v **Dead intervalu (40 vteřin)**
+  - pokud přijde odpověď tak najde svoje router id, pokud ho najde, tak zkontroluje ostatní data (dead interval, oblast)
+  - poté se stávají sousedy
+- navázání adjestency _(routery se nacházejí vedle sebe)_
+  - navzájem si vyměňují LSA informace
+- LSA typy
+  - **typ 1** - router, informace o routeru a jeho přímo připojených interfacech, pouze v rámci oblasti, generuje každý router
+  - **typ 2** - network, informace o LAN a routerech v ní, v multi-access network pochází z DR, pouze v oblasti
+  - **typ 3** - summary, pochází z ABR (Area Border Router), sítě dostupné mimo oblast, pro ABR
+  - **typ 4** - ASBR summary, pochází z ABR, pro ASBR
+  - **typ 5** - external AS, oznamuje externí routy (default route), pochází z ASBR, v rámci AS
+  - **typ 6** - multicast info
+  - **typ 7** - ostatní rozšíření - NSSA
+- šíří se v LSA pomocí schématu **LSA Flooding**, rozšíří se celkem rychle
+- v momentě kdy routery mají všechny potřebné informace, spustií se využít Dyjsktrův algoritmus  
+- **Dyjsktrův algoritmus**
+  - každej router sy vytvoří svojí mapu a k jednotlivým routerům (vrcholům) vytvoří číslo metriky
+  - pomocí všech cest se vypočítá, jaká cesta je nejkratší a ta se využije, a sestaví si routovací tabulku
+  - metrika může být >=1
+- Ethernet
+  - broadcastová síť, point-to-point
+  - navazuje se pouze s vybraným routerem
+- ASBR - zajišťuje redistribuci z jednoho do druhého
