@@ -1893,4 +1893,4 @@ table ip natovani {
   - gateway (adresa nejbližšího serveru)
   - dns server (překládá IP na doménová jména)
 
-#### RIP a OSPF, a jejich timery... potřeba upravit a dodělat v [otázkách](../maturita/questions#7-směrování--směrovací-protokol-rip)
+#### RIP a OSPF, a jejich timery... potřeba upravit a dodělat v [otázkách](./maturita/questions#7-směrování--směrovací-protokol-rip)
