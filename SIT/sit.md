@@ -32,6 +32,8 @@
    - aktualizace směrování nezahrnují informace o masce sítě, podpora IPv4, chybí podpora pro CIDR
  - RIP verze 2
    - podpora CIDR a IPv4, omezení 15 skoků (hop count), 224.0.0.9 (multicast)
+   - podpora autentizace
+   - **adresa pro rozšíření routovacích tabulek 224.0.0.9***
  - RIPng
    - podpora IPv6, chybí aktualizovaných autentizací a připojování k libovolných směrovačům
 
