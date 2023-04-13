@@ -140,8 +140,7 @@ vytvořených po instalaci AD
 - **základní operace, tvorba objektů, nastavování vlastností**
   - Vytvořte uživatelský účet se zadanými vlastnostmi
   - Vytvořte zabezpečovací skupinu
-  - Nastavte zadanou složku jako sdílenou, definujte vlastnosti sdílení a zabezpečení, vysvětlete
-význam jednotlivých nastavení
+  - Nastavte zadanou složku jako sdílenou, definujte vlastnosti sdílení a zabezpečení, vysvětlete význam jednotlivých nastavení
   - Co jsou zděděná oprávnění? Jak je v případě potřeby odstranit?
 - **uživatelské účty a skupiny**
   - Místní a cestovní profil uživatele
