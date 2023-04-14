@@ -1919,3 +1919,45 @@ table ip natovani {
   - broadcastová síť, point-to-point
   - navazuje se pouze s vybraným routerem
 - ASBR - zajišťuje redistribuci z jednoho do druhého
+
+### Transportní vrstva
+- zajišťuje komunikaci NtoN přenosu
+- protokoly - **TCP a UDP**
+- **TCP**
+  - spojový
+  - handshake zaručuje kominikaci
+  - o něco pomalejší
+  - klade důraz na spolehlivé doručení, musí se doručít správně a ve správném pořadí
+  - technika *sliding window* - určuje velikost bufferu a kolik dat je schopen přijemce zpracovat, tím se adaptivně upravuje
+  - datová jednotka - **SEGMENT** _(segmentace dat)_
+    - zdrojový port
+    - port přijemce
+    - sekvenční číslo
+    - číslo příjmu
+    - hlavička
+    - reservace
+    - URG, ACK, PSH, RST, SYN, FIN
+    - velikost sliding-window
+    - checksum
+    - urgentní pointer
+    - nastavení
+    - mezera
+    - data
+- **UDP**
+  - nespojoví
+  - nezaračuje zda se packet doručí
+  - odpoadá režije dat, tím je rychlejší
+  - chybí kontrola doručení a v jakém pořadí
+  - datová jednotka - **DATAGRAM**
+    - zdrojový port
+    - port přijemce
+    - délka
+    - checksum
+    - data
+- adresování
+  - **privilegované porty** - pro běžné služby
+    - _FTP, DNS, DHCP, poštovní protokoly, AD, ..._ 
+  - **registrované porty** - registrované pod nějakou firmu/organizaci
+    - _SQL_  
+  - **privátní porty** - pro privátní použití, pro stranu odesílatele
+  - **Socket**
