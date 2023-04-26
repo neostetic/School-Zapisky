@@ -1961,3 +1961,53 @@ table ip natovani {
     - _SQL_  
   - **privátní porty** - pro privátní použití, pro stranu odesílatele
   - **Socket**
+
+
+### Kyberbezpečnost
+- **DoS** - zahlcení požadavky na jednom PC
+- **DDos** - zahlcení požadavky + mnoho PC
+- **PoD** - na historických systémech nebyla ošetřena fragmentace dat; velikost packetů mnohonásobně větší
+- **Smurf attack** - správně nastavený router nepřijímá broadcasty...
+- **DNS amplification** - zneužívá se DNS server; nastavení pro dotazy které se budou brát z internetu; dotaz obsahuje IP adresu oběti a tím se zahltí obět požadavky
+  - dá se zabránit správném nastavení DNS
+- **NTP amplification** - podobně jako DNS amplification; pokud je na NTP povoleno více dotazů, obět se může zaplnit požadavky
+  - dá se zabránit správném nastavení DNS
+- **SSDP attack** - zneužití protokolu UPnP; útočník posílá _discovery packet_, zamění IP adresu adresou oběti a tím se zahltí požadavky
+- **Application Layer attack** - zasílání falešných požadavků
+- **DNS flood** - zneužití rekurzivních serverů; zahlcení velkým množstvím dotazů, neodpovídá pak na běžné dotazy
+- **SYN flood, ACK flood** - zneužití transportní vrstvy a protokolu TCP
+  - snaží se zahltit _SYN packetama_
+  - další útok, z jedné oběti se vytváří reflektor a tím odesílá packety dál na další oběť
+- **Http flood, ICMP flood, UDP flood, QUIC flood** - zahlcení požadavky
+  - dá se zabránit pomocí kontroli počtu požadavků za určitý časový úsek
+
+#### Útoky na VLAN (VLAN hopping)
+- **switch spoofing** - útočník předstírá že je switch, jestliže síť obsahuje trunkové porty _(pouze s módem **dynamic**)_, tak se dá pomocí něho zjistit všechny VLANy
+- **double tagging** - zneužívá nastavení **native VLAN**; v určitém rámci se vkládá data **VLAN TAG** s dalším **VLAN TAGEM**, původní **VLAN TAG** se smaže a nastaví se **VLAN TAG** útočníka; komunikace je pouze jednosměrná s útočníkem (může pouze odesílat, nikoliv stahovat) 
+
+#### Útoky na WIFI
+- **Útoky na dustopnost**
+  - **rušení (jamming)** - útočník generuje šum, který ruší signál s wifi signálem
+  - **probe request flooding** - útočník zahlcuje AP velkým množstvím dotazů a tím se zahlcuje 
+  - **RTS/CTS flooding** - útočník posílá velký množství na začátku vysílání, zablokuje přenosové pásmo pro ostatní
+- **deathentication/dissociation**
+- **Útoky ManInTheMiddle**
+  - **RougeAP** - útočník WiFi zapojí v cizí síti a může na dálku requesty zachytávat
+  - **Honeypots** - útočník vytvoří otevřenou WiFi (Free WiFi), komunikace jde přes útočníka; řešení přes VPN
+  - **EvilTwin** - útočník vytvoří svůj **AccessPoint**
+- **Útok na proces autentizace**
+  - **KRACK - Key Reinstallation Attack** - útok na 4cestný handshake; útočník se snaží aby se opakoval 3. a 4. krok v handshaku a tím získat klíč nebo donutit data nešifrovat; chyba WPA a WPA2 protokolu
+
+#### Útoky na e-mailovou komunikaci
+- **Phishing** - útočník se vydává za někoho za koho není a tím se snaží získat k datům oběti
+  - **TGTBT**
+  - **Sense of Urgency** - vynucení pocitu potřeby ragovat
+  - **podvodné odkazy**
+  - **Ransom**
+  - **Podvodné e-maily (falšování identity odesílatele)**
+- **Útoky na autentizační údaje**
+  - **lámání hesel** - pokud se útočník dostane k HASH, pomocí výpočtů a náhodných kombinací se snaží útočník uhádnout heslo
+  - **malware (keylogger)** - malware se dostane k uživateli a může vytáhnout data
+  - **útoky ManInTheMiddle** - zachytávání hesel a dat
+- **Útoky na autentizační údaje**
+  - **SQL injection** - zneužítí databází na requesty které pomocí určitých znaků, stringů a různých čárek se dá vybrat data z databází, které nejsou veřejně dostupné 
