@@ -2011,3 +2011,19 @@ table ip natovani {
   - **útoky ManInTheMiddle** - zachytávání hesel a dat
 - **Útoky na autentizační údaje**
   - **SQL injection** - zneužítí databází na requesty které pomocí určitých znaků, stringů a různých čárek se dá vybrat data z databází, které nejsou veřejně dostupné 
+
+### Konfigurace routeru
+- `ipconfig` -> `Default Gateway....[ip adresa]` -> půjdeme do prohlížeče a zadáme adresu -> Vytvoříme administratora
+- **Setup**
+  - **Basic setup**
+    - **Automatic Configuration DHCP**
+- **Wireless**
+  - **Basic setup**
+    - Wireless Mode : AP
+    - Wireless Network Mode : Mixed
+    - SSID změnit
+  - **Wireless Security**
+    - Security mode : WPA2
+    - Wpa algoritmus : AES
+    - helso : Pampeliska1  
+  - Apply
