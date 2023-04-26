@@ -2026,4 +2026,4 @@ table ip natovani {
     - Security mode : WPA2
     - Wpa algoritmus : AES
     - helso : Pampeliska1  
-  - ____Apply____
+  - ___Apply___
