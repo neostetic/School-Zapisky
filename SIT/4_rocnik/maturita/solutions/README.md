@@ -144,14 +144,70 @@
 	- nejvýhodnějším je **sváření**, což je nejodolnější způsob
 	- do switchů se zapojují optické kabely do *transceiverů*, které světelný signál převádí na elektrický signál 
 ### 3. Ethernet
-- uveďte, jaké vrstvy pokrývá Ethernet v modelu ISO/OSI a v modelu TCP/IP
-- detailně popište ethernetový rámec
-- detailně vysvětlete přístupovou metodu CSMA/CD
-- jaké jsou standardy Ethernetu
-- uveďte rychlosti Ethernetu od historických až po nejnovější
-- co to je fyzická adresa
-- co to je ARP
-- porovnejte hub a switch, u switche popište základní operace
+- **uveďte, jaké vrstvy pokrývá Ethernet v modelu ISO/OSI a v modelu TCP/IP**
+	- **ISO/OSI** - fyzickou a linkvou
+	- **TCP/IP** - síťové rozhrání
+- **detailně popište ethernetový rámec**
+	- **Preambule** - synchronizace hodin příjemece a odesílatele, aby počítače jeli na stejné vlně, **7B**
+	- **SFD (značka)** - ***značka, která označuje zasčátek rámce***, **1B**
+	- **MAC cíle** - **6B**
+	- **MAC zdroje** - MAC cíle je první, kvůli rychlejšímu přenosu, **6B**
+	- **Typ/Délka** - dálka pole dat, **2B**
+	- **Data** - pokud jsou data příliš malá, následuje výplň (min. 46B, max. 1500B), pokud se hranice překročí, tak se zahodí nebo rozkouskuje _(fragmentuje)_
+	- **CRC32 (kontrolní součet)** - ***kontrolní součet***, ověřuje intergritu dat, **4B**
+	- **Mezera mezi rámci** - **12B**
+- **detailně vysvětlete přístupovou metodu CSMA/CD**
+	- **detekuje kolize**
+	- zařízení naslouchají, jestli na vedení nevysílá někdo jiný, _jestli tam je volno_
+	- pokud je vedení obsazené, tak chvilku počkají, než se uvolní a poté začnou vysílat
+	- pokud se signál rozšíří po celé délce, tak při vysílaní jiného zařízění může dojít ke kolizi
+	- **jak se kolize ošetřuje?**
+		- uzel který vysílá, zároveň naslouchá na té síti, jestliže je všechno v pořádku a pokud dojde ke kolizi _(ze začne vysílat někdo jiný)_, tak signál znehodnotí
+		- po nalezení kolize se vyšle JAM signál a počká se, dokud dané ostatní uzly nezačnou vysílat znovu
+	- **jak je zajištěné to, aby nezačaly všechny uzly vysílat ve stejný čas?**
+		- **čas je náhodný**, mocninou dva a náhodného čisla - _metoda stochastická_
+- **jaké jsou standardy Ethernetu**
+	- _podle **IEEE 802.3**_
+	- **`10BASE5`** - _Původní Ethernet_ na koaxiálním kabelu, **10Mbit/s**
+	- **`10BASE2`** - _Původní Ethernet_ na koaxiálním _tenkém_ kabelu, **10Mbit/s**
+	- **`10BASE-T`** - _Původní Ethernet_, kroucená dvoulinka, **10Mbit/s**
+	- **`100BASE-FX`** - _Fast Ethernet_ přes dvě optické vlákna
+	- **`1000BASE-T`** - _Gigabit Ethernet_ s 4 páry UTP kavelu, **1000Mbit/s**
+	- **`1000BASE-CX`** - _Gigabit Ethernet_, pro krátké vzdálenosti
+	- **`1000BASE-SX`** - _Gigabit Ethernet_, _mnohovidové optické vlákno_, do _stovek_ metrů
+	- **`1000BASE-LX`** - _Gigabit Ethernet_, _jednovidové optické vlákno_, do _desítek_ metrů
+	- **`10GBASE-T`** - _Ten Gigabit Ethernet_, do 55 metrů _(kabel kategorie 6)_, do 100 metrů _(kabel kategorie 6a)_, **10Gbit/s**
+	- **`40GBASE` a `100GBASE`** - optické vlákna do 10 metrů, **40-100Gbit/s**
+- **uveďte rychlosti Ethernetu od historických až po nejnovější**
+	- **Půbodní Ethernet** -> 10MBit/s
+	- **Fast Ethernet** -> 100MBit/s
+	- **Gigabitový Ethernet** -> 1000MBit/s
+	- **Ten Gigabitový Ethernet** -> 10, 40, 100, 400GBit/s
+	- _Full duplex_ = může odesílat a přijímat data
+	- _Half duplex_ = může jenom posílat nebo přijímat data
+- **co to je fyzická adresa**
+	- **Fyzická/Hardwarová adresa (MAC)** - identifikátor síťového zařízení
+		- `00:B0:D0:63:C2:26` - MAC adresa je oddělená dvojtečkami, šestice dvojciferných hexadecimálních čísel
+		- IP adresy se váží k MAC adresám pomocí ARP; ARP pracuje na _síťové_ vrstvě a spolupracuje s _linkovu_ vrstvou
+		- první polovina = výrobce
+		- druhá polovina = pořadové číslo HW výrobku 
+- **co to je ARP**
+	- slouží v _TCP/IP_ k získání **linkové adresy síťového rozhraní** **_protistrany_** ve stejné podstíi **pomocí známé ip adresy**
+	- **ARP request se pošle broadcastem na všechny hosty v síti**
+	- _ARP request_ obsahuje **cílovou a zdrojovou IP adresu** a **zdrojovou MAC adresu**, jako _**cílová MAC adresa**_ je broadcast (`FF:FF:FF:FF:FF:FF`)
+	- pokud ARP REQUEST dojde k požadovanému cíly, tak se odešle zpátky ARP REPLY se stejnými údaji ale na místo MAC adresy zdroje uvede svoji adresu a místo MAC adresy cíle uvede adresu ze které request přišel
+	- po cestě zpátky ARP REPLY si switch zapíše do tabulky MAC adresu a příslušné rozhrání ze kterého APR REPLY přišel
+	- poté se pošle `known unicast frame`, která značí že se cesta zpátky našla a doputuje tam
+- **porovnejte hub a switch, u switche popište základní operace**
+	- **Hub (rozbočovač)** – vezme data od jednoho, pošle je všem
+	- **Switch (přepínač)** – vezme data od jednoho, pošle je žadateli
+		- když na switch příjde rámec, tak když neví kam ho má poslat, tak ho pošle na všechny rozhrání (Broadcast), ale zároveň si označí odkud rámec přišel a tuto informaci si uloží do tabulky MAC adres a pak dokáže najít cestu k určitému rozhrání a při dalším posílání rámců to pošle přímo na PORT, který odpovídá adres
+		- pokud má plnou tabulku, tak to odešle Broadcastem všem
+		- **metody**
+			- **store and forward** - příjme rámec, uloží si ho do paměti a pomocí něho kontroluje ostatní hlavičky a odesílá je do příslušného rozhrání
+			- **cut-through switching** - analizuje pouze začátek rámce a tím se urychluje odesílání
+			- **fragment free** - čeká na 64. byt, a tím má jistotu že nevznikla kolize
+			- **adaptive switching** - automatické přepínání mezi *cut-through switching* a *store and forward*
 ### 4. Bezdrátový přenos
 - základy bezdrátové komunikace
 - vysvětlete pojmy wifi, bluetooth
