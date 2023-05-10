@@ -113,7 +113,7 @@
 - **spojování metalických kabelů, krimpování – praktický příklad**
 	- buď přímé nebo křížené
 	- **konektor RJ-45**
-		- ![[Pasted image 20230501175321.png]]
+		- ![Pasted image 20230501175321](https://github.com/neostetic/School-Zapisky/assets/83291717/01fdd378-b386-4dfb-8297-5ebf42d0b8d1)
 - **optická vlákna, Snellův zákon, složení optického vlákna, používané materiály**
 	- hodně tlustá izolace
 	- **Fiber opric cable**
