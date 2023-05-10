@@ -209,15 +209,67 @@
 			- **fragment free** - čeká na 64. byt, a tím má jistotu že nevznikla kolize
 			- **adaptive switching** - automatické přepínání mezi *cut-through switching* a *store and forward*
 ### 4. Bezdrátový přenos
-- základy bezdrátové komunikace
-- vysvětlete pojmy wifi, bluetooth
-- vlnová délka, pásma, kanály, dělení kmitočtu
-- uveďte a popište rozdělení bezdrátových sítí
-- základní vlastnosti, popis a použití wi-fi
-- Fresnelova zóna
-- CSMA/CA, RTS/CTS
-- bezpečnost bezdrátového přenosu
-- v praktické části nastavte a zabezpečte wi-fi router
+- **základy bezdrátové komunikace**
+	- přenos dat, mezi dvěmi komunikujícími stranami bez použití kabelů
+- **vysvětlete pojmy wifi, bluetooth**
+	- **WiFi**
+		- standardy _IEEE 802.11_ popisující bezdrátovou komunikaci v počítačových sítí _(též jako Wireless LAN; WLAN)_ 
+		- využívá se tzv. _bezlicenční frekvenční pásmo_, proto je ideální pro budování levné ale výkonné sítě bez nutnosti kabelů
+		- **Wireless Fidelity _(bezdrátová věrnost)_**
+		- **Wifi slouží pro budování počítačových sítí, má větší dosah jak bluetooth**
+	- **BlueTooth**
+		- otevřený standard pro bezdrátovou komunikaci mezi dvěmi či více elektronickými zařízeními _(mobilní telefony, bezdrátová sluchátka, hodinky)_
+		- _definována standardem IEEE 802.15.1_
+		- spadá do kategorie **PAN _(Personal Area Network)_**
+		- má několik verzí. dnes **5.0** 
+		- **Bluetooth slouží pro osobní sítě, jako třeba propojování různých zařízení mezi sebou, např. sluchátka s mobilem**
+- **vlnová délka, pásma, kanály, dělení kmitočtu**
+	- pro šíření dat se využívá _elektromagnetické vlnění_, které vzniká pomocí cívky, kterou proudí elektrický proud 
+	- **Vlnová délka**
+		- označuje vzdálenost dvou nejbližších bodů postupného periodického vlnění
+		- základní vzorec pro výpočet vlnění = **`λ = c / f`**
+			- `λ` - vlnová délka  
+			- `c` - rychlost světla ve vakuu (300 000 km/h)  
+			- `f` - frekvence  
+	- **Pásma, Kanály, Dělení kmitočtů**
+		- existuje něco, čemu se říká _Elektromagnetické spektrum_, což jsou frekvence od vysílání analogového až po gamma záření, a některé části **(pásma)** jsou určeny pro provoz Wi-Fi sítí
+		- **2,4 GHz**
+			- 13 kanálů
+			- šířka 20-40MHz
+			- nesmí se překročit 100mW _EIRP_
+		- **5 Ghz**
+			- 3 subpásma
+			- _5,150 - 5,250 GHz_ - max 200mW _EIRP_
+			- _5,250 - 5,350 GHz_ - max 200mW _EIRP_ s regulací výkonu
+			- _5,450 - 5,725 GHz_ - max 1W _EIRP_ s regulací výkonu a výběrem frekvencí
+		- **EIRP** - _efektivní izotropický výkon_ - výkon, vyzařovaný bodovou anténou, která vyzařuje stejně _do všech směrů_
+		- **1. a 2. pásmo 5 GHz** jsou pro provoz uvnitř budov
+		- **3. pásmo 5 GHz** je pro venkovní přenosy, kde mají povinnou funkci detekování meteoradarů, se kterými se potom perou ale _meteoradary mají přednost_
+- **uveďte a popište rozdělení bezdrátových sítí**
+	- **infrastucture mode** - centrální bod _(access point)_, ke kterému se připojují klienti
+	- **ad-hoc** - podobný _peer to peer_ (komunikace mezi sebou), ruční nastavení
+- **základní vlastnosti, popis a použití wi-fi**
+	- původním cílem **Wi-Fi** bylo zajišťovat vzájemné bezdrátové připojení přenosných zařízení a propojování na LAN
+	- dnes se využívá hlavně pro připojení do sítě na internet, pomocí tzv. hotspotů
+- **Fresnelova zóna**
+	- tzv. rotařční elipsoid uvádějící se kolem spojnice mezi vysílající a přijímající anténou
+	- nejšiřší je zóna uprostřed, která při jejím narušení má negativní vliv na kvalitu a stabilitu
+- **CSMA/CA, RTS/CTS**
+	- protokoly používané v bezdrátových sítích pro řízení přístupu k médiu a řešení problémů s kolizemi
+	- **CSMA/CA**
+		- naslouchá zda je přenosové pásmo volné a jestli někdo jiný nevysílá
+		- snaží se vyhnout kolizím
+	- **RTS/CTS**
+		- požádá o povelní vysílat a na nějakou dobu vysílá, nikdo jiný nevysílá
+- **bezpečnost bezdrátového přenosu**
+	- skrýt název sítě - SSID
+	- šifrování provozu
+		- **WEP, WPA, WPA2, WPA3**
+		- heslo od WPA3 musí mít 8 znaků
+		- šifrování metodou **TKIP** nebo **AES**
+	- přístup do sítě se dá zabezpečit pomocí filtrováním MAC adres
+- **v praktické části nastavte a zabezpečte wi-fi router**
+	- 
 ### 5. Síťová vrstva
 - vysvětlete funkci síťové vrstvy, vyjmenujte a popište služby síťové vrstvy
 - detailně popište PDU používané v síťové vrstvě
