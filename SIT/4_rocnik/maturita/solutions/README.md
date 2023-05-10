@@ -269,7 +269,6 @@
 		- šifrování metodou **TKIP** nebo **AES**
 	- přístup do sítě se dá zabezpečit pomocí filtrováním MAC adres
 - **v praktické části nastavte a zabezpečte wi-fi router**
-	- 
 ### 5. Síťová vrstva
 - vysvětlete funkci síťové vrstvy, vyjmenujte a popište služby síťové vrstvy
 - detailně popište PDU používané v síťové vrstvě
