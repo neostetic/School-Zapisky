@@ -6,7 +6,8 @@
 		- kvůli přenosu dat po síti se museli zavést vrstvy komunikace
 		- v každé vrstvě/úrovni je jiný krok komunikace 
 	- **modely ISO/OSI a TCP/IP**
-		-  *TCP/IP je starší než ISO/OSI*
+		- *TCP/IP je starší než ISO/OSI*
+		- ![image](https://github.com/neostetic/School-Zapisky/assets/83291717/1bc2d9e8-78e6-485a-9938-a03e9893c5e3)
 		- TCP/IP
 			- *Aplikační vrstva*
 			- *Transportní vrstva*
