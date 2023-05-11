@@ -393,13 +393,103 @@ Host.:   2^12 - 2 = 4094 [12 jednicek inverzni masky]
 - Kde se používá protokol BGP
 - Vlastnosti protokolu BGP
 ### 9. Transportní vrstva
-- vysvětlete význam transportní vrstvy, vyjmenujte a popište služby transportní vrstvy
-- adresace v transportní vrstvě, uveďte příklad
-- detailně popište PDU používané v transportní vrstvě, popište datagram a segment
-- popište službu TCP a UDP, u TCP podrobně popište proces navázání a ukončení spojení
+- **vysvětlete význam transportní vrstvy, vyjmenujte a popište služby transportní vrstvy**
+	- zajišťuje _přenos dat mezi dvěmi koncovými účastníky_, _segmentaci dat_, _opravu chyb_ a _kvalitu přenosu_ jakou požadují výšší vrstvy
+	- přispůsobuje se ostatním vrstvám
+	- mezi aplikační a síťovou vrstvou
+	- zajišťuje _end-to-end_ komunikaci
+	- **spojované (TCP)** a **nespojované (UDP)** protokoly
+	- **služby**
+		- _segmentace_ - dělení aplikačních dat na menší díly
+		- _multiplexing_ - umožňuje využívát více aplikací komunikujících po síti v jednom čase
+		- _navázání spojení_
+		- _spolehlivý provoz_
+		- _opětované posílání ztracených dat_
+		- _zachovávání pořadí segmentů při skládání_
+		- _kontrola toku_
+- **adresace v transportní vrstvě, uveďte příklad**
+	-  číslo portu je 16-bitové, v hlavičce segmentu transportní vrstvy se vždy nachází číslo zdrojového a cílového portu
+	-  `ip_adresa:číslo_portu` např.: `127.0.0.1:8080`
+	-  číslo portu může být 1 až 65,535
+	-  ip adresa + port = socket
+	-  **Jak máme adresní prostor pro porty rozdělený?**
+		- veřejné _(privilegované)_
+			- nejdůležitější, _jednotlivé služby a aplikace_
+			- **22 SSH**, **53 DNS**, **110 (nezabezpečená)** a **995 (zabezpečená) POP3**, **25 SMTP**, **80 HTTP**, **443** HTTPS
+		- registrované
+			- _pro organizace_ (třeba Microsoft SQL server)
+			- **1024 až 49,151**
+		- soukromé _(dynamické)_
+			- _k osobnímu užití_, buď čistě k vlastnímu účelu nebo pro komiunikaci
+			- **49 151 až do konce rozsahu 65 535**
+- **detailně popište PDU používané v transportní vrstvě, popište datagram a segment**
+	- **_TCP segment_**
+		- **zdrojový port** – zdrojový aplikační proces, **16 bitů**
+		- **cílový port** – cílový aplikační proces, **16 bitů**
+		- **pořadové číslo odesílaného bajtu** - pořadí, **32 bitů**
+		- **pořadové číslo přijatého bajtu** – následující, **32 bitů**
+		- **délka záhlaví** - **4 bity**
+		- **rezerva** - **6 bitů**
+		- **příznaky** - **6 bitů**
+			- URG - urgentní data, dává se jim přednost _(URGENT)_
+			- **ACK** - platnost pole s číslem potvrzení _(AKNOWLADGE)_
+			- PSH - okamžité doručení sekmentu _(PUSH)_
+			- **RST** - požaduje _okamžité_ ukončení spojení _(RESET)_
+			- **SYN** - _žádost_ o navázání spojení _(SYNCHRONIZE)_
+			- **FIN** - _žádost_ o navázání ukončení _(FINISH)_
+		- **délka okna** - metoda WINDOW; příjemce pošle odesílateli jak má volný _buffer_ a podle toho odesílatel odesílá data, **16 bitů**
+		- **kontrolní součet** - zabezpečení přes celý segment, **16 bitů**
+		- **ukazatel naléhavých dat** - specifikuje poslední oktet/část urgentních dat, **16 bitů**
+		- **volitelné položky** - doplňkové informace
+		- _buffer_ = očekávaná velikost dat
+			- nachází se u příjemce
+		- `Proč je nutné ho takto informovat? Proč musí příjemce informovat odesílatele o tom, jak velké je to okénko?`
+			- aby nedošlo k zácpě toku dat; buffer by mohl přetékat
+		- `Jaká část se potvrzuje při přijetí?`
+			- celé okno; kvůli úspoře režie
+		- `Co se stane, pokud nějaké pakety nedorazí nebo dorazí pozdě?`
+			- pokud nedostane odesílatel po nějakém čase potvrzení o úspěchu odeslání dat, tak je pošle znovu _automaticky_
+		- `Jak se nazývá schopnost provozu vícero aplikací současně?`
+			- multiplexing
+		- `Je TCP protokol full-duplexní nebo half-duplexní?`
+			- ano, může přijímat i odesílat zároveň
+		- `Proč se číslují bajty v segmentech?`
+			- aby bylo jasné, v jakém pořadí se má zpráva zpátky poskládat
+	- `Jaký rozdíl je mezi UDP a TCP?`
+		- UDP je _rychlejší_, ale _méně spolehlivější_ a _nespojové_
+		- UDP datová jednotka se jmenuje _datagram_
+		- _UDP je best effort – doručuj data, jak nejrychleji to jde a jak nejrychleji to umíš, pokud se něco ztratí po cestě, tak to nevadí_
+	- `Na jaký typ provozu se UDP používá?`
+		- _zukový přenos, video, ..._
+		- něco kde nám nevadí když se pár bajtů ztratí 
+	- **_UDP datagram_**
+		- **nejdůležitější je cílový port a délka, ostatní můžeme vynechat**
+		- DNS, Samba, DHCP, protokol RIP
+- **popište službu TCP a UDP, u TCP podrobně popište proces navázání a ukončení spojení**
+	- **TCP**
+		- spojový, zajistí doručení segmentů ve stejném pořadí
+		- full-duplex (může zároveň přijímat a odesílat)
+		- komunikační kanál
+		- _TCP spojení_ = dvojice komunikujících portů _(socket)_
+		- **FTP, TELNET, HTTP, SMTP**
+	- **UDP**
+		- nespojový, rychlý
+		- malá provozní režie
+		- nespolehlivý
+		- _pro aplikace vyžadující broadcast nebo multicast_
+		- **RIP, NTP, DNS, SNMP**
+	- **_TCP - navázání spojení_**
+		- **ve třech krocích - třícestný handshake**
+		- 1. _žadatel vygeneruje pořadové číslo segmentu_, a pošle na port cílového PC, s příznakem **SYN _(SYNCHRONIZACE)_**
+		- 2. _pokud příjemce připojení očekává_, odpoví segmentem s příznakem **ACK _(AKNOWLADGE)_** a **SYN _(SYNCHRONIZACE)_**
+			- _pokud příjemce spojení NEočekává_, odpoví segmentem s příznakem **RST _(RESET)_**
+		- 3. žadatel _potvrdí příjem segmentu_ a tím je navázáno obousměrné spojení
+	- **_TCP - ukončení spojení_**
+		- _jedna strana vyšle segment_ s příznakem **FIN _(FINISH)_** a_ druhá to potvrdí_ segmentem s příznakem *ACK _(AKNOWLADGE)_** a **FIN _(FINISH)__**
 ### 10. Windows Server
 - struktura Windows Serveru
-  - Popište strukturu serveru. Vysvětlete funkci HAL, jádra, služeb, GUI.o Co je třeba uvážit před počátkem instalace?
+  - Popište strukturu serveru. Vysvětlete funkci HAL, jádra, služeb, GUI.
+  - Co je třeba uvážit před počátkem instalace?
   - Jaký je rozdíl mezi jednotlivými edicemi serveru (essentials, standard, datacenter...)?
   - Jaké jsou možnosti ovládání Windows Serveru?
 - role, funkce, služby; jejich instalace a konfigurace
