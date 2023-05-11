@@ -29,29 +29,29 @@
 			- cílová adresa je vždy první kvůli *switchové metodě* `cut-through switching`, která dělá přeposílá informace ještě před úplném přijetí dat
 			- *zapouzdřování* je takzvané zabalování dat pro síťovou vrstvu
 		- *Síťová vrstva*
-		- využívají se protokoly - ARP, ICMP, IP
-		- zajišťuje směrování (hledání cesty od odesílatele k přijemci přes různé cesty a prtokoly, jako jsou například RIP, OSPF, BGP, ...)
+		        - využívají se protokoly - ARP, ICMP, IP
+		        - zajišťuje směrování (hledání cesty od odesílatele k přijemci přes různé cesty a prtokoly, jako jsou například RIP, OSPF, BGP, ...)
 			- ARP - překládá MAC adresy na IP adresy a obráceně
 			- ICMP - kontrolní řídící zprávy, `ping`
-		- **router** 
-	- *Transportní vrstva*
-		- na transportní vrstvě fungují porty
-		- zajišťuje přenos mezi jednostlivými uzly
-		- provádí přenos adres transpotních adres na síťové (nestará se o směrování)
-		- puživá se **TCP** nebo **UDP**
-		- **TCP je spojový** a **UDP nespojový** protokol a tím pádem je TCP pomalejší oproti UDP
-		- TCP kontoluje spojení, zatím co UDP nekotroluje spojení
-	- *Relační vrstva*
-		- zabezpečuje výměnu dat mezi aplikacemi
-		- vytváření spojení, dává synchronizační značky a porty
-		- například při stahování díky těchto značkách se při výpadku může najít spojení a pokračovat tam, kde se skončilo
-	- *Prezenční vrstva*
-		- transformuje data pro aplikace
-		- zabývá se jejich strukturou
-		- například ASCII kódování
-	- *Aplikační vrstva*
-		- slouží pro napojování aplikací a pro předání dat ostatním vrstvám
-		- protokoly ***TELNET, DHCP, DNS, SMTP, FTP***
+		        - **router** 
+	        - *Transportní vrstva*
+		        - na transportní vrstvě fungují porty
+		        - zajišťuje přenos mezi jednostlivými uzly
+		        - provádí přenos adres transpotních adres na síťové (nestará se o směrování)
+		        - puživá se **TCP** nebo **UDP**
+		        - **TCP je spojový** a **UDP nespojový** protokol a tím pádem je TCP pomalejší oproti UDP
+		        - TCP kontoluje spojení, zatím co UDP nekotroluje spojení
+	        - *Relační vrstva*
+		        - zabezpečuje výměnu dat mezi aplikacemi
+		        - vytváření spojení, dává synchronizační značky a porty
+		        - například při stahování díky těchto značkách se při výpadku může najít spojení a pokračovat tam, kde se skončilo
+	        - *Prezenční vrstva*
+		        - transformuje data pro aplikace
+		        - zabývá se jejich strukturou
+		        - například ASCII kódování
+	        - *Aplikační vrstva*
+		        - slouží pro napojování aplikací a pro předání dat ostatním vrstvám
+		        - protokoly ***TELNET, DHCP, DNS, SMTP, FTP***
 - **dělení sítí**
 	- podle rozlehlosti
 		- **LAN - Local Area Network** -> často doma, ve firmách, ...
