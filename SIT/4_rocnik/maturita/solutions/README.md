@@ -265,17 +265,113 @@
 	- skrýt název sítě - SSID
 	- šifrování provozu
 		- **WEP, WPA, WPA2, WPA3**
-		- heslo od WPA3 musí mít 8 znaků
+		- heslo od WPA2 musí mít 8 znaků
 		- šifrování metodou **TKIP** nebo **AES**
 	- přístup do sítě se dá zabezpečit pomocí filtrováním MAC adres
 - **v praktické části nastavte a zabezpečte wi-fi router**
 ### 5. Síťová vrstva
-- vysvětlete funkci síťové vrstvy, vyjmenujte a popište služby síťové vrstvy
-- detailně popište PDU používané v síťové vrstvě
-- co je směrování, popište ho podrobně krok za krokem
-- popište adresu IPv4 a IPv6
-- pomocí zadané IP adresy a masky spočítejte parametry daného subnetu
-- popište zařízení pracující na síťové vrstvě
+- **vysvětlete funkci síťové vrstvy, vyjmenujte a popište služby síťové vrstvy**
+	- nachází v modelu _ISO/OSI na 3. místě_, v modelu _TCP/IP na místě 2._
+	- **funkce síťové vrstvy**
+		- využívá se _adresování, zapouzdřování, směrování, vypouzdřování_
+		- **routování** => spolupracuje s _transportní vrstvou_ a od ní přebírá _segmenty/datagramy, zapouzdřuje je, přidá k ním IP adresy a rozhodne, jakým způsobem a kam se packet odešle_
+			- **upraví se TTL**, které má v záhlaví packetu a pošle se do _linkové vrstvy_ a tam se zapoudří a pošle dál
+			- výměnna dat ve formě packetů
+		- **adresování** = proces přidělování adres, které slouží pro směrování packetů a identifikace HOSTA
+		- **směrování** = proces komunikace, při kterém se hledá cesta _(nemusí po stejné síti)_ pomocí hopů a směrovače _(Router)_
+	- **služby síťové vrstvy**
+		- **IP protokol** - základní protokol sítě, služba bez spojení, současná verze IPv4 - následně IPv6
+		- **ARP, RARP** - mapování IP adres na MAC adresy a naopak
+		- **ICMP** - zprávy o chybách a nestandartních událostecj při přenosu datagramu
+		- **IGMP** - mapování skupinové MAC adresy do síťové skupinové adresy
+		- **RIP, IGRP, EIGRP, OSPF** - směrovací protokoly 
+- **detailně popište PDU používané v síťové vrstvě**
+	- **IPv4**
+		- **verze** - verze protokolu (IPv4/IPv6), **4bity**
+		- **IHL (délka hlavičky)** - **4bity**
+		- **typ služby** - kvůli QoS (Quality of service), priorita jednotlivých datových toků, **8bity**
+		- **celková délka** - délka datagramu, **16bity**
+		- **identifikace** - pokud byl datagram fragmentován, pomocí identifikace se dá rozpoznat jaké fragmenty patří k sobě, **16bity**
+		- **příznaky** - slouží pro řízení fragmentace, **3bity**
+		- **offset fragmentu** - na jaké pozici začíná fragment, **13bity**
+		- **TTL** - ochrana proti zacyklení, každý směrovač _zmenší hodnotu o jedničku_, **8bity**
+		- **protokol** - určuje jakým protokolem vyšší vrstvy se mají data předat, **8bity**
+		- **kontrolní součet** - slouží pro kontrolu proti požkození nebo strátě dat, **16bity**
+		- **adresa odesílatele** - IP adresa síťového rozhraní, _které datagram vyslalo_, **32bity**
+		- **adresa cíle** - IP adresa síťového rozhraní, _kterému je datagram určen_, **32bity**
+	- **IPv6**
+		- **verze** - verze protokolu (IPv4/IPv6), **4bity**
+		- **třída provozu** - úroveň priority, dělí se na kotrolu přetížení a bez kontroly přetížení, **8bity**
+		- **značka toku** - pro správu QoS, dnes se už nepoužívá, **20bity**
+		- **délka dat** - délka těla packetu, při vynulování se nastaví _"jumbo tělo" (skok za skokem)_, **16bity**
+		- **další hlavička** - určuje další vnořený protokol, **8bity**
+		- **zdrojová a cílová adresa** - na každou adresu **128bitů**
+		- **max. skoků** - povolený počet skoků, po každém skoku _se sníží o jedničku_, **8bity**
+- **co je směrování, popište ho podrobně krok za krokem**
+	- 1. router obrdrží rámec, zkontroluje kontrolní součet a pokud je chyba, tak ho zahodí
+	- 2. z rámce výjme packet, zahodí _záhlaví a zápatí_
+	- 3. provede se kotrola TTL
+	- 4. výjme packet, zahodí _ethernetovou hlavičku a patičku_
+	- 5. podívá se na IP adresu cíle a _porovná ji se směrovací tabulkou_
+		- routovací tabulka = maska cílové sítě, brána (gateway), adresa cílové sítě, rozhrání, metrika, adresa dalšího routeru
+	- 6. provede se operace **AND** a pokud se adresa nenajde, pošle packet dál jako _0.0.0.0_, aby ho poslal všem
+	- 7. sníži se TTL a upraví se na nový rámec, kam se dosadí nové adresy
+	- 8. přidá ethernet hlavičku a patičku a pošle dál
+	- _TTL může nabývat hodnot 1-255_
+	- _tracert = posílá **ping** a **postupně se TTL zvyšuje**, než se dostane do koncového bodu_
+- **popište adresu IPv4 a IPv6**
+	- **IPv4**
+		-  má 32 bitů - 4B
+		-  zapisuje se **dekadicky (1-255)**
+		-  hlavička má 20B
+		-  IPv4 používá **broadcast**
+		-  třídy A, B, C, D, E (D - multicast, E - rezerva)
+		-  privátní adresy
+			- 10.0.0.0 - 10.255.255.255 (10.0.0.0/8)
+			- 172.16.0.0 – 172.31.255.255 (172.16.0.0/12)
+			- 192.168.0.0 – 192.168.255.255 (192.168.0.0/16)
+		- localhost adresa
+			- 127.0.0.1 (odkazuje sám na sebe)
+		- link-local adresy _(prostě pro dementy)_
+			- 169.254.0.0 – 169.254.255.255 (169.254.0.0/16)
+			- slouží pro autokonfiguraci síťového rozhrání, _prostě pro dementy_
+	- **IPv6**
+		-  má 128 bitů - 16B po 8
+		-  zapisuje se **hexadecimálně (00-FF)**
+		-  hlavička má 40B
+		-  IPv6 nepoužívá broadcast, místo toho se používá **multicast**
+		-  pravidlo zkracování `0000` na `::` a na nuly jednotné `:0:`
+		-  IPv6 adresy
+			- globální - `2000::/3`
+			- link-local - `FE80::/10`
+			- loopback - `::1/128`
+			- nedefinovaná - `::/128`
+	- **CIDR**
+		- zápis velikosti sítě pomocí údaje za lomítkem IP adresy
+- **pomocí zadané IP adresy a masky spočítejte parametry daného subnetu**
+```
+Ip:    192.168.1.5
+Maska: 255.255.240.0
+-----------------------------------
+11000000.10101000.00000001.00000101 [AND]
+11111111.11111111.11110000.00000000 [1*1=1; 1*0=0]
+-----------------------------------
+11000000.10101000.00000000.00000000
+     192.     168.       0.       0 [Adresa site]    [OR]
+00000000.00000000.00001111.11111111 [Negovana maska] [1+1=0; 1+0=1; 0+0=0]
+-----------------------------------
+11000000.10101000.00001111.11111111
+     192.     168.      15.     255 [Broadcast]
+
+Subnety: 2^4 = 16 [4 jednicky po oktetu s jednickami a nulami]
+Host.:   2^12 - 2 = 4094 [12 jednicek inverzni masky]
+``` 
+- **popište zařízení pracující na síťové vrstvě**
+	- **router** - je síťové zařízení, které předává datové pakety mezi počítačovými sítěmi
+	- **switch** - propojuje jednotlivé prvky do hvězdicové topologie
+		- přeposílá síťový provoz jenom do těch směrů, do kterých je to potřeba
+	- **bridge** - zařízení, které spojuje dvě části sítě na druhé (linkové) vrstvě referenčního modelu ISO/OSI
+		- ve své paměti RAM sám sestaví tabulku MAC (fyzických) adres a portů, za kterými se dané adresy nacházejí 
 ### 6. Kyberbezpečnost – kybernetické útoky
 - rozdělte kybernetické útoky do jednotlivých kategorií a popište je
   - útoky na síťovou infrastrukturu a serverové služby
