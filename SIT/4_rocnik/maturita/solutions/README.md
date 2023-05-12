@@ -380,11 +380,76 @@ Host.:   2^12 - 2 = 4094 [12 jednicek inverzni masky]
   - útoky na autentizační údaje
   - útoky na databázové systémy
 ### 7. Směrování – směrovací protokol RIP
-- zařazení protokolu RIP dle velikosti sítě, principu činnosti
-- verze RIP protokolu a rozdíly mezi nimi
-- podrobný popis principu aktualizace směrovacích tabulek (zprávy)
-- časové intervaly, nekonečná vzdálenost
-- změny v topologii – split horizon, triggered update, reverse cache poison
+- **zařazení protokolu RIP dle velikosti sítě, principu činnosti**
+	- **RIP patřá do protokolů _distance vector_** - pro _malé sítě_
+	-  **podle velikosti sítě (způsobu použití)**
+		- **IGP (internal gateway protocol)** - _uvnitř_ autonomních systémů (rozlehlá síť, většinou ISP)
+		- **EGP (external gateway protocol)** - _mezi_ autonomními systémy
+		- _autonomní systém_ = provider, _v té síti_ se využívají IGP, _pro komunikaci s ostatními_ se využívá EGP _(jediný protokol: BGP (Border Gateway Protocol))_
+	- **podle principu činnosti**
+		- **distance vektor**
+			- hledají _nejkratší cestu podle počtu hopů_; **metrika**
+			- díky omezenému počtu hopů jsou určeny pro _malé sítě_
+		- **link-state**
+			- hledají _nejoptimálnější_ cestu pomocí _vyhodnocení stavu a kvality cesty_ (např.: OSPF to hodnotí podle šířky pásma)
+			- sleduje stav linky a pracuje s většími sítěmi
+- **verze RIP protokolu a rozdíly mezi nimi**
+	- vznikly historicky podle požadavků 
+	- **RIP 1**
+		- _nepodporuje_ VLSM (_stejně velké_ subnety)
+		- nulové zabezpečení
+		- informace o routovací tabulce si předávají pomocí **broadcastu** _(zbytečně se zatěžuje síť, že to odešle všem)_
+	- **RIP 2**
+		- _podporuje_ VLSM (_různě veliké_ subnety)
+		- podpora autentizace (ověřování); routery se navzájem můžou ověřovat, že se jedná o správný router
+		- informace o routovací tabulce si předávají pomocí **multicastem**
+	- **RIPng** 
+		- určen pro **IPv6**
+		- šifruje přenos informací _(**IPsec**)_
+	- _mezi jednotlivými verzemi RIP je zachována **zpětná kompatibilita**_
+- **podrobný popis principu aktualizace směrovacích tabulek (zprávy)**
+	-  ***konvergence routovacích protokolů***
+		- stav kdy _všechny routery mají veškeré potřebné informace_ (routovací tabulky, informace k jejich udržování)
+		- než se k tomuto stavu dojde, _nějakou dobu to trvá_
+		- _konvergence u RIP je pomalá_
+	- RIP 1 definuje dvě základní zprávy **request a response**
+	- **requestem** - *když se do sítě přidá nový router, tak se zeptá o informace z routocací tabulky*
+	- **response** - *ostatní routery odešlou své jednotlivé směry z routovací tabulky*
+	- _nový router si poté může vytvořit tabulku vlastní_
+	- další informace se posílají pomocí tzv. **timerů**
+- **časové intervaly, nekonečná vzdálenost**
+	-  **Update Timer**
+		- **pravidelná aktualizace dat**
+		- defaultně **+-30 vteřin** (25 nebo 35) - aby se síť nezahlstila, když bude větší
+		- _každý router s každým sousedem si posílá informace o směrech, které má uložené ve své routovací tabulce_
+	-  **Invalid Timer**
+		- defaultně **180 vteřin** - pokud se do té doby _záznam neaktualizuje_, tak se označí za **neplatný**
+		- _pokud se něco odpojí v síti, routery přestanou dostávat nové informace_
+		- může se tak stát, pouze **pokud dojde počet hopů na 16 nebo k *nedokončené vzdálenost*** _(15 = max RIP hopů)_
+	-  **Flush Timer**
+		- defaultně **240 vteřin (`invalid timer` 180 + 60)** - _aby se síť nezahlcovala_, musí se _routovací tabulky udržovat co nejmenší_
+		- _navazuje na **Invalid Timer**, kde se pročistí směry a routovací tabulky s metrikou 16_
+	-  **Holddown Timer**
+		- **router čeká, jestli se ta původní cesta vzpamatuje, pokud se její metrika zhorší**
+		- defaultně **180 vteřin** - _čeká_, jestli se původní cesta vzpamatuje, _pokud se její metrika nezhorší_
+		- může nastat situace, kde r_outer A a bude mít metrika např. 2_ a _router B bude mít metriku 1_
+		- _odešle svoji metriku na router A_ a _A si jí upraví_, pak může kdy nastat _situace kdy metrika bude vyšší_
+		- tímto **timerem** se _čeká na změnu_, _pokud se metrika nezmění, upraví se na tu vyšší_   
+- **změny v topologii – split horizon, triggered update, reverse cache poison**
+	- **konvergence** je ideální stav, který _nějaký čas trvá_, to znamená že _když dojde k nějaké změně v topologii_, tak informace se _neaktualizují na správné hodnoty_ a _můžou se vytvořit tzv. smyčky_ mezi jednotlivými routery
+	- _routery si můžou mezi sebou prohazovat špatné informace_, například když dojde chyba na nějakém switchy
+	- tyto techniky pomáhají se vypořádat se změnou v topologii sítě a zabraňují vytvoření smyček
+	- **split horizon**
+		- říká: **nikdy neposílej informace o cestě, skrz rozhraní, přes které ses tu cestu naučil**
+		- tímto zabrání vytvoření smyčky
+		- **konvergance** může nějakou dobu trvat
+	- **reverse cache poison (Split Horizon with Poisoned Reverse)**
+		- **záměrná propagace cesty s metrikou 16** 
+		- jedná se o _porušení pravidla_ **split horizon**, kdy se _cesta s metrikou 16 posílá zpátky_, aby se informace šířila co nejvíce směry
+	- **triggered update**
+		- řeší stav, kde se _nečeká na timery ale změna v topologii se propaguje okamžitě_
+		- ůkolem je _snížit čas, který je potřebný k dosažení konvergence_
+		- _kdyby síť byla postavená trochu jinak a došlo by ke změně topologie_, tak **split horizon** by nebyl schopen to vyřeši, od toh je **triggered update**
 ### 8. Směrování – směrovací protokol OSPF a BGP
 - Zařazení protokolu OSPF dle velikosti sítě, princip činnosti
 - Popis algoritmu použitého v protokolu OSPF
