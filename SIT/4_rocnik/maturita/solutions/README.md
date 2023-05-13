@@ -561,30 +561,79 @@ Host.:   2^12 - 2 = 4094 [12 jednicek inverzni masky]
   - Vysvětlete, co jsou u WS role a funkce, jaký je jejich vztah ke službám?
   - Jako příklad nainstalujte roli DHCP server. Vysvětlete všechna dílčí nastavení.
 ### 11. Autentifikace a důvěra v systémech AD
-- Jaký je rozdíl mezi autentifikací a autorizací?
-- Jak autentifikace probíhá v systémech Windows bez domény?
-- Jak autentifikace probíhá v systémech Windows s AD doménou?
-- Popište službu SSO v doméně AD a to, jak ovlivňuje přihlašování do dalších serverů Microsoft
-(Exchange, SQL atd.)
-- Popište účel a princip činnosti protokolu Kerberos v sítích s AD doménou.
-- Co je Windows Vault?
+- **Jaký je rozdíl mezi autentifikací a autorizací?**
+	- **autentifikace** - _prokázání identity_ 
+	- **autorizace** - _provádí oprávnění_ po autentifikaci
+	- z hlediska bezpečnosti vznikly **bezpečnostní požadavky na vyšší úroveň bezpečnosti**
+		- **PKI (Private Key Infrastructure)** - přihlašování pomocí různých certifikátů
+			- buď je uložený **v systému**, nebo **ve složce**
+	- **SMARTCARD** - jako _platební karta_, která obsahuje certifikát
+	- **TOKEN** - _USB flashka_ s klíčem a certifikátem
+- **Jak autentifikace probíhá v systémech Windows bez domény?**
+	- při zadání přihlašovacího jména a heslo, **se vygeneruje hash z hesla** a podle své **databáze** porovná s existujícím uživatelem
+	- pokud uživatel existuje v **databázi**, tak mu udělí práva a tím se ***autentifikoval***
+	- **Kde je uložená databáze s uživateli a hesly?**
+		- `Windows -> System32 -> config -> SAM`
+		- jedná se o **součást registru systému** a je chráněná
+		- k souboru se dá pouze dostat oprávněně přes BOOT jiného systému
+		- aby se ten HASH uchránil, existuje **možnost externího uložení HASHU hesla**
+		- dříve šifrování přes **RC4**, _dnes **AES**_
+- **Jak autentifikace probíhá v systémech Windows s AD doménou?**
+	- v _Active Directory_ se autentifikace provádí přes _protokol **Kerberos**_ (nebo **LM, NTLM**)
+	- **intergrované ověřování Windows**
+		- potřeba _vztah důvěry_ 
+		- **v AD probíhá automaticky rámci komunikace**, tím pádem **uživatel nemusí pořád zadávat přihlašovací údaje**
+- **Popište službu SSO v doméně AD a to, jak ovlivňuje přihlašování do dalších serverů Microsoft (Exchange, SQL atd.)**
+	- **SSO (Single Sign On)**
+		- říká že **ověření uživatele proběhne pouze jednou**
+		- také je v **Exchange, SQL, Outlook, ...**
+		- to znamená na začátku spuštění systému, nebo při jeho odlášení a následné přihlášení
+		- > "Vy se přihlásíte, chcete jít na síť, tak už žádný přihlašovací údaje k těm síťovým prostředkům zadávat nemusíte, protože to ověření proběhlo automaticky pomocí té funkce Single Sign On." - _mistr Suchánek_
+		- _je potřeba_ **připojení pracovní stanice do domény**
+- **Popište účel a princip činnosti protokolu Kerberos v sítích s AD doménou.**
+	- **Kerberos**
+		- **NIKDY neposílá heslo po síti**
+		- **slouží čistě jenom pro OVĚŘOVÁNÍ**
+		- ověřování probíhá pomocí _jiných technik_
+		- _Kerberos není vynález Microsoftu ale **univerzitou MIT**_
+		- **4 součásti**
+			- **AS - autentifikační server** 
+			- **SS - servisní středisko** 
+			- **TGS - Ticket Granting Server** 
+			- **TGT - Ticket Granting Ticket** 
+		- **funguje na bázi ticketů**, to jsou tzv. 'propustky', které udělují určitá oprávnění
+		- každý ticket má **omezenou životnost**
+	- **Ověřování pomocí kerberos**
+		1. _klient_ se autentifikuje a **odešle hash s přihlašovacími údaji** na **AS (autentifikační serveru)**, poté podážádá o vystavení ticketu **TGT**
+		2. _autentizační server_ se **podívá do databáze**, zjistí zda uživatel existuje a vytvoří ***zašifrovaný* Klient/TGS Session Key** a **Tajný Klíč**
+		3. _autentizační server_ odešle **Klient/TGS Session Key** _klientovi_ a ZÁROVEŇ mu odešle **TGTicket, který je zašifrovaný *Tajným Klíčem***
+			- Ticket obsahuje: _časovou značku, kopii Session Key a uživatelské jméno_
+		4. _klient_ při obdržení zprávy si pomocí **svého hash z hesla a jména** pokusí **Klient/TGS Session Key dešifrovat**, a _pokud se mu to povede_, tak zadal správné heslo
+		6. _klient_ **u TGServeru** požádá o **Server Ticket** pomocí **TGTicket, jako atentifikátor**
+		7. _TGServer_ se podívá na **zašifrovaný TGTicket** a dešifruje pomocí svého **Tajného Klíče**
+		8. __
+- **Co je Windows Vault?**
+	- přihlašování u _externích služeb_, které nepodporují SSO, ale my by jsme chtěli jednotné přihlášení
+	- **jedná se o úložiště s přihlašovacími údaji** pro externí služby
+	- `Ovládací panely > Uživatelské účty > Správce pověření`
+	- může se jednat buď o **služby v naší síti** nebo **někde na internetu**
+	- `%appdata% > Appdata > Local > Credientals`
 ### 12. Active Directory
-- struktura Active Directory
-  - Co je Active Directory a k čemu slouží?
-  - Jaké typy objektů v AD existují, vysvětlete funkci jednotlivých organizačních jednotek,
-vytvořených po instalaci AD
-  - Operation master roles
-- základní operace, tvorba objektů, nastavování vlastností
-  - Vytvořte uživatelský účet se zadanými vlastnostmi
-  - Vytvořte zabezpečovací skupinu
-  - Nastavte zadanou složku jako sdílenou, definujte vlastnosti sdílení a zabezpečení, vysvětlete
-význam jednotlivých nastavení
-  - Co jsou zděděná oprávnění? Jak je v případě potřeby odstranit?
-- uživatelské účty a skupiny
-  - Místní a cestovní profil uživatele
-  - Definice síťové domovské složky
-  - Přiřazení skriptu uživateli
-  - Zařazení do skupin, změna zařazení, výchozí skupina
+- **struktura Active Directory**
+  - **Co je Active Directory a k čemu slouží?**
+  - **Jaké typy objektů v AD existují, vysvětlete funkci jednotlivých organizačních jednotek, vytvořených po instalaci AD**
+  - **Operation master roles**
+- **základní operace, tvorba objektů, nastavování vlastností**
+  - **Vytvořte uživatelský účet se zadanými vlastnostmi**
+  - **Vytvořte zabezpečovací skupinu**
+  - **Nastavte zadanou složku jako sdílenou, definujte vlastnosti sdílení a zabezpečení, vysvětlete
+význam jednotlivých nastavení**
+  - **Co jsou zděděná oprávnění? Jak je v případě potřeby odstranit?**
+- **uživatelské účty a skupiny**
+  - **Místní a cestovní profil uživatele**
+  - **Definice síťové domovské složky**
+  - **Přiřazení skriptu uživateli**
+  - **Zařazení do skupin, změna zařazení, výchozí skupina**
 ### 13. Instalace a konfigurace DNS Serveru na platformě Windows Serveru
 - kořenové servery
   - Jak se instaluje a konfiguruje DNS server?
@@ -612,17 +661,39 @@ význam jednotlivých nastavení
   - Vytvořte obor adres pro každou vnitřní síťovou kartu serveru. Jak zajistíte připojení pracovní
 stanice na zadanou kartu a do předepsaného oboru adres?
 ### 15. Politiky GPO
-- vysvětlení pojmu, místo uložení
-  - Co jsou to GPO? Kam se ukládají?
-  - Co je Default Domain Policy a Default Domain Controller Policy?
-  - Pomocí jakých nástrojů spravujeme GPO?
-- vazby, pořadí provádění GPO
-  - Na jaké objekty se mohou GPO vázat?
-  - V jakém pořadí se GPO vyhodnocují?
-- nastavování pravidel pro uživatele a počítač
-  - Co představují pravidla pro uživatele a pro počítač? Kdy která aplikujeme?
-  - Vytvořte pro danou organizační jednotku GPO, která dané skupině uživatelů zajistí
-předepsané nastavení. Ověřte přihlášením uživatele!
+- **vysvětlení pojmu, místo uložení**  
+  - **Co jsou to GPO? Kam se ukládají?**
+  	- skupiny pro zásady zabezpečení, slouží pro nastavení počítačů a uživatelů v naší doméně AD
+  	- **umožňuje nám hromadně**
+  		- měnit nastavení pracovních stanic
+  		- instalovat software
+  		- nastavenení uživatlských práv a omezení (vzhled, aplikace, které můžeme spustit, ...)
+	- `C:\Windows\SYSVOL\sysvol\domena.local\Policies`
+		- **MACHINE** - politika pro počítače _(bez ohledu, jaký uživatel se přihlásí)_
+		- **USER** - politika pro uživatele _(bez ohledu, na jekém je počítači)_
+  - **Co je Default Domain Policy a Default Domain Controller Policy?**
+  	- **Default Domain Policy** - výchozí politika pro AD doménu
+  	- **Default Domain Controllers Policy** - výchozí politika pro doménové řadiče, ta se aplikuje na ten doménový řadič čili na _ten server, na kterém ten řadič běží_
+  - **Pomocí jakých nástrojů spravujeme GPO?**
+  	- _Group Policy Management_ -> **potřeba Active Directory**
+- **vazby, pořadí provádění GPO**
+  - **Na jaké objekty se mohou GPO vázat?**
+  	- **nastavují se na rodičovské nadřízené objekty** 
+		- _na doménu_
+		- _na složku Domain Controllers_
+		- _na vlastní OU (Organizační Jednotku)_
+		- _na Site_
+	- když se nalinkuje politika na OU, tak politika bude platit pro všechny počítače, co jsou v OU, totéž platí i pro uživatele 
+	- **kdy se to dědí se zároveň aplikuje politika z vyšší úrovně, tudíž Default Domain Policy**
+  - **V jakém pořadí se GPO vyhodnocují?**
+  	- Systémové politiky se vyhodnucijí, tak jak je vidíme, tak jak jdou za sebou
+  	- **nejdříve se vyhodnocuje politika s nižším číslem, a pak s čislama vyššíma**
+  	- **ENFORCED** - násilně se vytlačí proti všem 
+- **nastavování pravidel pro uživatele a počítač**
+  - **Co představují pravidla pro uživatele a pro počítač? Kdy která aplikujeme?**
+  	- **pro uživatele** - představují co uživatel může na počítači dělat, např. omezovat přistup k programům, nastavit hesla, upravení vzhledu plochy
+  	- **pro počítače** - ovlivňují jejich chování, např. nastavení zabezpečení, omezení přistupu, upravení systémových nastavení
+  - **Vytvořte pro danou organizační jednotku GPO, která dané skupině uživatelů zajistí předepsané nastavení. Ověřte přihlášením uživatele!**
 ### 16. Exchange server
 - popište funkce, instalaci a konfiguraci Exchange Serveru 2013
 - konfigurace poštovních schránek
@@ -646,6 +717,8 @@ diagnostika sítě)
 připojení, nástroje pro routování, rozdělení routovacích protokolů
 - Nakonfigurujte 3 virtuální PC s dist. Debian, z nichž jedno PC bude sloužit jako router mezi
 dvěma ostatními, kde bude mít každý ze zbývajících PC IP adresy z jiného rozsahu.
+	- `/proc/sys/net/ipv4/ip_forward`
+	- `/etc/sysctl.conf`
 ### 19. DHCP server
 - Popište komunikaci klient vs. DHCP server, DHCP relay, včetně konfiguračních souborů.
 - Nakonfigurujte 2 virtuální PC s dist. Debian, 1. PC jako DHCP server, druhé PC jako klient, oba na
